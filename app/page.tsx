@@ -1,4 +1,5 @@
 
+import TopCard from '@/components/cards/topCard'
 import React from 'react'
 
 export default function page() {
@@ -14,6 +15,9 @@ export default function page() {
           <h2 className='lg:text-[1.5rem] md:text-[1.3rem] text-[1rem] font-bold'><span className='text-[#e5101a]'>Knowledge</span>📕 and <span className='text-[#e5101a]'>entertainment</span>🎬</h2>
         </div>
       </div>
+      </div>
+      <div className='lg:px-16 md:px-12 px-4'>
+      <TopCard/>
       </div>
     </div>
   )
