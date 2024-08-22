@@ -49,7 +49,7 @@ export default function MustRead() {
 
   return (
     
-   <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 lg:mt-10 md:mt-10 mt-4">
+   <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4 lg:mt-10 md:mt-10 mt-4">
      
     {
         <LeftCard articalLeft={articles[0]}/>

@@ -85,3 +85,19 @@
 .headlineFont{
   font-family: "Playfair Display", serif;
 }
+
+@media(max-width:760px){
+  .width{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+  .width-column{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+.position{
+  bottom: 0.8%;
+}
+}

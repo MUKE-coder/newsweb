@@ -6,6 +6,7 @@ import LatestNews from '@/components/cards/latestNews'
 import MustRead from '@/components/cards/mustRead'
 import SportsComp from '@/components/cards/sports'
 import TopCard from '@/components/cards/topCard'
+import FooterComp from '@/components/footerComp'
 import { InputWithButton } from '@/components/subscribeComp'
 import { ArrowRight, MoveRight } from 'lucide-react'
 import Link from 'next/link'
@@ -92,6 +93,8 @@ export default function page() {
         </div>
       </div>
       </div>
+
+      <FooterComp/>
     </div>
   )
 }

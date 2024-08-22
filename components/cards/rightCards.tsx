@@ -11,7 +11,7 @@ export default function RightCards({ articalRight }: any) {
         articalRight.map((item:any , i:any)=>{
             return(
                 <Link key={i} href="/" className="w-full">
-        <div className="w-full lg:h-[5rem] md:h-[5rem] h-[10rem] overflow-hidden">
+        <div className="w-full lg:h-[5rem] md:h-[15rem] h-[10rem] overflow-hidden">
           <Image
             className="w-full rounded-md overflow-hidden"
             width={183}
