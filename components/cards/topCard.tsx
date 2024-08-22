@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 export default function TopCard() {
   return (
-    <div className='grid gap-4 lg:mt-[3rem] md:mt-[3rem] mt-[2rem] lg:grid-cols-2 md:grid-cols-2 grid-cols-1'>
+    <Link href='/' className='grid gap-4 lg:mt-[3rem] md:mt-[3rem] mt-[2rem] lg:grid-cols-2 md:grid-cols-2 grid-cols-1'>
       <div className='w-full overflow-hidden'>
         <Image className='w-full rounded-3xl overflow-hidden' width={183} height={275} src="/images/john.avif" alt="wick" />
       </div>
@@ -27,6 +28,6 @@ export default function TopCard() {
         <h3 className='text-[#e00e0e] lg:text-[1rem] md:text-[1rem] text-[0.5rem] font-bold headlineFont'>Movies</h3>
        </div>
       </div>
-    </div>
+    </Link>
   )
 }
