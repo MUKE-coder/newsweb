@@ -30,7 +30,7 @@ export default function EditorCard() {
                     alt="netflix"
                   />
                 </div>
-                <h3 className="lg:text-[1rem] md:text-[1rem] text-[0.8rem] lg:font-normal md:font-normal font-bold headlineFont">
+                <h3 className="lg:text-[1rem] md:text-[1rem] text-[0.8rem]  font-bold headlineFont">
                   Netflix
                 </h3>
               </div>
@@ -39,7 +39,7 @@ export default function EditorCard() {
               </div>
             </div>
             <div className="">
-              <h1 className="lg:text-[1.3rem] md:text-[1.3rem] text-[1.1rem] font-bold ">
+              <h1 className="lg:text-[1.3rem] subHeaderFont  md:text-[1.3rem] text-[1.1rem] font-bold ">
               Where To Watch John Wick Chapter 4{" "}
               </h1>
               <p className="line-clamp-3">

@@ -1,4 +1,6 @@
 
+import EditorCard from '@/components/cards/editorCard'
+import EditorCards from '@/components/cards/editorCards'
 import LatestNews from '@/components/cards/latestNews'
 import MustRead from '@/components/cards/mustRead'
 import TopCard from '@/components/cards/topCard'
@@ -38,6 +40,19 @@ export default function page() {
         <Link className='flex items-center gap-2 text-[#e00e0e] font-bold' href="/">see all <MoveRight className='w-4 h-5' /></Link>
        </div>
        <MustRead/>
+      </div>
+
+      <div className='lg:px-16 md:px-12 px-4 lg:mt-[4rem] md:mt-[3rem] mt-[2rem]'>
+       <div className='flex justify-between items-center'>
+        <h1 className='lg:text-[1.5rem] md:text-[1.5rem] text-[1.1rem] font-bold'>Editor{"'"}s Pick</h1>
+        <Link className='flex items-center gap-2 text-[#e00e0e] font-bold' href="/">see all <MoveRight className='w-4 h-5' /></Link>
+           </div>
+       <div className='lg:mt-[2rem] md:mt-[2rem] mt-[2rem]'>
+        <EditorCard/>
+        <div className='lg:mt-[3rem] md:mt-[3rem] mt-[2rem]'>
+          <EditorCards/>
+        </div>
+       </div>
       </div>
     </div>
   )
