@@ -6,12 +6,12 @@ export default function RightCards({ articalRight }: any) {
   console.log(`this is the right data ${articalRight}`);
 
   return (
-    <div className="w-[100%] col-span-1 flex gap-4 flex-col">
+    <div className="w-[100%] lg:col-span-1 md:col-span-1 col-span-2 flex gap-4 flex-col">
       {
         articalRight.map((item:any , i:any)=>{
             return(
                 <Link key={i} href="/" className="w-full">
-        <div className="w-full h-[5rem] overflow-hidden">
+        <div className="w-full lg:h-[5rem] md:h-[5rem] h-[10rem] overflow-hidden">
           <Image
             className="w-full rounded-md overflow-hidden"
             width={183}
