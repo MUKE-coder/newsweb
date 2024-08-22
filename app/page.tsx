@@ -1,8 +1,10 @@
 
+import Business from '@/components/cards/business'
 import EditorCard from '@/components/cards/editorCard'
 import EditorCards from '@/components/cards/editorCards'
 import LatestNews from '@/components/cards/latestNews'
 import MustRead from '@/components/cards/mustRead'
+import SportsComp from '@/components/cards/sports'
 import TopCard from '@/components/cards/topCard'
 import { ArrowRight, MoveRight } from 'lucide-react'
 import Link from 'next/link'
@@ -53,6 +55,29 @@ export default function page() {
           <EditorCards/>
         </div>
        </div>
+      </div>
+
+      <div className='lg:px-16 grid lg:grid-cols-2 gap-6 place-items-center md:grid-cols-1 grid-cols-1 md:px-12 px-4 lg:mt-[4rem] md:mt-[3rem] mt-[2rem]'>
+      <div className=''>
+       <div className='flex justify-between items-center'>
+        <h1 className='lg:text-[1.5rem] md:text-[1.5rem] text-[1.1rem] font-bold'>Bussiness</h1>
+        <Link className='flex items-center gap-2 text-[#e00e0e] font-bold' href="/"> <MoveRight className='w-4 h-5' /></Link>
+           </div>
+        <div className='lg:mt-[2rem] md:mt-[2rem] mt-[2rem]'>
+         <Business/>
+        </div>
+        </div>
+
+      <div className=''>
+       <div className='flex justify-between items-center'>
+        <h1 className='lg:text-[1.5rem] md:text-[1.5rem] text-[1.1rem] font-bold'>Sports News</h1>
+        <Link className='flex items-center gap-2 text-[#e00e0e] font-bold' href="/"> <MoveRight className='w-4 h-5' /></Link>
+           </div>
+        <div className='lg:mt-[2rem] md:mt-[2rem] mt-[2rem]'>
+        <SportsComp/>
+        </div>
+        </div>
+     
       </div>
     </div>
   )
