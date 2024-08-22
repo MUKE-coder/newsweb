@@ -1,5 +1,6 @@
 
 import LatestNews from '@/components/cards/latestNews'
+import MustRead from '@/components/cards/mustRead'
 import TopCard from '@/components/cards/topCard'
 import { ArrowRight, MoveRight } from 'lucide-react'
 import Link from 'next/link'
@@ -29,6 +30,14 @@ export default function page() {
         <Link className='flex items-center gap-2 text-[#e00e0e] font-bold' href="/">see all <MoveRight className='w-4 h-5' /></Link>
        </div>
        <LatestNews/>
+      </div>
+
+      <div className='lg:px-16 md:px-12 px-4 lg:mt-[3rem] md:mt-[3rem] mt-[2rem]'>
+       <div className='flex justify-between items-center'>
+        <h1 className='lg:text-[1.5rem] md:text-[1.5rem] text-[1.1rem] font-bold'>Must Read</h1>
+        <Link className='flex items-center gap-2 text-[#e00e0e] font-bold' href="/">see all <MoveRight className='w-4 h-5' /></Link>
+       </div>
+       <MustRead/>
       </div>
     </div>
   )
