@@ -13,18 +13,18 @@ export default function TopCard() {
         <div className='lg:w-8 lg:h-8 md:w-8 md:h-8 w-5 h-5 rounded-full'>
         <Image width={225} height={225} className='w-full rounded-full' src="/images/net.png" alt="netflix" />
         </div>
-        <h3 className='lg:font-normal md:font-normal font-bold lg:text-[1rem] md:text-[1rem] text-[0.8rem]'>Netflix</h3>
+        <h3 className='headlineFont font-bold lg:text-[1rem] md:text-[1rem] text-[0.8rem]'>Netflix</h3>
         </div>     
         <div>
-        <h3 className='text-gray-600 lg:text-[0.9rem] md:text-[0.9rem] text-[0.8rem]'>12 minutes ago</h3>
+        <h3 className='text-gray-600 lg:text-[0.9rem] headlineFont md:text-[0.9rem] text-[0.8rem]'>12 minutes ago</h3>
         </div>     
         </div>
         <div className='lg:mt-[0.7rem] md:mt-[0.7rem] mt-0 '>
-        <h1 className='lg:text-[3rem] md:text-[2.5rem] text-[1.5rem] lg:mb-[1rem] md:mb-[1rem] mb-0'>Where To Watch John Wick Chapter 4 </h1>
+        <h1 className='lg:text-[3rem] md:text-[2.5rem] subHeaderFont text-[1.5rem] lg:mb-[1rem] md:mb-[1rem] mb-0'>Where To Watch John Wick Chapter 4 </h1>
         <p className='line-clamp-3'>There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will eventually be released on Starz,...</p>
         </div>
        <div className='lg:mt-[0.7rem] md:mt-[0.7rem] mt-0 '>
-        <h3 className='text-[#e00e0e] lg:text-[1rem] md:text-[1rem] text-[0.5rem]lg:font-normal md:font-normal font-bold'>Movies</h3>
+        <h3 className='text-[#e00e0e] lg:text-[1rem] md:text-[1rem] text-[0.5rem] font-bold headlineFont'>Movies</h3>
        </div>
       </div>
     </div>

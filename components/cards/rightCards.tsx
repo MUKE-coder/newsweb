@@ -32,16 +32,16 @@ export default function RightCards({ articalRight }: any) {
                   alt="netflix"
                 />
               </div>
-              <h3 className="lg:text-[1rem] md:text-[1rem] text-[0.8rem] lg:font-normal md:font-normal font-bold">
+              <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem] font-bold">
                 Netflix
               </h3>
             </div>
             <div>
-              <h3 className="text-[0.8rem] text-gray-600">12 minutes ago</h3>
+              <h3 className="text-[0.8rem] headlineFont text-gray-600">12 minutes ago</h3>
             </div>
           </div>
           <div className="">
-            <h1 className="lg:text-[1.3rem] md:text-[1.3rem] text-[1.1rem] font-bold ">
+            <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
               {item.title}{" "}
             </h1>
             <p className="line-clamp-3">
@@ -51,7 +51,7 @@ export default function RightCards({ articalRight }: any) {
             </p>
           </div>
           <div className="">
-            <h3 className="text-[#e00e0e] lg:text-[1rem] md:text-[1rem] text-[0.7rem]lg:font-normal md:font-normal font-bold">
+            <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
               Movies
             </h3>
           </div>

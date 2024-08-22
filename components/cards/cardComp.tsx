@@ -8,19 +8,17 @@ type CardProps = {
   time: string;
   title: string;
   link: string;
-  articalLeft: any;
-};
+  description:string
+  };
 
-export default function LeftCard({
+export default function CardComp({
   image,
   category,
   time,
   title,
   link,
-  articalLeft,
-}: any) {
-  // console.log(articalLeft)
-  console.log(`this is the left data ${articalLeft}`);
+  description
+  }: CardProps) {
 
   return (
     <Link href='/' className="w-full  col-span-1">
@@ -29,7 +27,7 @@ export default function LeftCard({
           className="w-full rounded-[1.1rem] overflow-hidden"
           width={183}
           height={275}
-          src="/images/john.avif"
+          src={image}
           alt="wick"
         />
       </div>
@@ -45,26 +43,24 @@ export default function LeftCard({
                 alt="netflix"
               />
             </div>
-            <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem]  font-bold">
-              {articalLeft.category}
+            <h3 className="lg:text-[1rem] md:text-[1rem] text-[0.8rem] lg:font-normal md:font-normal font-bold">
+              Netflix
             </h3>
           </div>
           <div>
-            <h3 className="text-[0.8rem] headlineFont text-gray-600">12 minutes ago</h3>
+            <h3 className="text-[0.8rem] text-gray-600">12 minutes ago</h3>
           </div>
         </div>
         <div className="">
-          <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
-            {articalLeft.title}{" "}
+          <h1 className="lg:text-[1.3rem] md:text-[1.3rem] text-[1.1rem] font-bold ">
+            {title}{" "}
           </h1>
           <p className="line-clamp-3">
-            There has been an official announcment about John Wick: Chapter 4s
-            streaming release. However given its a lionsgate film John Wick:
-            chapter 4 will eventually be released on Starz,...
+            {description}
           </p>
         </div>
         <div className="">
-          <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
+          <h3 className="text-[#e00e0e] lg:text-[1rem] md:text-[1rem] text-[0.7rem]lg:font-normal md:font-normal font-bold">
             Movies
           </h3>
         </div>

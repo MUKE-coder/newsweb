@@ -1,11 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
-export default function MiddleCard({ articalMiddle }: any) {
-  console.log(`this is the middle data ${articalMiddle}`);
+export default function EditorCard() {
+
   return (
-    <Link
+    <a
       href="#"
       className="group w-[100%] col-span-2 rounded-lg relative block bg-black"
     >
@@ -31,17 +30,17 @@ export default function MiddleCard({ articalMiddle }: any) {
                     alt="netflix"
                   />
                 </div>
-                <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem]  font-bold">
+                <h3 className="lg:text-[1rem] md:text-[1rem] text-[0.8rem] lg:font-normal md:font-normal font-bold headlineFont">
                   Netflix
                 </h3>
               </div>
               <div>
-                <h3 className="text-[0.8rem] headlineFont text-gray-200">12 minutes ago</h3>
+                <h3 className="text-[0.8rem] text-gray-200 headlineFont">12 minutes ago</h3>
               </div>
             </div>
             <div className="">
-              <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
-                {articalMiddle.title}{" "}
+              <h1 className="lg:text-[1.3rem] md:text-[1.3rem] text-[1.1rem] font-bold ">
+              Where To Watch John Wick Chapter 4{" "}
               </h1>
               <p className="line-clamp-3">
                 There has been an official announcment about John Wick: Chapter
@@ -52,6 +51,6 @@ export default function MiddleCard({ articalMiddle }: any) {
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }
