@@ -4,8 +4,8 @@ import React from 'react'
 export default function TopCard() {
   return (
     <div className='grid gap-4 lg:mt-[3rem] md:mt-[3rem] mt-[2rem] lg:grid-cols-2 md:grid-cols-2 grid-cols-1'>
-      <div className='w-full'>
-        <Image className='w-full rounded-3xl' width={183} height={275} src="/images/john.avif" alt="wick" />
+      <div className='w-full overflow-hidden'>
+        <Image className='w-full rounded-3xl overflow-hidden' width={183} height={275} src="/images/john.avif" alt="wick" />
       </div>
       <div>
         <div className='flex items-center gap-5'>
