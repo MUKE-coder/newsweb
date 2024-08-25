@@ -36,7 +36,7 @@ const smallnavigation =[
     },
     {
         name:"Signup",
-        href:"/"
+        href:"/signup"
     },
 ]
 const navigation =[
@@ -61,12 +61,14 @@ const navigation =[
     <header className="sticky justify-between  z-[20] top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 w-full">
 
 <nav className="hidden  flex-col justify-between gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-      <Link
-        href="#"
+<div className="text-[#f45b42]">
+          <Link
+        href="/"
         className="flex items-center logoFont gap-2 text-lg font-semibold md:text-base"
       >
           <span className="text-[1rem]">Lubiliizi Bulletin</span>
       </Link>
+          </div>
       
      <div className='flex gap-4 items-center'>
     {
@@ -120,7 +122,7 @@ const navigation =[
     </Sheet>
 
     <div className="flex items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-      <Link href='/' className='bg-black px-3 lg:block md:block hidden py-1 rounded-md text-white'>Signup</Link>
+      <Link href='/signup' className='bg-black px-3 lg:block md:block hidden py-1 rounded-md text-white'>Signup</Link>
       <Link href='/' className='flex gap-3 items-center'>write <FolderPen className='w-4 h-4'/></Link>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

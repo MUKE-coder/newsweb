@@ -7,6 +7,7 @@ import MustRead from '@/components/cards/mustRead'
 import SportsComp from '@/components/cards/sports'
 import TopCard from '@/components/cards/topCard'
 import FooterComp from '@/components/footerComp'
+import Header from '@/components/header'
 import { InputWithButton } from '@/components/subscribeComp'
 import { ArrowRight, MoveRight } from 'lucide-react'
 import Link from 'next/link'
@@ -14,7 +15,9 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div className='px-4  mt-10'>
+   <div>
+    <Header/>
+     <div className='px-4  mt-10'>
       <div className='lg:px-16 md:px-12 px-4'>
       <div className='bg-[#f5f5f5] px-4 py-6 text-center rounded-lg flex flex-col gap-3'>
         <div className='lg:text-[1rem] md:text-[1rem] text-[0.7rem]'>
@@ -84,6 +87,7 @@ export default function page() {
 
             
     </div>
+   </div>
   )
 }
 

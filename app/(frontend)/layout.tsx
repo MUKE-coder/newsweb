@@ -7,7 +7,7 @@ export default function Layout({children}:{children:ReactNode}) {
   return (
    
    <div>
-      <Header/>
+      {/* <Header/> */}
   {children}
   <div className='lg:px-16 md:px-12 px-4 lg:mt-[4rem] md:mt-[3rem] mt-[2rem] '>
       <div className='bg-[#f5f5f5] px-4 py-6 gap-4 rounded-lg  grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1   items-center  '>
