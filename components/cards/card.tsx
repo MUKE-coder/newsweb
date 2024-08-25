@@ -23,7 +23,7 @@ export default function LeftCard({
   console.log(`this is the left data ${articalLeft}`);
 
   return (
-    <Link href='/' className="w-full  col-span-1">
+    <Link href='/detailed' className="w-full  col-span-1">
       <div className="w-full overflow-hidden">
         <Image
           className="w-full rounded-[1.1rem] overflow-hidden"

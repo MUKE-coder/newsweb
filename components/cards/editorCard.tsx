@@ -5,7 +5,7 @@ export default function EditorCard() {
 
   return (
     <a
-      href="#"
+      href="/detailed"
       className="group w-[100%] col-span-2 rounded-lg relative block bg-black"
     >
       <Image

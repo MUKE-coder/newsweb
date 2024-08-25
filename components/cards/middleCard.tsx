@@ -6,7 +6,7 @@ export default function MiddleCard({ articalMiddle }: any) {
   console.log(`this is the middle data ${articalMiddle}`);
   return (
     <Link
-      href="#"
+      href="/detailed"
       className="group w-[100%] col-span-2 rounded-lg relative block bg-black"
     >
       <Image

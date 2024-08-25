@@ -8,7 +8,7 @@ export default function Business() {
       image='/images/john.avif'
       title='Where To Watch John Wick Chapter 4'
       category='#'
-       link='/'
+       link='/detailed'
        time='#'  
      description='There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will'
       />
@@ -16,7 +16,7 @@ export default function Business() {
       image='/images/john.avif'
       title='Where To Watch John Wick Chapter 4'
       category='#'
-       link='/'
+       link='/detailed'
        time='#'  
      description='There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will'
       />

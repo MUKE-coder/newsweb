@@ -38,7 +38,7 @@ export default function LatestNews() {
      {
         latestNews.map((news,i)=>{
             return(
-                <Link href='' key={i} className='w-full'>
+                <Link href='/detailed' key={i} className='w-full'>
                 <div className='w-full overflow-hidden'>
                   <Image className='w-full rounded-[1.1rem] overflow-hidden' width={183} height={275} src={news.image.one} alt="wick" />
                 </div>
