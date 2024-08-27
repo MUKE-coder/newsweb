@@ -7,6 +7,11 @@ import PasswordInput from "../forminputs/passwordinput";
 import SubmitButton from "../forminputs/submitbtn";
 import { UploadButton, UploadDropzone } from "../uploadthing";
 import Image from "next/image";
+import { UserProps } from "@/types/types";
+import { CodeSquare } from "lucide-react";
+import { registerUser } from "@/actions/userActions";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function SignupForm() {
   const {
@@ -14,21 +19,47 @@ export default function SignupForm() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<UserProps>();
   const [loading,setLoading] = useState(false);
   const [image,setImage] = useState("/images/avator.avif")
+  const [emailError, setEmailError] = useState("")
+  const router = useRouter()
 
 
-function submitUser(data:any){
-console.log(data)
-data.image = image
+ 
+async function submitUser(data:UserProps){
+  data.image = image
+  data.userName = `${data.firstName} ${data.lastName}`;
+  setLoading(true)
+  console.log(data)
+try {
+const res = await registerUser(data)  
+if (res && res.status === 409) {
+  setEmailError("Sorry, Email already exists in our database.");
+  toast.error("email already exists")
+} else if (res && res.status === 201) {
+  reset();
+  router.push("/login");
+  toast.success("successfully registered")
+}else {
+  alert("network problem")
+  toast.error("something went wrong please try again")
+  console.log(res.error);
+
+}
+} catch (error) {
+  toast.error("something went wrong please try again")
+  console.log(error);
+} finally {
+  setLoading(false);
+}
 }
 
 
 
 
   return (
-    <div className="w-[100%] mt-10 border-solid py-3 px-4 box-shadow ">
+    <div className="w-[100%] mt-10 rounded-lg  px-8 py-8 box-shadow bg-white">
       <div>
         <div className="text-[#f45b42]">
           <Link
@@ -54,8 +85,8 @@ data.image = image
           <TextInput
             register={register}
             errors={errors}
-            label="Second Name"
-            name="secondName"
+            label="Last Name"
+            name="lastName"
           />
         </div>
         <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 py- gap-3 pt-3">
@@ -64,7 +95,8 @@ data.image = image
             errors={errors}
             label="Email Address"
             name="email"
-          />
+            />
+           
           <TextInput
             register={register}
             errors={errors}
@@ -72,6 +104,11 @@ data.image = image
             name="phone"
           />
         </div>
+        {emailError && (
+                  <span className="text-xs my-2 text-red-600">
+                    {emailError}
+                  </span>
+                )}
         <div>
         <TextInput
             register={register}
@@ -86,12 +123,12 @@ data.image = image
         onClientUploadComplete={(res) => {
           // Do something with the response
           console.log("Files: ", res);
-          alert("Upload Completed");
+          toast.success("Upload Completed")
           setImage(res[0].url)
         }}
         onUploadError={(error: Error) => {
           // Do something with the error.
-          alert(`ERROR! ${error.message}`);
+          toast.error(`ERROR! ${error.message}`);
         }}
       />
      <div className="w-20 h-20 rounded-full">
@@ -106,6 +143,7 @@ data.image = image
         </div>
         <div className="mt-4 flex justify-end">
        <SubmitButton
+       className="w-full"
        title="Register"
        loading={loading}
        loadingTitle="signing-Up..."

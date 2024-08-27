@@ -3,8 +3,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import FooterComp from "@/components/footerComp";
 import { InputWithButton } from "@/components/subscribeComp";
-
-
+import toast, { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,10 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="subHeaderFont">
-    
+      <body className="subHeaderFont background-color">
+        <div>
+          <Toaster position="bottom-right" reverseOrder={false} />
+        </div>
+
         {children}
-    </body>
+      </body>
     </html>
   );
 }
