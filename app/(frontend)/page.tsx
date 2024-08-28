@@ -84,7 +84,7 @@ export default function page() {
 
             
     </div>
-    <Link href='/dashboard'>Dashboard</Link>
+    
    </div>
   )
 }
