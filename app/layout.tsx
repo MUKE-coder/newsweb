@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="subHeaderFont background-color">
         <div>
-          <Toaster position="bottom-right" reverseOrder={false} />
+          <Toaster position="top-right" reverseOrder={false} />
         </div>
 
         {children}
