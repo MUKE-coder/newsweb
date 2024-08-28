@@ -69,12 +69,14 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
         id
       );
       setLoading(false);
-      alert("created");
+      // alert("created");
+      toast.success("profile updated successfully")
       console.log(update);
     } catch (error) {
       console.log(error);
       setLoading(false);
-      alert("failed");
+      // alert("failed");
+      toast.error("Failed to update the profile")
     }
   }
 
