@@ -1,11 +1,13 @@
-"use server"
+"use server";
 import { db } from "@/lib/db";
 import bcrypt from "bcrypt";
-import { UserProps } from "@/types/types";
+import { UserDetails, UserProps } from "@/types/types";
+import { User } from "@prisma/client";
 
 export async function registerUser(data: UserProps) {
   try {
-    const { email, firstName, lastName, phone, password, userName,image } = data;
+    const { email, firstName, lastName, phone, password, userName, image } =
+      data;
     const existingUser = await db.user.findUnique({
       where: { email },
     });
@@ -25,14 +27,14 @@ export async function registerUser(data: UserProps) {
         phone,
         password: hashedPassword,
         userName,
-        image
+        image,
       },
     });
-  return{
-    data:newUser,
-    status:201,
-    error:null
-  }
+    return {
+      data: newUser,
+      status: 201,
+      error: null,
+    };
   } catch (error) {
     console.log(error);
     return {
@@ -40,3 +42,44 @@ export async function registerUser(data: UserProps) {
     };
   }
 }
+
+export async function editUserData(data: UserDetails,  id :string) {
+  // console.log(id, data);
+  try {
+    const assignment = await db.user.update({
+      where: {
+        id,
+      },
+
+      data,
+    });
+    return assignment;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getSingleUserData({id}:UserProps | User | any){
+try {
+  const userData = await db.user.findUnique({
+    where:{
+      id:id
+    }
+  })
+// console.log(userData)
+return userData;
+} catch (error) {
+console.log(error)  
+}
+}
+
+export async function getUserData(){
+  try {
+   const userData = await db.user.findMany() 
+  //  console.log(userData)
+   return userData 
+  } catch (error) {
+   console.log(error) 
+  }
+}
+

@@ -7,23 +7,28 @@ import PasswordInput from "../forminputs/passwordinput";
 import SubmitButton from "../forminputs/submitbtn";
 import { UploadButton, UploadDropzone } from "../uploadthing";
 import Image from "next/image";
-import { UserProps } from "@/types/types";
+import { SingleUserDetails, UserProps } from "@/types/types";
 import { CodeSquare } from "lucide-react";
 import { registerUser } from "@/actions/userActions";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-export default function SignupForm() {
+export default function SignupForm({singleUserData}:SingleUserDetails) {
+  // console.log(singleUserData)
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
-  } = useForm<UserProps>();
+      formState: { errors },
+  } = useForm<UserProps>({defaultValues:singleUserData});
+
   const [loading,setLoading] = useState(false);
   const [image,setImage] = useState("/images/avator.avif")
   const [emailError, setEmailError] = useState("")
   const router = useRouter()
+  const id = singleUserData.id
+  
+
 
 
  
@@ -81,6 +86,7 @@ if (res && res.status === 409) {
             errors={errors}
             label="First Name"
             name="firstName"
+         
           />
           <TextInput
             register={register}

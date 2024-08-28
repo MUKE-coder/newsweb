@@ -28,6 +28,7 @@ import { getServerSession, Session } from "next-auth";
 import { authOptions } from "@/config/auth";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
+import DropDownComp from "./dropDown";
 
 export default async function Header({ session }: { session: Session }) {
   const smallnavigation = [
@@ -133,39 +134,13 @@ export default async function Header({ session }: { session: Session }) {
         )}
 
         {session && (
-          <Link href="/" className="flex gap-3 items-center">
+          <Link href="/signup" className="flex gap-3 items-center">
             write <FolderPen className="w-4 h-4" />
           </Link>
         )}
 
         {session && (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="secondary" size="icon" className="rounded-full">
-                {/* <CircleUser className="h-5 w-5" /> */}
-                <Image
-                  width={262}
-                  height={192}
-                  src={session.user.image as string}
-                  alt="User Image"
-                  className="h-full w-full rounded-full"
-                />
-                <span className="sr-only">Toggle user menu</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                onClick={() => signOut({ callbackUrl: "/login" })}
-              >
-                Logout
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            <DropDownComp session={session}/>
         )}
       </div>
     </header>

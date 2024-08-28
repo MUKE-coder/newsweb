@@ -29,6 +29,7 @@ toolTipText,
 unit,
 icon,
 placeholder,
+
 }: TextInputProps) {
 const Icon = icon;
 return (
