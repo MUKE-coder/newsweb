@@ -70,7 +70,7 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
       );
       setLoading(false);
         toast.success("profile updated successfully")
-        router.replace("/")
+        router.push("/")
         router.refresh()
       
     } catch (error) {
