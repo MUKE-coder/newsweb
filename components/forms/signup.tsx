@@ -13,24 +13,19 @@ import { registerUser } from "@/actions/userActions";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-export default function SignupForm({singleUserData}:SingleUserDetails) {
+export default function SignupForm() {
   // console.log(singleUserData)
   const {
     register,
     handleSubmit,
     reset,
       formState: { errors },
-  } = useForm<UserProps>({defaultValues:singleUserData});
+  } = useForm<UserProps>();
 
   const [loading,setLoading] = useState(false);
   const [image,setImage] = useState("/images/avator.avif")
   const [emailError, setEmailError] = useState("")
   const router = useRouter()
-  const id = singleUserData.id
-  
-
-
-
  
 async function submitUser(data:UserProps){
   data.image = image
