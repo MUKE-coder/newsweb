@@ -104,6 +104,21 @@
     flex-direction: column-reverse;
     gap: 2rem;
   }
+  .flex-layout{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+.display-none{
+  display: none;
+}
+
+.flex-class{
+display: flex;
+flex-direction: row-reverse;
+}
+
+
 .position{
   bottom: 0.8%;
 }
