@@ -105,7 +105,43 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
         </div>
       </div>
       <form className="mt-4" onSubmit={handleSubmit(submitUser)} action="">
-      <div className="mt-4 flex xjustify-center items-center gap-[3rem]">
+      <div className="mt-4 lg:flex width-column md:flex justify-center  gap-[2rem]">
+        <UploadButton
+        endpoint="imageUploader"
+        onClientUploadComplete={(res) => {
+          // Do something with the response
+          console.log("Files: ", res);
+          toast.success("Upload Completed")
+          setImage(res[0].url)
+        }}
+        onUploadError={(error: Error) => {
+          // Do something with the error.
+          toast.error(`ERROR! ${error.message}`);
+        }}
+      />
+     <div className="w-20 h-20 relative rounded-full">
+     {image.startsWith('/images/') ? (
+              ""
+            ) : (
+              <button
+                type="button"
+                className="absolute right-0 bg-black rounded-full"
+                onClick={deleteImage}
+              >
+                <X className="text-white" />
+              </button>
+            )}
+     <Image
+                  src={image}
+                  alt="profile"
+                  width={300}
+                  height={300}
+                  className="w-full rounded-full  object-cover mb-4"
+                />
+     </div>
+        </div>
+
+      {/* <div className="mt-4 flex xjustify-center items-center gap-[3rem]">
           <div className="w-20 h-20 relative rounded-full">
             {image.startsWith('/images/') ? (
               ""
@@ -118,7 +154,7 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
                 <X className="text-white" />
               </button>
             )}
-            {/* <button  type="button" className="absolute right-0 bg-black rounded-full" onClick={deleteImage}><X className="text-white"/></button> */}
+            <button  type="button" className="absolute right-0 bg-black rounded-full" onClick={deleteImage}><X className="text-white"/></button>
             <Image
               src={image}
               alt="profile"
@@ -141,7 +177,9 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
             }}
           />
         
-        </div>
+        </div> */}
+
+
         <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 py- gap-3 pt-3">
           <TextInput
             register={register}

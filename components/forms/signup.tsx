@@ -75,6 +75,30 @@ if (res && res.status === 409) {
         </div>
       </div>
       <form className="mt-4" onSubmit={handleSubmit(submitUser)} action="">
+      <div className="mt-4 lg:flex width-column md:flex justify-center items-center gap-[3rem]">
+        <UploadButton
+        endpoint="imageUploader"
+        onClientUploadComplete={(res) => {
+          // Do something with the response
+          console.log("Files: ", res);
+          toast.success("Upload Completed")
+          setImage(res[0].url)
+        }}
+        onUploadError={(error: Error) => {
+          // Do something with the error.
+          toast.error(`ERROR! ${error.message}`);
+        }}
+      />
+     <div className="w-20 h-20 rounded-full">
+     <Image
+                  src={image}
+                  alt="profile"
+                  width={300}
+                  height={300}
+                  className="w-full rounded-full  object-cover mb-4"
+                />
+     </div>
+        </div>
         <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 py- gap-3 pt-3">
           <TextInput
             register={register}
@@ -118,30 +142,7 @@ if (res && res.status === 409) {
             name="password"
           />
         </div>
-        <div className="mt-4 flex justify-center items-center gap-[3rem]">
-        <UploadButton
-        endpoint="imageUploader"
-        onClientUploadComplete={(res) => {
-          // Do something with the response
-          console.log("Files: ", res);
-          toast.success("Upload Completed")
-          setImage(res[0].url)
-        }}
-        onUploadError={(error: Error) => {
-          // Do something with the error.
-          toast.error(`ERROR! ${error.message}`);
-        }}
-      />
-     <div className="w-20 h-20 rounded-full">
-     <Image
-                  src={image}
-                  alt="profile"
-                  width={300}
-                  height={300}
-                  className="w-full rounded-full  object-cover mb-4"
-                />
-     </div>
-        </div>
+      
         <div className="mt-4 flex justify-end">
        <SubmitButton
        className="w-full"
