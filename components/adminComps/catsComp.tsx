@@ -35,7 +35,7 @@ export default async function CatsComp() {
                     width={262}
                     height={192}
                     className="w-full h-full rounded-full"
-                    src={category.image}
+                    src={category.image as string}
                     alt="profile"
                   />
                 </div>
