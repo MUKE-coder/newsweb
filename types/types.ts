@@ -24,7 +24,7 @@ export type UserDetails = {
 export type CatProps = {
   title: string;
   slug: string;
-  image: string;
+  image: string ;
   singleCat: string | any
 };
 export type CatPropsUpdate = {
