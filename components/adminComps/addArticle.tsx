@@ -66,6 +66,7 @@ import {
 import Image from 'next/image'
 
 export default function AddArticle() {
+
   return (
     <main className="flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
           <Tabs defaultValue="all">
@@ -92,19 +93,26 @@ export default function AddArticle() {
                     </DropdownMenuCheckboxItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
-                <Button size="sm" variant="outline" className="h-7 gap-1">
-                  <File className="h-3.5 w-3.5" />
-                  <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                    Export
-                  </span>
-                </Button>
-                <Button size="sm" className="h-7 gap-1">
+               
+                <Link href='/dashboard/add-category'  className="h-7 gap-1 flex rounded-md text-white items-center px-3 py-2 bg-[#ef000bff]">
                   <PlusCircle className="h-3.5 w-3.5" />
+                  <span className=" sm:whitespace-nowrap">
+                  <span className=' sr-only sm:not-sr-only'>Add</span>Category
+                  </span>
+                </Link>
+                 <Link href='/'  className="h-7 gap-1 flex rounded-md text-white items-center px-3 py-2 bg-[#ef000bff]">
+                  <PlusCircle className="h-3.5 w-3.5" />
+                  <span className=" sm:whitespace-nowrap">
+                  <span className=' sr-only sm:not-sr-only'>Add</span>Mediahouse
+                  </span>
+                </Link>
+                 <Link href='/'  className="h-7 gap-1 flex rounded-md text-white items-center px-3 py-2 bg-[#ef000bff]">
+                    <PlusCircle className="h-3.5 w-3.5" />
                   <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                     Add Product
                   </span>
-                </Button>
-              </div>
+                </Link>
+                </div>
             </div>
             <TabsContent value="all">
               <Card >

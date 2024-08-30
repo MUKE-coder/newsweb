@@ -6,7 +6,7 @@ import { UserProps } from '@/types/types'
 import React from 'react'
 
 export default async function page({params:{id}}:{params:{id:string}}) {
-  console.log(`this the ${id}`)
+  // console.log(`this the ${id}`)
 const singleUserData = await getSingleUserData({id})
 // console.log(singleUserData)
 // const user = await getUserData()

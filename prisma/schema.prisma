@@ -25,9 +25,46 @@ model User {
   password      String
   isVerfied     Boolean   @default(false)
   token         Int?
+  news          News[]
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }
 
+model News {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  thumbnail   String?
+  title       String
+  content     String
+  description String?
+  readTime    String?
+  editorsPick Boolean  @default(false)
+  mustRead    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  User        User?    @relation(fields: [userId], references: [id])
+  userId      String?  @db.ObjectId
 
+  Category     Category?   @relation(fields: [categoryId], references: [id])
+  categoryId   String?     @db.ObjectId
+  MediaHouse   MediaHouse? @relation(fields: [mediaHouseId], references: [id])
+  mediaHouseId String?     @db.ObjectId
+}
 
+model MediaHouse {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  image     String?
+  news      News[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  news      News[]
+  slug      String  @unique
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

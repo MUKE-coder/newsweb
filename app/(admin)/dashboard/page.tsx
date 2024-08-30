@@ -33,11 +33,12 @@ import {
   Users,
 } from "lucide-react"
 import Link from 'next/link'
+import CatsComp from "@/components/adminComps/catsComp"
 
 
 export default function Dashboard() {
   return (
-    <div className="w-full h-full px-4">
+    <div className="w-[100%] h-full py-4  px-4">
        <header className="flex  w-full lg:hidden md:hidden   h-14 items-center gap-4  px-4 lg:h-[60px] lg:px-6">
          <div className="flex h-14 items-center gap-4  px-4 lg:h-[60px] lg:px-6">
         <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
@@ -58,7 +59,9 @@ export default function Dashboard() {
             </form>
           </div>
         </header>
-    <DashContents/>
+      <div>
+        <CatsComp/>
+      </div>
    </div>
   )
 }

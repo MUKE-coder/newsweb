@@ -3,12 +3,10 @@ import Link from "next/link";
 import React, { useState } from "react";
 import TextInput from "../forminputs/textinput";
 import { useForm } from "react-hook-form";
-import PasswordInput from "../forminputs/passwordinput";
 import SubmitButton from "../forminputs/submitbtn";
-import { UploadButton, UploadDropzone } from "../uploadthing";
+import { UploadButton } from "../uploadthing";
 import Image from "next/image";
-import { SingleUserDetails, UserProps } from "@/types/types";
-import { CodeSquare } from "lucide-react";
+import { UserProps } from "@/types/types";
 import { registerUser } from "@/actions/userActions";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -19,44 +17,41 @@ export default function SignupForm() {
     register,
     handleSubmit,
     reset,
-      formState: { errors },
+    formState: { errors },
   } = useForm<UserProps>();
 
-  const [loading,setLoading] = useState(false);
-  const [image,setImage] = useState("/images/avator.avif")
-  const [emailError, setEmailError] = useState("")
-  const router = useRouter()
- 
-async function submitUser(data:UserProps){
-  data.image = image
-  data.userName = `${data.firstName} ${data.lastName}`;
-  setLoading(true)
-  console.log(data)
-try {
-const res = await registerUser(data)  
-if (res && res.status === 409) {
-  setEmailError("Sorry, Email already exists in our database.");
-  toast.error("email already exists")
-} else if (res && res.status === 201) {
-  reset();
-  router.push("/login");
-  toast.success("successfully registered")
-}else {
-  alert("network problem")
-  toast.error("something went wrong please try again")
-  console.log(res.error);
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState("uaw");
+  const [emailError, setEmailError] = useState("");
+  const router = useRouter();
+  console.log(image);
 
-}
-} catch (error) {
-  toast.error("something went wrong please try again")
-  console.log(error);
-} finally {
-  setLoading(false);
-}
-}
-
-
-
+  async function submitUser(data: UserProps) {
+    data.image = image;
+    data.userName = `${data.firstName} ${data.lastName}`;
+    setLoading(true);
+    console.log(data);
+    try {
+      const res = await registerUser(data);
+      if (res && res.status === 409) {
+        setEmailError("Sorry, Email already exists in our database.");
+        toast.error("email already exists");
+      } else if (res && res.status === 201) {
+        reset();
+        router.push("/login");
+        toast.success("successfully registered");
+      } else {
+        alert("network problem");
+        toast.error("something went wrong please try again");
+        console.log(res.error);
+      }
+    } catch (error) {
+      toast.error("something went wrong please try again");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="w-[100%] mt-10 rounded-lg  px-8 py-8 box-shadow bg-white">
@@ -71,33 +66,35 @@ if (res && res.status === 409) {
         </div>
         <div>
           <h1 className="text-[2rem]">SignUp</h1>
-          <p className="text-gray-500">Enter your details below and create an account to get started</p>
+          <p className="text-gray-500">
+            Enter your details below and create an account to get started
+          </p>
         </div>
       </div>
       <form className="mt-4" onSubmit={handleSubmit(submitUser)} action="">
-      <div className="mt-4 lg:flex width-column md:flex justify-center items-center gap-[3rem]">
-        <UploadButton
-        endpoint="imageUploader"
-        onClientUploadComplete={(res) => {
-          // Do something with the response
-          console.log("Files: ", res);
-          toast.success("Upload Completed")
-          setImage(res[0].url)
-        }}
-        onUploadError={(error: Error) => {
-          // Do something with the error.
-          toast.error(`ERROR! ${error.message}`);
-        }}
-      />
-     <div className="w-20 h-20 rounded-full">
-     <Image
-                  src={image}
-                  alt="profile"
-                  width={300}
-                  height={300}
-                  className="w-full rounded-full  object-cover mb-4"
-                />
-     </div>
+        <div className="mt-4 lg:flex width-column md:flex justify-center items-center gap-[3rem]">
+          <UploadButton
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+              // Do something with the response
+              console.log("Files: ", res);
+              toast.success("Upload Completed");
+              setImage(res[0].url);
+            }}
+            onUploadError={(error: Error) => {
+              // Do something with the error.
+              toast.error(`ERROR! ${error.message}`);
+            }}
+          />
+          <div className="w-20 h-20 rounded-full">
+            <Image
+              src={image}
+              alt="profile"
+              width={300}
+              height={300}
+              className="w-full rounded-full  object-cover mb-4"
+            />
+          </div>
         </div>
         <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 py- gap-3 pt-3">
           <TextInput
@@ -105,7 +102,6 @@ if (res && res.status === 409) {
             errors={errors}
             label="First Name"
             name="firstName"
-         
           />
           <TextInput
             register={register}
@@ -120,8 +116,8 @@ if (res && res.status === 409) {
             errors={errors}
             label="Email Address"
             name="email"
-            />
-           
+          />
+
           <TextInput
             register={register}
             errors={errors}
@@ -130,30 +126,33 @@ if (res && res.status === 409) {
           />
         </div>
         {emailError && (
-                  <span className="text-xs my-2 text-red-600">
-                    {emailError}
-                  </span>
-                )}
+          <span className="text-xs my-2 text-red-600">{emailError}</span>
+        )}
         <div>
-        <TextInput
+          <TextInput
             register={register}
             errors={errors}
             label="Password"
             name="password"
           />
         </div>
-      
+
         <div className="mt-4 flex justify-end">
-       <SubmitButton
-       className="w-full"
-       title="Register"
-       loading={loading}
-       loadingTitle="signing-Up..."
-       />
+          <SubmitButton
+            className="w-full"
+            title="Register"
+            loading={loading}
+            loadingTitle="signing-Up..."
+          />
         </div>
       </form>
       <div className="mt-4 text-center">
-        <p className="text-[0.9rem]">Already have an account <Link className="text-blue-700 " href="/login">Login?</Link></p>
+        <p className="text-[0.9rem]">
+          Already have an account{" "}
+          <Link className="text-blue-700 " href="/login">
+            Login?
+          </Link>
+        </p>
       </div>
     </div>
   );

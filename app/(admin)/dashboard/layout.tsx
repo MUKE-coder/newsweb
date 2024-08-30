@@ -7,7 +7,7 @@ export default function Layout({children}:{children:ReactNode}) {
    
    <div  className="">
     <HeaderComp/>
-   <div className="flex gap-[21.5rem] flex-layout">
+   <div className="flex lg:gap-[20.5rem] md:gap-[20rem] flex-class2 ">
    <div>
    <SideMenu/>
    </div>

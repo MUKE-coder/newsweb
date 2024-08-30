@@ -49,7 +49,7 @@ export default function SideMenu() {
   const pathname = usePathname();
   
   return (
-    <div className="hidden border-r bg-white/75 backdrop-blur-md md:block h-full w-[25%] fixed top-[9.5%]">
+    <div className="hidden border-r bg-white/75 backdrop-blur-md md:block h-full w-[20%] fixed top-[9.5%]">
     <div className="flex h-full max-h-screen flex-col gap-2">
      
       <div className="flex-1">
