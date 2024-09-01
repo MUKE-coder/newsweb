@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 import toast from 'react-hot-toast'
 
-export default function DeleteBtn({id}:Category) {
+export default function DeleteBtn({id}:Category | any) {
   const router = useRouter()
 async function handleDeleteCat(){
 try {
