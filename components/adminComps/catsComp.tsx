@@ -13,6 +13,7 @@ import { MoreHorizontal } from "lucide-react";
 import Image from "next/image";
 import { getAllCats } from "@/actions/catActions";
 import Link from "next/link";
+import DeleteBtn from "./deleteBtn";
 
 export default async function CatsComp() {
   const categories = await getAllCats();
@@ -56,7 +57,7 @@ export default async function CatsComp() {
                   <DropdownMenuContent align="end">
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuItem><Link href={`/dashboard/add-category/${category.id}`}>Edit</Link></DropdownMenuItem>
-                    <DropdownMenuItem>Delete</DropdownMenuItem>
+                    <DropdownMenuItem><DeleteBtn id={category.id}/></DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>

@@ -61,14 +61,25 @@ export async function updateCat(data: CatPropsUpdate, id: string) {
   }
 }
 
-export async function getSingleCat({id}: Category | any) {
-    
+export async function getSingleCat({ id }: Category | any) {
   try {
     const singleCat = await db.category.findUnique({
       where: { id: id },
     });
     // console.log(singleCat);
     return singleCat;
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function deleteCat({ id }: Category | any) {
+  try {
+    const deletedCat = await db.category.delete({
+      where: {
+        id: id,
+      },
+    });
+    return deletedCat
   } catch (error) {
     console.log(error);
   }

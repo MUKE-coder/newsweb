@@ -34,8 +34,8 @@ export function AddCatForm({ singleCat }: CatProps | any) {
     formState: { errors },
   } = useForm<CatProps>({ defaultValues: singleCat });
   async function submitCategory(data: CatProps) {
-    const id = singleCat.id;
-    singleCat ? singleCat.image : image;
+    const id = singleCat?.id;
+    singleCat ? singleCat?.image : image;
     data.image = image;
     const slug = data.title.trim().split(" ").join("-").toLowerCase();
     data.slug = slug;
