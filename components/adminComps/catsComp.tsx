@@ -19,16 +19,16 @@ export default async function CatsComp() {
   const categories = await getAllCats();
 
   return (
-    <Card className="">
+    <Card className="bg-[#0a0d13]">
       <CardHeader>
-        <CardTitle>Cats of News</CardTitle>
+        <CardTitle className="text-white">Categories in Stock</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-8">
         {categories?.map((category) => {
           return (
             <div
               key={category.id}
-              className="flex items-center gap-4 justify-between"
+              className="flex items-center text-white gap-4 justify-between"
             >
               <div className="flex items-center gap-3">
                 <div className="w-[1.5rem] h-[1.5rem] rounded-full ">
@@ -56,7 +56,7 @@ export default async function CatsComp() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                    <DropdownMenuItem><Link href={`/dashboard/add-category/${category.id}`}>Edit</Link></DropdownMenuItem>
+                    <DropdownMenuItem><Link href={`/dashboard/article-managment/add-category/${category.slug}`}>Edit</Link></DropdownMenuItem>
                     <DropdownMenuItem><DeleteBtn id={category.id}/></DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>

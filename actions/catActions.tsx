@@ -61,10 +61,10 @@ export async function updateCat(data: CatPropsUpdate, id: string) {
   }
 }
 
-export async function getSingleCat({ id }: Category | any) {
+export async function getSingleCat({ slug }: Category | any) {
   try {
     const singleCat = await db.category.findUnique({
-      where: { id: id },
+      where: { slug: slug},
     });
     // console.log(singleCat);
     return singleCat;

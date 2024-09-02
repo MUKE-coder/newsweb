@@ -23,7 +23,7 @@ import { Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
 
 export function AddCatForm({ singleCat }: CatProps | any) {
-  const [image, setImage] = useState("/images/avator.avif");
+  const [image, setImage] = useState(singleCat?.image ||  "/images/avator.avif");
   const [loading, setLoading] = useState(false);
   const [catErr, setCatErr] = useState("");
   const router = useRouter()
@@ -50,7 +50,7 @@ export function AddCatForm({ singleCat }: CatProps | any) {
         id
       );
   toast.success("updated successfully")
-  router.push("/dashboard")
+  router.push("/dashboard/article-managment/add-category")
          router.refresh()
           reset();
      } catch (error) {
@@ -66,7 +66,7 @@ export function AddCatForm({ singleCat }: CatProps | any) {
           setCatErr("Category already exists....");
         } else if (res && res.status === 201) {
           toast.success("Category created successfully..");
-         router.push("/dashboard")
+         router.push("/dashboard/article-managment/add-category")
          router.refresh()
           reset();
         }
@@ -82,9 +82,9 @@ export function AddCatForm({ singleCat }: CatProps | any) {
   return (
     <form
       onSubmit={handleSubmit(submitCategory)}
-      className="lg:ml-[17rem] md:ml-[10rem] margin-left mt-14"
+      className=""
     >
-      <Card className="bg-[#dae4fdb4]">
+      <Card className="bg-[#dae4fdd5]">
         <CardHeader>
           <CardTitle className="text-2xl">Category</CardTitle>
           <CardDescription>
@@ -123,7 +123,7 @@ export function AddCatForm({ singleCat }: CatProps | any) {
                 alt="profile"
                 width={300}
                 height={300}
-                className="w-full rounded-full  object-cover mb-4"
+                className="w-full rounded-md  object-cover mb-4"
               />
             </div>
           </div>
