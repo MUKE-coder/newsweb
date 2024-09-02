@@ -66,7 +66,7 @@ export default function NewsForm() {
             type="checkbox"
             className="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
           />
-          <label className="ml-2 block text-sm text-gray-900">Editor's Pick</label>
+          <label className="ml-2 block text-sm text-gray-900">Editor{"'"} s Pick</label>
         </div>
 
         {/* Mediahouse */}
