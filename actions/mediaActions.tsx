@@ -36,12 +36,11 @@ export async function createMedia(data: MediaProps) {
     }
   }
 
-export async function getSingleMedia(id:string){
+export async function getSingleMedia({slug}:string | MediaProps){
 try {
 const singleMedia = await db.mediaHouse.findUnique({
-  where:{id:id}
+  where:{slug:slug}
 })
-console.log(singleMedia)
 return singleMedia
 } catch (error) {
   console.log(error)
@@ -64,5 +63,20 @@ try {
 return deltedItem;
 } catch (error) {
  console.log(error) 
+}
+}
+
+export async function updateMedia(data:MediaProps , id:string){
+try {
+const updatedMedia = await db.mediaHouse.update({
+  where:{
+    id
+  },
+  data
+})
+console.log(updatedMedia)
+return updatedMedia
+} catch (error) {
+console.log(error )  
 }
 }

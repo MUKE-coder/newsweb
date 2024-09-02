@@ -21,16 +21,16 @@ export default async function MediaComp() {
   const media = await getMedia();
 
   return (
-    <Card className="">
+    <Card className="bg-[#0a0d13]/70 backdrop-blur-md">
       <CardHeader>
-        <CardTitle>Cats of News</CardTitle>
+        <CardTitle className="text-white">Cats of News</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-8">
         {media?.map((category) => {
           return (
             <div
               key={category.id}
-              className="flex items-center gap-4 justify-between"
+              className="flex items-center gap-4 justify-between text-white"
             >
               <div className="flex items-center gap-3">
                 <div className="w-[1.5rem] h-[1.5rem] rounded-full ">
@@ -58,7 +58,7 @@ export default async function MediaComp() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                    <DropdownMenuItem><Link href={`/dashboard/add-media/${category.id}`}>Edit</Link></DropdownMenuItem>
+                    <DropdownMenuItem><Link href={`/dashboard/article-managment/add-media/${category.slug}`}>Edit</Link></DropdownMenuItem>
                     <DropdownMenuItem><Delete id={category.id}/></DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>

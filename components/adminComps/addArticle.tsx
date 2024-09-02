@@ -88,7 +88,7 @@ export default function AddArticle() {
               Add Category
             </span>
           </Link>
-          <Link href='/' className="h-7 gap-1 flex items-center bg-[#ef000bff] text-white rounded-md px-3 py-3">
+          <Link href='/dashboard/article-managment/add-media' className="h-7 gap-1 flex items-center bg-[#ef000bff] text-white rounded-md px-3 py-3">
             <PlusCircle className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
               Add Mediahouse

@@ -21,7 +21,7 @@ import SubmitButton from "../forminputs/submitbtn";
 import { createCategory, updateCat } from "@/actions/catActions";
 import { Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
-import { createMedia } from "@/actions/mediaActions";
+import { createMedia, updateMedia } from "@/actions/mediaActions";
 
 export function AddMediaForm({
   media,
@@ -29,10 +29,11 @@ export function AddMediaForm({
   media: MediaProps;
 } | undefined | null | any) {
   console.log(media);
-  const [image, setImage] = useState(media?.image);
+  const [image, setImage] = useState(media?.image || "/images/avator.avif");
   console.log(image);
   const [loading, setLoading] = useState(false);
   const [mediaErr, setMediaErr] = useState("");
+  const router = useRouter()
   const {
     register,
     reset,
@@ -40,30 +41,48 @@ export function AddMediaForm({
     formState: { errors },
   } = useForm<MediaProps>({ defaultValues: media });
   async function submitMedia(data: MediaProps) {
+    const id = media?.id
     data.image = image;
     const slug = data.title.trim().split(" ").join("-").toLowerCase();
     data.slug = slug;
     setLoading(true);
-    try {
-      const res = await createMedia(data);
-      if (res && res.status === 409) {
-        setMediaErr("media already exists....");
-      } else if (res && res.status === 201) {
-        toast.success("Media created successfully..");
-        reset();
-      }
-    } catch (error) {
-      toast.error("Failed to create media.");
-      console.log(error);
-    } finally {
-      setLoading(false);
+ if(media){
+  const mediaUpdate = await updateMedia(
+    {
+      image:data.image,
+      title:data.title,
+      slug:data.slug
+    },
+    id
+  )
+  toast.success("media updated successsfully.")
+console.log(mediaUpdate)
+router.refresh()
+router.push("/dashboard/article-managment/add-media")
+ }else{
+  try {
+    const res = await createMedia(data);
+    if (res && res.status === 409) {
+      setMediaErr("media already exists....");
+    } else if (res && res.status === 201) {
+      toast.success("Media created successfully..");
+      router.refresh()
+      router.push("/dashboard/article-managment/add-media")
+      reset();
     }
+  } catch (error) {
+    toast.error("Failed to create media.");
+    console.log(error);
+  } finally {
+    setLoading(false);
+  }
+ }
   }
 
   return (
     <form
       onSubmit={handleSubmit(submitMedia)}
-      className="lg:ml-[17rem] md:ml-[10rem] margin-left mt-14"
+      className=""
     >
       <Card className="bg-[#dae4fdb4]">
         <CardHeader>
@@ -84,6 +103,7 @@ export function AddMediaForm({
           </div>
           <div className="mt-4 lg:flex width-column md:flex justify-center items-center gap-[3rem]">
             <UploadButton
+            className="bg-[#f53b07] px-3 py-1 rounded-md"
               endpoint="imageUploader"
               onClientUploadComplete={(res) => {
                 // Do something with the response
@@ -102,7 +122,7 @@ export function AddMediaForm({
                 alt="profile"
                 width={300}
                 height={300}
-                className="w-full rounded-full  object-cover mb-4"
+                className="w-full rounded-md  object-cover mb-4"
               />
             </div>
           </div>
