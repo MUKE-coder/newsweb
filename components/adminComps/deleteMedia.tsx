@@ -1,16 +1,17 @@
 "use client";
 import { deleteCat } from "@/actions/catActions";
-import { CatProps } from "@/types/types";
+import { deleteMedia } from "@/actions/mediaActions";
+import { CatProps, MediaProps } from "@/types/types";
 import { Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 
-export default function DeleteBtn({ id }: Category | any) {
+export default function Delete({ id }: MediaProps | string) {
   const router = useRouter();
-  async function handleDeleteCat() {
+  async function handleDelete() {
     try {
-      const deleteCats = await deleteCat({ id });
+      const deletedMedia = await deleteMedia({ id });
       toast.success("Category deleted successfully.");
       router.refresh();
     } catch (error) {
@@ -18,5 +19,5 @@ export default function DeleteBtn({ id }: Category | any) {
       toast.error("Something went wrong");
     }
   }
-  return <button onClick={handleDeleteCat}>Delete</button>;
+  return <button onClick={handleDelete}>Delete</button>;
 }

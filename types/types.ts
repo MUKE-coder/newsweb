@@ -10,9 +10,11 @@ export type UserProps = {
   userName: string;
   id: string;
 };
+
 export type SingleUserDetails = {
   singleUserData: string | any;
 };
+
 export type UserDetails = {
   firstName: string;
   lastName: string;
@@ -27,6 +29,14 @@ export type CatProps = {
   image: string ;
   singleCat: string | any
 };
+export type MediaProps = {
+  id: string,    
+  title: string,
+  image:string | null,      
+  slug: string,
+  createdAt: Date,
+  updatedAt:Date,
+}| undefined | null | any;
 export type CatPropsUpdate = {
   title: string;
   image: string;

@@ -1,8 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Tint&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -71,63 +66,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-.newFont{
-  font-family: "Outfit", sans-serif;
-}
-.logoFont{
-  font-family: "Merriweather", serif;
-}
-.subHeaderFont{
-  font-family: "Lato", sans-serif;
-}
-.headlineFont{
-  font-family: "Playfair Display", serif;
-}
-.box-shadow{
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
-.background-color{
-  background-color: rgba(78, 64, 64, 0.027);
-}
-
-@media(max-width:760px){
-  .width{
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 2rem;
-  }
-
-  .margin-left{
-    margin-left: 0rem;
-  }
-  .width-column{
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 2rem;
-  }
-  .flex-layout{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-.display-none{
-  display: none;
-}
-
-.flex-class{
-display: flex;
-flex-direction: row-reverse;
-}
-.flex-class2{
-display: flex;
-gap: 1rem;
-}
-
-
-.position{
-  bottom: 0.8%;
-}
 }
