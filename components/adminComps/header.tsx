@@ -36,32 +36,32 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navBtns = [
-    {
-      icon: <Home className="h-4 w-4" />,
-      title: "dashboard",
-      link: "/",
-    },
-    {
-      icon: <BookOpen className="h-4 w-4" />,
-      title: "Article Managment",
-      link: "/",
-    },
-    {
-      icon: <Users className="h-4 w-4" />,
-      title: "User Managment",
-      link: "/",
-    },
-    {
-      icon: <ChartBar className="h-4 w-4" />,
-      title: "Analysis",
-      link: "/",
-    },
-    {
-      icon: <Settings className="h-4 w-4" />,
-      title: "Settings",
-      link: "/",
-    },
-  ];
+  {
+    icon: <Home className="h-4 w-4" />,
+    title: "dashboard",
+    link: "/dashboard",
+  },
+  {
+    icon: <BookOpen className="h-4 w-4" />,
+    title: "Article Managment",
+    link: "/dashboard/article-managment",
+  },
+  {
+    icon: <Users className="h-4 w-4" />,
+    title: "User Managment",
+    link: "/dashboard/user-managment",
+  },
+  {
+    icon: <ChartBar className="h-4 w-4" />,
+    title: "Analysis",
+    link: "/dashboard/analysis",
+  },
+  {
+    icon: <Settings className="h-4 w-4" />,
+    title: "Settings",
+    link: "/dashboard/settings",
+  },
+];
 export default function Header() {
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
