@@ -41,3 +41,16 @@ export type CatPropsUpdate = {
   title: string;
   image: string;
   };
+
+
+  export interface IForm {
+    step: number;
+    formData: {
+      name: string;
+      slug?: string;
+      productDetails?: string;
+      mediaHouse?: string;
+      categories?: string;
+      content?: string;
+    };
+  }

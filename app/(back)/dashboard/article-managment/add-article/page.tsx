@@ -1,10 +1,10 @@
-import AddArticle from "@/components/adminComps/addArticle";
 import React from "react";
+import NewsForm from "@/components/adminComps/newsForm";
 
 export default function page() {
   return (
     <div>
-      <AddArticle />
+      <NewsForm />
     </div>
   );
 }

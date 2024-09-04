@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import FooterComp from "@/components/footerComp";
 import { InputWithButton } from "@/components/subscribeComp";
 import toast, { Toaster } from "react-hot-toast";
+import Providers from "@/components/providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,13 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="subHeaderFont background-color">
-        <div>
-          <Toaster position="top-right" reverseOrder={false} />
-        </div>
-
-        {children}
-      </body>
+      <>
+      <Providers>
+        <body className="subHeaderFont background-color">{children}</body>
+      </Providers>
+      </>
     </html>
   );
 }
