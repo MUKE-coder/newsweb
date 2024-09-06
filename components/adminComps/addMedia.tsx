@@ -72,7 +72,7 @@ export function AddMediaForm({
         } else if (res && res.status === 201) {
           toast.success("Media created successfully..");
           router.refresh();
-          router.push("/dashboard/article-managment/add-media");
+          router.push("/dashboard/article-managment/add-article");
           reset();
         }
       } catch (error) {

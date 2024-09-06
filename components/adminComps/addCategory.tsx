@@ -67,7 +67,7 @@ export function AddCatForm({ singleCat }: CatProps | any) {
           setCatErr("Category already exists....");
         } else if (res && res.status === 201) {
           toast.success("Category created successfully..");
-         router.push("/dashboard/article-managment/add-category")
+         router.push("/dashboard/article-managment/add-article")
          router.refresh()
           reset();
         }

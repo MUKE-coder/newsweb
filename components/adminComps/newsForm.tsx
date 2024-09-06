@@ -129,7 +129,7 @@ async  function submitArticle(data:ArticleProps){
       <form onSubmit={handleSubmit(submitArticle)} className="flex flex-col  gap-4">
         {currentStep === 1 && (
           <>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-container">
               <div className="w-[60%] space-y-4">
                 {/* Title */}
                 <div className="grid gap-4 ">
@@ -167,7 +167,7 @@ async  function submitArticle(data:ArticleProps){
                       option={selectedMedia}
                       setOption={setSelectedMedia}
                       toolTipText="Add Mediahouse"
-                      href="/dashboard/inventory/main-categories/new"
+                      href="/dashboard/article-managment/add-media"
                     />
                   </div>
 
@@ -179,7 +179,7 @@ async  function submitArticle(data:ArticleProps){
                       option={selectedCategory}
                       setOption={setSelectedCategory}
                       toolTipText="Add Category"
-                      href="/dashboard/inventory/main-categories/new"
+                      href="/dashboard/article-managment/add-category"
                     />
                   </div>
                 </div>

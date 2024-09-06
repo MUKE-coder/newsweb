@@ -1,4 +1,4 @@
-"use client";
+
 
 import React from "react";
 
@@ -134,7 +134,7 @@ export default async function Header({ session }: { session: Session }) {
         )}
 
         {session && (
-          <Link href="/dashboard" className="flex gap-3 items-center">
+          <Link href="/dashboard/article-managment/add-article" className="flex gap-3 items-center">
             write <FolderPen className="w-4 h-4" />
           </Link>
         )}
