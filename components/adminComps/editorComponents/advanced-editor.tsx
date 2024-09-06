@@ -10,18 +10,16 @@ import {
   EditorBubble,
 } from "novel";
 import { ImageResizer, handleCommandNavigation } from "novel/extensions";
-
+import { NodeSelector } from "./selector/node-selector";
+import { LinkSelector } from "./selector/link-selector";
+import { ColorSelector } from "./selector/color-selector";
+import { TextButtons } from "./selector/textButton";
+import { slashCommand, suggestionItems } from "./slash";
 import { handleImageDrop, handleImagePaste } from "novel/plugins";
-import { Separator } from "../ui/separator";
-
+import { Separator } from "@/components/ui/separator";
+import { defaultExtensions } from "./extensions";
+import { uploadFn } from "./image-command";
 import { cn } from "@/lib/utils";
-import { NodeSelector } from "./editorComponents/selector/node-selector";
-import { LinkSelector } from "./editorComponents/selector/link-selector";
-import { TextButtons } from "./editorComponents/selector/textButton";
-import { ColorSelector } from "./editorComponents/selector/color-selector";
-import { slashCommand, suggestionItems } from "./editorComponents/slash";
-import { defaultExtensions } from "./editorComponents/extensions";
-import { uploadFn } from "./editorComponents/image-command";
  
 const extensions = [...defaultExtensions, slashCommand];
  
@@ -68,7 +66,7 @@ const Editor = ({ initialValue, onChange, isEditable = true }: EditorProp) => {
             No results
           </EditorCommandEmpty>
           <EditorCommandList>
-            {suggestionItems.map((item) => (
+            {suggestionItems.map((item: any) => (
               <EditorCommandItem
                 value={item.title}
                 onCommand={(val) => item.command?.(val)}

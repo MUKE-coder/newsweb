@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import React from "react";
 import { UploadButton, UploadDropzone } from "../uploadthing";
+import toast from "react-hot-toast";
 type ImageInputProps = {
 title: string;
 image: string;
@@ -29,18 +30,18 @@ return (
         src={image}
         width="300"
       />
-      <UploadDropzone
-        className="col-span-full"
+      <UploadButton
+        className=" "
         endpoint={endpoint}
         onClientUploadComplete={(res) => {
           // Do something with the response
           console.log("Files: ", res);
- 
+          toast.success("Upload Completed");
           setImage(res[0].url);
         }}
         onUploadError={(error: Error) => {
           // Do something with the error.
-          alert(`ERROR! ${error.message}`);
+          toast.error(`ERROR! ${error.message}`);
         }}
       />
     </div>

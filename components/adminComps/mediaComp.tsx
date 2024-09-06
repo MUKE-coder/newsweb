@@ -21,9 +21,9 @@ export default async function MediaComp() {
   const media = await getMedia();
 
   return (
-    <Card className="bg-[#0a0d13]/70 backdrop-blur-md">
+    <Card className="bg-[#0a0d13] backdrop-blur-md">
       <CardHeader>
-        <CardTitle className="text-white">Cats of News</CardTitle>
+        <CardTitle className="text-white">Mediahouses of News</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-8">
         {media?.map((category) => {

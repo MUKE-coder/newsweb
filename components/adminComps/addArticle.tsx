@@ -98,7 +98,7 @@ export default function AddArticle() {
               >
                 <PlusCircle className="h-3.5 w-3.5" />
                 <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                  Add Product
+                  Add Article
                 </span>
               </Link>
             </div>

@@ -22,6 +22,7 @@ import { createCategory, updateCat } from "@/actions/catActions";
 import { Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { createMedia, updateMedia } from "@/actions/mediaActions";
+import ImageInput from "../forminputs/imageUpload";
 
 export function AddMediaForm({
   media,
@@ -33,7 +34,7 @@ export function AddMediaForm({
   | null
   | any) {
   console.log(media);
-  const [image, setImage] = useState(media?.image || "/images/avator.avif");
+  const [image, setImage] = useState(media?.image || "/placeholder.svg");
   console.log(image);
   const [loading, setLoading] = useState(false);
   const [mediaErr, setMediaErr] = useState("");
@@ -102,30 +103,13 @@ export function AddMediaForm({
             />
             {mediaErr && <span className="text-red-600">{mediaErr}</span>}
           </div>
-          <div className="mt-4 lg:flex width-column md:flex justify-center items-center gap-[3rem]">
-            <UploadButton
-              className="bg-[#f53b07] px-3 py-1 rounded-md"
-              endpoint="imageUploader"
-              onClientUploadComplete={(res) => {
-                // Do something with the response
-                console.log("Files: ", res);
-                toast.success("Upload Completed");
-                setImage(res[0].url);
-              }}
-              onUploadError={(error: Error) => {
-                // Do something with the error.
-                toast.error(`ERROR! ${error.message}`);
-              }}
-            />
-            <div className="w-20 h-20 rounded-full">
-              <Image
-                src={image}
-                alt="profile"
-                width={300}
-                height={300}
-                className="w-full rounded-md  object-cover mb-4"
-              />
-            </div>
+          <div className="">
+          <ImageInput
+                  title="Article Image"
+                  image={image}
+                  setImage={setImage}
+                  endpoint="imageUploader"
+                />
           </div>
         </CardContent>
         <CardFooter>

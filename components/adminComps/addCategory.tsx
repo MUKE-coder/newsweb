@@ -21,9 +21,10 @@ import SubmitButton from "../forminputs/submitbtn";
 import { createCategory, updateCat } from "@/actions/catActions";
 import { Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
+import ImageInput from "../forminputs/imageUpload";
 
 export function AddCatForm({ singleCat }: CatProps | any) {
-  const [image, setImage] = useState(singleCat?.image ||  "/images/avator.avif");
+  const [image, setImage] = useState(singleCat?.image ||  "/placeholder.svg");
   const [loading, setLoading] = useState(false);
   const [catErr, setCatErr] = useState("");
   const router = useRouter()
@@ -103,29 +104,13 @@ export function AddCatForm({ singleCat }: CatProps | any) {
               <span className="text-xs my-2 text-red-600">{catErr}</span>
             )}
           </div>
-          <div className="mt-4 lg:flex width-column md:flex justify-center items-center gap-[3rem]">
-            <UploadButton
-              endpoint="imageUploader"
-              onClientUploadComplete={(res) => {
-                // Do something with the response
-                console.log("Files: ", res);
-                toast.success("Upload Completed");
-                setImage(res[0].url);
-              }}
-              onUploadError={(error: Error) => {
-                // Do something with the error.
-                toast.error(`ERROR! ${error.message}`);
-              }}
-            />
-            <div className="w-20 h-20 rounded-full">
-              <Image
-                src={image}
-                alt="profile"
-                width={300}
-                height={300}
-                className="w-full rounded-md  object-cover mb-4"
-              />
-            </div>
+          <div className="">
+          <ImageInput
+                  title="Article Image"
+                  image={image}
+                  setImage={setImage}
+                  endpoint="imageUploader"
+                />
           </div>
         </CardContent>
         <CardFooter>
