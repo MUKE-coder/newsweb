@@ -94,11 +94,11 @@ async  function submitArticle(data:ArticleProps){
     const days = Math.floor(hours / 24);
   
     if (minutes < 60) {
-      return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
+      return `${minutes} minute${minutes !== 1 ? 's' : ''} `;
     } else if (hours < 24) {
-      return `${hours} hour${hours !== 1 ? 's' : ''} ago`;
+      return `${hours} hour${hours !== 1 ? 's' : ''}`;
     } else {
-      return `${days} day${days !== 1 ? 's' : ''} ago`;
+      return `${days} day${days !== 1 ? 's' : ''} `;
     }
   }
   data.readTime = formatTimeDifference(currentTime, data.createdAt, data.updatedAt);
@@ -110,6 +110,7 @@ async  function submitArticle(data:ArticleProps){
     const res = await createArticle(data)
       toast.success("created successfully..")
       router.push("/dashboard/article-managment")
+      router.refresh()
       reset()
   } catch (error) {
     console.log(error)
