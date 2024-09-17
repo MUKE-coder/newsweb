@@ -118,18 +118,8 @@ const router = useRouter()
 
 
 
-  async  function submitArticle(data:ArticleProps){
-    const id = initialData?.id
-  initialData ? initialData?.thumbnail : image;
-  data.content = JSON.stringify(content)
-  data.thumbnail = image
-  data.categoryId = selectedCategory?.value;
-    data.mediaHouseId = selectedMedia?.value;
-  data.readTime = elapsedTime
-  data.userId = session?.user?.id;
-  
-  setLoading(true)
-  async function submitArticle(data: ArticleProps) {
+
+   async function submitArticle(data: ArticleProps) {
     const id = initialData?.id;
     data.content = JSON.stringify(content);
     data.thumbnail = initialData ? initialData.thumbnail : image;
@@ -137,45 +127,47 @@ const router = useRouter()
     data.mediaHouseId = selectedMedia?.value;
     data.readTime = elapsedTime;
     data.userId = session?.user?.id;
-  
-    setLoading(true);
-  
+  if(initialData){
     try {
-      if (initialData) {
-        const dataUpdated = await updateData(
-          {
-            content: data.content,
-            thumbnail: data.thumbnail,
-            readTime: data.readTime,
-            categoryId: data.categoryId,
-            mediaHouseId: data.mediaHouseId,
-            title: data.title,
-            description: data.description,
-            featuredOption: data.featuredOption
-          },
-          id
-        );
-        toast.success("Updated successfully..");
-        router.push("/dashboard/article-managment");
-        router.refresh();
-        reset();
-      } 
-      else {
-        const res = await createArticle(data);
-        toast.success("Created successfully..");
-        router.push("/dashboard/article-managment");
-        router.refresh();
-        reset();
-      }
-     
+    setLoading(true);
+    const updatedArticle = await updateData({
+      title: data.title,
+      description: data.description,
+      content: JSON.stringify(content),
+      thumbnail: image,
+      categoryId: selectedCategory?.value,
+      mediaHouseId: selectedMedia?.value,
+      readTime: elapsedTime,
+      userId: session?.user?.id,
+      featuredOption: data.featuredOption
+    }, id);;
+      toast.success("Article updated successfully");
+    router.push("/dashboard/article-managment");
+      router.refresh(); 
+  } catch (error) {
+    toast.error("Failed to update. Please try again..")
+   console.log(error) 
+  }  finally {
+    setLoading(false);
+  }
+  }
+  else{
+    try {
+      setLoading(true);
+      const res = await createArticle(data);
+      toast.success("Created successfully");
+      router.push("/dashboard/article-managment");
+      router.refresh();
+      reset();
     } catch (error) {
       console.error(error);
-      toast.error(initialData ? "Failed to update article.." : "Failed to create article..");
+      toast.error("Failed to create article");
     } finally {
       setLoading(false);
     }
   }
   }
+  
 
  
 

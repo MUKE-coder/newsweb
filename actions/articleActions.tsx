@@ -3,6 +3,7 @@
 import { db } from "@/lib/db";
 import { ArticleProps } from "@/types/types";
 import { News } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 //create
 const currentTime = new Date();
@@ -40,7 +41,8 @@ export async function createArticle(data: ArticleProps) {
       where: { id: createdArticle.id },
       data: { readTime },
     });
-
+  revalidatePath("/dashboard/article-managment")
+  revalidatePath("/")
     return createdArticle;
   } catch (error) {
     console.log(error);
@@ -58,6 +60,8 @@ export async function fetchArticles() {
       },
     });
 
+    revalidatePath("/dashboard/article-managment")
+  revalidatePath("/")
     return fetchedArticles;
   } catch (error) {
     console.log(error);
@@ -72,6 +76,8 @@ export async function deleteArticle({id}: string | any ) {
         id: id,
       },
     });
+    revalidatePath("/dashboard/article-managment")
+  revalidatePath("/")
     return deletedArticle;
   } catch (error) {
     console.log(error);
@@ -99,7 +105,8 @@ export async function updateData(data:ArticleProps | any , id:string){
     },
     data
   })
-  console.log(updatedData)
+  revalidatePath("/dashboard/article-managment")
+  revalidatePath("/")
   return updatedData  
   } catch (error) {
     console.log(error)
