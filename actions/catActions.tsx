@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { CatProps, CatPropsUpdate } from "@/types/types";
 import { Category } from "@prisma/client";
 import { error } from "console";
+import { revalidatePath } from "next/cache";
 
 export async function createCategory(data: CatProps) {
   try {
@@ -26,7 +27,7 @@ export async function createCategory(data: CatProps) {
         image,
       },
     });
-    // console.log(newCat);
+   revalidatePath("/dashboard/article-managment/add-category")
     return {
       data: newCat,
       error: null,
