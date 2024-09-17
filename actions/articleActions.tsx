@@ -60,9 +60,7 @@ export async function fetchArticles() {
       },
     });
 
-    revalidatePath("/dashboard/article-managment")
-  revalidatePath("/")
-    return fetchedArticles;
+     return fetchedArticles;
   } catch (error) {
     console.log(error);
   }
@@ -76,9 +74,7 @@ export async function deleteArticle({id}: string | any ) {
         id: id,
       },
     });
-    revalidatePath("/dashboard/article-managment")
-  revalidatePath("/")
-    return deletedArticle;
+      return deletedArticle;
   } catch (error) {
     console.log(error);
   }
