@@ -37,6 +37,10 @@ export const columns: ColumnDef<News | ArticleProps | any>[] = [
     header: ({ column }) => <SortableColumn column={column} title="Title" />,
   },
   {
+    accessorKey: "Category.title",
+    header: ({ column }) => <SortableColumn column={column} title="Category" />,
+  },
+  {
     accessorKey: "thumbnail",
     header: "Article Image",
     cell: ({ row }) => <ImageColumn row={row} accessorKey="thumbnail" />,
