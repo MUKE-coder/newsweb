@@ -66,7 +66,7 @@ export function AddCatForm({ singleCat }: CatProps | any) {
          router.push("/dashboard/article-managment/add-article")
          router.refresh()
           reset();
-          window.location.reload()
+          // window.location.reload()
         }
       } catch (error) {
         toast.error("Failed to create Category.")
