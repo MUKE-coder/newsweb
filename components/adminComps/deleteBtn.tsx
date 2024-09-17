@@ -13,6 +13,7 @@ export default function DeleteBtn({ id }: Category | any) {
       const deleteCats = await deleteCat({ id });
       toast.success("Category deleted successfully.");
       router.refresh();
+      window.location.reload()
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
