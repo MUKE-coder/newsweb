@@ -63,6 +63,7 @@ export type ArticleProps = {
   description: string;
   readTime: string;
   categoryId: string;
+  userId: string | undefined;
   mediaHouseId: string;
   featuredOption: string;
   createdAt: Date | string;

@@ -41,7 +41,6 @@ export async function createArticle(data: ArticleProps) {
       data: { readTime },
     });
 
-    console.log(createdArticle);
     return createdArticle;
   } catch (error) {
     console.log(error);
@@ -55,6 +54,7 @@ export async function fetchArticles() {
       include: {
         Category: true,
         MediaHouse: true,
+        User:true,
       },
     });
 
@@ -75,5 +75,33 @@ export async function deleteArticle({id}: string | any ) {
     return deletedArticle;
   } catch (error) {
     console.log(error);
+  }
+}
+
+//fetch single article
+export async function getSingleArticle({id}:string | News | ArticleProps | any){
+  try {
+   const fetchArticle = await db.news.findUnique({
+    where:{id:id}
+   }) 
+  return fetchArticle
+  } catch (error) {
+    console.log(error)
+  }
+}
+ 
+//update
+export async function updateData(data:ArticleProps | any , id:string){
+  try {
+  const updatedData = await db.news.update({
+    where:{
+      id:id
+    },
+    data
+  })
+  console.log(updatedData)
+  return updatedData  
+  } catch (error) {
+    console.log(error)
   }
 }

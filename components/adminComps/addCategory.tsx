@@ -1,6 +1,4 @@
 "use client";
-
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -12,14 +10,11 @@ import {
 
 import TextInput from "../forminputs/textinput";
 import { useForm } from "react-hook-form";
-import { UploadButton } from "../uploadthing";
 import toast from "react-hot-toast";
-import Image from "next/image";
 import { useState } from "react";
 import { CatProps } from "@/types/types";
 import SubmitButton from "../forminputs/submitbtn";
 import { createCategory, updateCat } from "@/actions/catActions";
-import { Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import ImageInput from "../forminputs/imageUpload";
 

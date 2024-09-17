@@ -34,7 +34,7 @@ model News {
   id               String   @id @default(auto()) @map("_id") @db.ObjectId
   thumbnail        String?
   title            String
-  content          String
+  content          Json 
   description      String?
   readTime         String?
   featuredOption   String? @default("")

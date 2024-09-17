@@ -175,7 +175,9 @@ export default async function AddArticle() {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>
+                              <Link href={`/dashboard/article-managment/add-article/${article.id}`}>Edit</Link>
+                            </DropdownMenuItem>
                             <DropdownMenuItem>
                             <DeleteArticles id={article.id}/>
                             </DropdownMenuItem>

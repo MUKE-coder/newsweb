@@ -1,25 +1,24 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "@/store/hooks/hooks";
-import EditorComp from "./editor";
 import TextArea from "../forminputs/textarea";
 import TextInput from "../forminputs/textinput";
 import RadioInput from "../forminputs/radioInput";
 import SubmitButton from "../forminputs/submitbtn";
 import { Button } from "../ui/button";
 import ImageInput from "../forminputs/imageUpload";
-import FormFooter from "../forminputs/formFooter";
 import FormSelectInput from "../forminputs/selectComp";
 import Link from "next/link";
 import Editor from "./editor";
 import { defaultValue } from "./editorComponents/default";
-import { createArticle } from "@/actions/articleActions";
+import { createArticle, updateData } from "@/actions/articleActions";
 import { ArticleProps } from "@/types/types";
-import { News } from "@prisma/client";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+
 
 
 const radioOptions = [
@@ -36,23 +35,32 @@ type FormProps ={
   initialData:any,
   categories:any
 }
-export default function NewsForm({ initialData, categories,mediahouse }: any ) {
+export default function NewsForm({categories,mediahouse,initialData}: any  ) {
+  const { data: session } = useSession<any>();
   const step = useAppSelector((state) => state.createArticle.step);
   const [loading, setLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(step || 1);
   const [image, setImage] = useState(
-    initialData?.imageUrl || "/placeholder.svg"
+    initialData?.thumbnail || "/placeholder.svg"
   );
-  const [content, setContent] = useState<any>(
-    initialData?.content || defaultValue
+  
+  const [content, setContent] = useState<any>(initialData?.content ? JSON.parse(initialData.content) : defaultValue);
+  const [selectedCategory, setSelectedCategory] = useState<any>(
+    initialData?.categoryId 
+      ? { value: initialData.categoryId, label: initialData.category?.title } 
+      : " "
   );
-  const [selectedCategory, setSelectedCategory] = useState<any>(""); // State for selected category
-  const [selectedMedia, setSelectedMedia] = useState<any>(""); // State for selected category
+  const [selectedMedia, setSelectedMedia] = useState<any>(
+    initialData?.mediaHouseId 
+      ? { value: initialData.mediaHouseId, label: initialData.mediaHouse?.title } 
+      : " "
+  );
 
   const selectCategories = categories.map((cat: any) => ({
     value: cat.id, // The ID will be saved
     label: cat.title, // The title will be displayed
   }));
+
   
   const selectMedia = mediahouse.map((media: any) => ({
     value: media.id, // The ID will be saved
@@ -65,58 +73,107 @@ const router = useRouter()
     reset,
     handleSubmit,
     formState: { errors },
-  } = useForm<ArticleProps>();
+  } = useForm<ArticleProps>({ defaultValues: initialData });
 
   const handlesStepSwitch = () => {
     setCurrentStep(2);
   };
 
 
-async  function submitArticle(data:ArticleProps){
-  data.content = JSON.stringify(content)
-  data.thumbnail = image
-  data.categoryId = selectedCategory.value
-  data.mediaHouseId = selectedMedia.value
- 
-  const currentTime = new Date();
-   console.log(currentTime)
-   function formatTimeDifference(currentTime: Date, createdAt?: Date | string | null, updatedAt?: Date | string | null): string {
-    const timeToCompare = updatedAt || createdAt || currentTime;
-    const compareDate = typeof timeToCompare === 'string' ? new Date(timeToCompare) : timeToCompare;
-  
-    if (!(compareDate instanceof Date) || isNaN(compareDate.getTime())) {
-      return 'Invalid date';
+  const [creationTime, setCreationTime] = useState<Date | null>(null);
+  const [elapsedTime, setElapsedTime] = useState<string>('');
+
+  // ... (rest of your existing code)
+
+  useEffect(() => {
+    if (!creationTime) {
+      setCreationTime(new Date());
     }
-  
-    const timeDifference = currentTime.getTime() - compareDate.getTime(); // time in milliseconds
-    const minutes = Math.floor(timeDifference / (1000 * 60));
+
+    const timer = setInterval(() => {
+      if (creationTime) {
+        const now = new Date();
+        const diff = now.getTime() - creationTime.getTime();
+        setElapsedTime(formatTimeDifference(diff));
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [creationTime]);
+
+
+  const formatTimeDifference = (diff: number): string => {
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
+
+    if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`;
+    if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    return `${seconds} second${seconds !== 1 ? 's' : ''} ago`;
+  };
+
+
+
+
+
+  async  function submitArticle(data:ArticleProps){
+    const id = initialData?.id
+  initialData ? initialData?.thumbnail : image;
+  data.content = JSON.stringify(content)
+  data.thumbnail = image
+  data.categoryId = selectedCategory?.value;
+    data.mediaHouseId = selectedMedia?.value;
+  data.readTime = elapsedTime
+  data.userId = session?.user?.id;
   
-    if (minutes < 60) {
-      return `${minutes} minute${minutes !== 1 ? 's' : ''} `;
-    } else if (hours < 24) {
-      return `${hours} hour${hours !== 1 ? 's' : ''}`;
-    } else {
-      return `${days} day${days !== 1 ? 's' : ''} `;
-    }
-  }
-  data.readTime = formatTimeDifference(currentTime, data.createdAt, data.updatedAt);
-
-  console.log(`this is the how long ${data.readTime}`);
-
   setLoading(true)
-  try {
-    const res = await createArticle(data)
-      toast.success("created successfully..")
-      router.push("/dashboard/article-managment")
-      router.refresh()
-      reset()
-  } catch (error) {
-    console.log(error)
-    toast.error("failed to create article..")
-  }finally{
-    setLoading(false)
+  async function submitArticle(data: ArticleProps) {
+    const id = initialData?.id;
+    data.content = JSON.stringify(content);
+    data.thumbnail = initialData ? initialData.thumbnail : image;
+    data.categoryId = selectedCategory?.value;
+    data.mediaHouseId = selectedMedia?.value;
+    data.readTime = elapsedTime;
+    data.userId = session?.user?.id;
+  
+    setLoading(true);
+  
+    try {
+      if (initialData) {
+        const dataUpdated = await updateData(
+          {
+            content: data.content,
+            thumbnail: data.thumbnail,
+            readTime: data.readTime,
+            categoryId: data.categoryId,
+            mediaHouseId: data.mediaHouseId,
+            title: data.title,
+            description: data.description,
+            featuredOption: data.featuredOption
+          },
+          id
+        );
+        toast.success("Updated successfully..");
+        router.push("/dashboard/article-managment");
+        router.refresh();
+        reset();
+      } 
+      else {
+        const res = await createArticle(data);
+        toast.success("Created successfully..");
+        router.push("/dashboard/article-managment");
+        router.refresh();
+        reset();
+      }
+     
+    } catch (error) {
+      console.error(error);
+      toast.error(initialData ? "Failed to update article.." : "Failed to create article..");
+    } finally {
+      setLoading(false);
+    }
   }
   }
 
@@ -230,8 +287,12 @@ async  function submitArticle(data:ArticleProps){
               </Button>
               <SubmitButton
                 className="bg-[#f53b07] text-white py-2 px-4 rounded-md hover:bg-red-700 "
-                title="Create Article"
-                loadingTitle="Creating..."
+                title={
+                  initialData ? "Update Article" : "Create Article"
+                }
+                loadingTitle={
+                  initialData ? "Updating..." : "Creating..."
+                }
                 loading={loading}
               />
             </div>
