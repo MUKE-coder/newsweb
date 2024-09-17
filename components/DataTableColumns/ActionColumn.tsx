@@ -25,6 +25,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { deleteArticle } from "@/actions/articleActions";
 import { useRouter } from "next/navigation";
+import { News } from "@prisma/client";
 
 type ActionColumnProps = {
   row: any;
@@ -46,7 +47,7 @@ export default function ActionColumn({
   async function handleDelete() {
     try {
       setLoading(true)
-      const deletedArticle = await deleteArticle({id});
+      const deletedArticle = await deleteArticle({id}) ;
       toast.success("Category deleted successfully.");
       router.push("/dashboard/article-managment");
       router.refresh();
@@ -57,6 +58,7 @@ export default function ActionColumn({
     }finally{
       setLoading(false)
       setIsAlertOpen(false)
+      window.location.reload()
     }
   }
   return (
