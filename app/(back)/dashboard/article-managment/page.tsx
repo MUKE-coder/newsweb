@@ -5,9 +5,10 @@ import TableHeader from "@/components/DataTableComponents/TableHeader";
 import React from "react";
 import { columns } from "./columns";
 import { ArticleProps } from "@/types/types";
+import { News } from "@prisma/client";
 
 export default async function page() {
-  const newsArticles:any | ArticleProps[]  = await fetchArticles()
+  const newsArticles: News[]  = await fetchArticles() || []
   return (
     <div>
       {/* <AddArticle /> */}

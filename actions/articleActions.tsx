@@ -37,12 +37,12 @@ export async function createArticle(data: ArticleProps) {
       },
     });
 
-    await db.news.update({
-      where: { id: createdArticle.id },
-      data: { readTime },
-    });
+    // await db.news.update({
+    //   where: { id: createdArticle.id },
+    //   data: { readTime },
+    // });
   revalidatePath("/dashboard/article-managment")
-  revalidatePath("/")
+  // revalidatePath("/")
     return createdArticle;
   } catch (error) {
     console.log(error);
