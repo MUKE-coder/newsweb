@@ -74,6 +74,7 @@ export async function deleteArticle({id}: string | any ) {
         id: id,
       },
     });
+    revalidatePath("/dashboard/article-managment")
       return deletedArticle;
   } catch (error) {
     console.log(error);
