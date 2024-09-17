@@ -59,8 +59,7 @@ export async function fetchArticles() {
         User:true,
       },
     });
-    revalidatePath("/dashboard/article-managment")
-    revalidatePath("/")
+    
      return fetchedArticles;
   } catch (error) {
     console.log(error);
