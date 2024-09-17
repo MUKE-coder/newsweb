@@ -49,7 +49,7 @@ export function AddCatForm({ singleCat }: CatProps | any) {
   router.push("/dashboard/article-managment/add-category")
          router.refresh()
           reset();
-          window.location.reload()
+          // window.location.reload()
      } catch (error) {
      console.log(error) 
      toast.error("failed to update")

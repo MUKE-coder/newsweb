@@ -3,7 +3,6 @@
 import { db } from "@/lib/db";
 import { CatProps, CatPropsUpdate } from "@/types/types";
 import { Category } from "@prisma/client";
-import { error } from "console";
 import { revalidatePath } from "next/cache";
 
 export async function createCategory(data: CatProps) {
@@ -27,7 +26,8 @@ export async function createCategory(data: CatProps) {
         image,
       },
     });
-   revalidatePath("/dashboard/article-managment/add-category")
+    revalidatePath("/dashboard/article-managment/add-category");
+    revalidatePath("/dashboard/article-managment/add-article");
     return {
       data: newCat,
       error: null,
@@ -55,6 +55,8 @@ export async function updateCat(data: CatPropsUpdate, id: string) {
       },
       data,
     });
+    revalidatePath("/dashboard/article-managment/add-category");
+    revalidatePath("/dashboard/article-managment/add-article");
     console.log(category);
     return category;
   } catch (error) {
@@ -65,7 +67,7 @@ export async function updateCat(data: CatPropsUpdate, id: string) {
 export async function getSingleCat({ slug }: Category | any) {
   try {
     const singleCat = await db.category.findUnique({
-      where: { slug: slug},
+      where: { slug: slug },
     });
     // console.log(singleCat);
     return singleCat;
@@ -80,7 +82,9 @@ export async function deleteCat({ id }: Category | any) {
         id: id,
       },
     });
-    return deletedCat
+    revalidatePath("/dashboard/article-managment/add-category");
+    revalidatePath("/dashboard/article-managment/add-article");
+    return deletedCat;
   } catch (error) {
     console.log(error);
   }

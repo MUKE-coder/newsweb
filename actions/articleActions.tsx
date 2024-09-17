@@ -103,7 +103,6 @@ export async function updateData(data:ArticleProps | any , id:string){
     data
   })
   revalidatePath("/dashboard/article-managment")
-  revalidatePath("/")
   return updatedData  
   } catch (error) {
     console.log(error)
