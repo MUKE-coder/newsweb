@@ -2,6 +2,7 @@
 
 import { db } from "@/lib/db";
 import { MediaProps } from "@/types/types";
+import { revalidatePath } from "next/cache";
 
 
 export async function createMedia(data: MediaProps) {
@@ -25,7 +26,7 @@ export async function createMedia(data: MediaProps) {
           image,
         },
       });
-     
+       revalidatePath("/dashboard/article-managment/add-media")  
       return {
         data: newMedia,
         error: null,

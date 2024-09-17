@@ -8,7 +8,8 @@ import SortableColumn from "@/components/DataTableColumns/SortableColumn";
 import { ColumnDef } from "@tanstack/react-table";
 import ActionColumn from "@/components/DataTableColumns/ActionColumn";
 import { Category, News } from "@prisma/client";
-export const columns: ColumnDef<News>[] = [
+import { ArticleProps } from "@/types/types";
+export const columns: ColumnDef<News | ArticleProps | any>[] = [
   {
     id: "select",
     header: ({ table }) => (

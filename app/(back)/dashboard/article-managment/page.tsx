@@ -8,7 +8,7 @@ import { ArticleProps } from "@/types/types";
 import { News } from "@prisma/client";
 
 export default async function page() {
-  const newsArticles: News[]  = await fetchArticles() || []
+  const newsArticles: News[] | ArticleProps[]  = await fetchArticles() || []
   return (
     <div>
       {/* <AddArticle /> */}
@@ -18,7 +18,7 @@ export default async function page() {
         linkTitle="Add Article"
         href="/dashboard/article-managment/add-article"
         data={newsArticles}
-        model="category"
+        model="news"
       />
       <div className="py-8">
         <DataTable data={newsArticles} columns={columns}/>
