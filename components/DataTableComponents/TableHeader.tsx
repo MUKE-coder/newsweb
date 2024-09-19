@@ -11,7 +11,7 @@ import { generateSlug } from "@/lib/generateSlug";
 // import { createBulkVehicles } from "@/actions/vehicles";
 import toast from "react-hot-toast";
 import Link from "next/link";
-import { ArrowBigLeft, PlusCircle } from "lucide-react";
+import { ArrowBigLeft, CirclePlus, PlusCircle } from "lucide-react";
 
 type TableHeaderProps = {
   title: string;
@@ -31,42 +31,42 @@ export default function TableHeader({
 }: TableHeaderProps) {
   const [status, setStatus] = useState<SelectValue>(null);
   const [date, setDate] = useState<SelectValue>(null);
-  const [excelFile, setExcelFile] = useState<File | null>(null);
-  const [jsonData, setJsonData] = useState("");
-  const [preview, setPreview] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
+  // const [excelFile, setExcelFile] = useState<File | null>(null);
+  // const [jsonData, setJsonData] = useState("");
+  // const [preview, setPreview] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [uploadSuccess, setUploadSuccess] = useState(false);
 
-  let excelDownload = "#";
+  // let excelDownload = "#";
 
-  if (model === "customers") {
-    excelDownload = "/Customer.xlsx";
-  } else if (model === "payments") {
-    excelDownload = "/payments.xlsx";
-  } else if (model === "orders") {
-    excelDownload = "/Orders.xlsx";
-  } else if (model === "location") {
-    excelDownload = "/Locations.xlsx";
-  }
-  const options: Options = [
-    { value: "true", label: "Active" },
-    { value: "false", label: "Disabled" },
-  ];
+  // if (model === "customers") {
+  //   excelDownload = "/Customer.xlsx";
+  // } else if (model === "payments") {
+  //   excelDownload = "/payments.xlsx";
+  // } else if (model === "orders") {
+  //   excelDownload = "/Orders.xlsx";
+  // } else if (model === "location") {
+  //   excelDownload = "/Locations.xlsx";
+  // }
+  // const options: Options = [
+  //   { value: "true", label: "Active" },
+  //   { value: "false", label: "Disabled" },
+  // ];
 
-  const dateOptions: Options = [
-    { value: "lastMonth", label: "Last Month" },
-    { value: "thisMonth", label: "This Month" },
-  ];
+  // const dateOptions: Options = [
+  //   { value: "lastMonth", label: "Last Month" },
+  //   { value: "thisMonth", label: "This Month" },
+  // ];
 
-  const handleStatusChange = (item: SelectValue) => {
-    console.log("value:", item);
-    setStatus(item);
-  };
+  // const handleStatusChange = (item: SelectValue) => {
+  //   console.log("value:", item);
+  //   setStatus(item);
+  // };
 
-  const handleDateChange = (item: SelectValue) => {
-    console.log("value:", item);
-    setDate(item);
-  };
+  // const handleDateChange = (item: SelectValue) => {
+  //   console.log("value:", item);
+  //   setDate(item);
+  // };
 
   // function previewData() {
   //   setPreview(true);
@@ -165,7 +165,7 @@ export default function TableHeader({
 
           <Button size="sm" asChild className="h-8 gap-1 bg-[#f53b07] hover:bg-[#f53b07]">
             <Link href={href}>
-            <ArrowBigLeft className="h-3.5 w-3.5"/>
+            <CirclePlus className="h-3.5 w-3.5"/>
                 <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                 {linkTitle}
               </span>

@@ -12,9 +12,9 @@ import {
   import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import Link from 'next/link';
-import { getServerSession, Session } from "next-auth";
+import {  Session } from "next-auth";
 import { signOut } from "next-auth/react";
-import { getUserData } from '@/actions/userActions';
+
 
 export default function DropDownComp({ session }: { session: Session }) {
 // const userData = await getUserData() 

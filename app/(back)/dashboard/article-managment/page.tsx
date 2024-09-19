@@ -12,7 +12,7 @@ export default async function page() {
   return (
     <div>
       {/* <AddArticle /> */}
-      <div className="p-8">
+      <div className="lg:p-8 md:p-8 ">
       <TableHeader
         title="News Articles"
         linkTitle="Add Article"

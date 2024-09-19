@@ -172,15 +172,15 @@ const router = useRouter()
  
 
   return (
-    <div className="p-6 shadow-md rounded-md w-full max-w-6xl">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">
+    <div className="lg:p-6 md:p-6 p-2 shadow-md rounded-md w-full max-w-6xl">
+      <h2 className="lg:text-3xl md:text-3xl text-2xl font-bold mb-6 text-gray-800">
         Create New Article
       </h2>
       <form onSubmit={handleSubmit(submitArticle)} className="flex flex-col  gap-4">
         {currentStep === 1 && (
           <>
             <div className="flex gap-4 flex-container">
-              <div className="w-[60%] space-y-4">
+              <div className="lg:w-[60%] md:w-[60%] w-[100%] space-y-4">
                 {/* Title */}
                 <div className="grid gap-4 ">
                   <TextInput
@@ -208,7 +208,7 @@ const router = useRouter()
                     errors={errors}
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4">
                   {/* Mediahouse */}
                   <div>
                     <FormSelectInput
@@ -234,7 +234,7 @@ const router = useRouter()
                   </div>
                 </div>
               </div>
-              <div className="w-[40%]">
+              <div className="lg:w-[40%] md:w-[40%] w-[100%]">
                 <ImageInput
                   title="Article Image"
                   image={image}

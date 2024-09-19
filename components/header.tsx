@@ -3,24 +3,15 @@
 import React from "react";
 
 import {
-  CircleUser,
-  FolderPen,
+   FolderPen,
   Menu,
-  Newspaper,
   Package2,
   PenIcon,
   Search,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";

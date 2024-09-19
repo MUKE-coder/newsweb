@@ -6,8 +6,8 @@ export default function FooterComp() {
 const currentDate = new Date().getFullYear()
   return (
     <footer className=" mt-[13rem] relative">
-    <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
-      <div className="flex width">
+    <div className="mx-auto  max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
+      <div className="flex width flex-container">
         <div>
           <div className="text-[#f45b42]">
           <Link

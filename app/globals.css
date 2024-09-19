@@ -68,7 +68,9 @@
   }
 }
 
-
+.background-color{
+  background-color: #f3f4f693;
+}
 .box-shadow{
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
@@ -79,5 +81,24 @@
     flex-direction: column-reverse;
     gap: 1rem;
   }
+  .flex-container2{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1rem;
+  }
+
+.width-column{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.margin{
+  margin-top: 4rem;
+}
+.position{
+  bottom: 1%;
+}
 
 }

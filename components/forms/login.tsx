@@ -3,7 +3,6 @@ import Link from "next/link";
 import React, { useState } from "react";
 import TextInput from "../forminputs/textinput";
 import { useForm } from "react-hook-form";
-import PasswordInput from "../forminputs/passwordinput";
 import SubmitButton from "../forminputs/submitbtn";
 import { signIn } from "next-auth/react";
 import { UserProps } from "@/types/types";
@@ -68,7 +67,7 @@ export default function LoginForm() {
         </div>
       </div>
       <form className="mt-4" onSubmit={handleSubmit(loginUser)} action="">
-        <div className="grid  grid-cols-1 py- gap-3 pt-3">
+        <div className="grid  grid-cols-1  gap-3 pt-3">
           <TextInput
             register={register}
             errors={errors}
@@ -76,7 +75,7 @@ export default function LoginForm() {
             name="email"
           />
         </div>
-        <div>
+        <div className="mt-4">
           <TextInput
             register={register}
             errors={errors}

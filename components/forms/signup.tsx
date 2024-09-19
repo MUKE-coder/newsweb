@@ -21,7 +21,7 @@ export default function SignupForm() {
   } = useForm<UserProps>();
 
   const [loading, setLoading] = useState(false);
-  const [image, setImage] = useState("uaw");
+  const [image, setImage] = useState( "/placeholder.svg");
   const [emailError, setEmailError] = useState("");
   const router = useRouter();
   console.log(image);
@@ -54,7 +54,7 @@ export default function SignupForm() {
   }
 
   return (
-    <div className="w-[100%] mt-10 rounded-lg  px-8 py-8 box-shadow bg-white">
+    <div className="w-[100%] mt-10 rounded-lg  lg:px-8 md:px-8 px-4 py-8 box-shadow bg-white">
       <div>
         <div className="text-[#f45b42]">
           <Link
@@ -72,7 +72,7 @@ export default function SignupForm() {
         </div>
       </div>
       <form className="mt-4" onSubmit={handleSubmit(submitUser)} action="">
-        <div className="mt-4 lg:flex width-column md:flex justify-center items-center gap-[3rem]">
+        <div className="mt-4 flex flex-container  justify-center items-center gap-[3rem]">
           <UploadButton
             endpoint="imageUploader"
             onClientUploadComplete={(res) => {

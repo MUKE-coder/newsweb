@@ -86,7 +86,7 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
   }
 
   return (
-    <div className="w-[100%] mt-10 rounded-lg  px-8 py-8 box-shadow bg-white">
+    <div className="w-[100%] mt-10 rounded-lg  lg:px-8 md:px-8 px-3 py-8 box-shadow bg-white">
       <div>
         <div className="text-[#f45b42]">
           <Link
@@ -105,7 +105,7 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
         </div>
       </div>
       <form className="mt-4" onSubmit={handleSubmit(submitUser)} action="">
-      <div className="mt-4 lg:flex width-column md:flex justify-center  gap-[2rem]">
+      <div className="mt-4 flex flex-container2 justify-center  gap-[2rem]">
         <UploadButton
         endpoint="imageUploader"
         onClientUploadComplete={(res) => {
