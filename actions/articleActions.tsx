@@ -16,6 +16,7 @@ export async function createArticle(data: ArticleProps) {
       description,
       readTime,
       categoryId,
+      userId,
       mediaHouseId,
       featuredOption,
     } = data;
@@ -32,17 +33,13 @@ export async function createArticle(data: ArticleProps) {
         categoryId,
         mediaHouseId,
         featuredOption,
+        userId,
         createdAt: currentTime,
         updatedAt: currentTime,
       },
     });
 
-    // await db.news.update({
-    //   where: { id: createdArticle.id },
-    //   data: { readTime },
-    // });
-  revalidatePath("/dashboard/article-managment")
-  // revalidatePath("/")
+    revalidatePath("/dashboard/article-managment");
     return createdArticle;
   } catch (error) {
     console.log(error);
@@ -56,55 +53,134 @@ export async function fetchArticles() {
       include: {
         Category: true,
         MediaHouse: true,
-        User:true,
+        User: true,
+      },
+      orderBy: {
+        createdAt: "desc",
       },
     });
-    
-     return fetchedArticles;
+
+    return fetchedArticles;
   } catch (error) {
     console.log(error);
   }
 }
 
 //delete
-export async function deleteArticle({id}: string | any ) {
+export async function deleteArticle({ id }: string | any) {
   try {
     const deletedArticle = await db.news.delete({
       where: {
         id: id,
       },
     });
-    revalidatePath("/dashboard/article-managment")
-      return deletedArticle;
+    revalidatePath("/dashboard/article-managment");
+    return deletedArticle;
   } catch (error) {
     console.log(error);
   }
 }
 
 //fetch single article
-export async function getSingleArticle({id}:string | News | ArticleProps | any){
+export async function getSingleArticle({
+  id,
+}: string | News | ArticleProps | any) {
   try {
-   const fetchArticle = await db.news.findUnique({
-    where:{id:id}
-   }) 
-  return fetchArticle
+    const fetchArticle = await db.news.findUnique({
+      where: { id: id },
+    });
+    return fetchArticle;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
- 
+
 //update
-export async function updateData(data:ArticleProps | any , id:string){
+export async function updateData(data: ArticleProps | any, id: string) {
   try {
-  const updatedData = await db.news.update({
-    where:{
-      id:id
-    },
-    data
-  })
-  revalidatePath("/dashboard/article-managment")
-  return updatedData  
+    const updatedData = await db.news.update({
+      where: {
+        id: id,
+      },
+      data,
+    });
+    revalidatePath("/dashboard/article-managment");
+    return updatedData;
   } catch (error) {
-    console.log(error)
+    console.log(error);
+  }
+}
+//fetching featured options
+export async function getFeaturedArticles(
+  option: string,
+  orderBy: "createdAt" | "updatedAt" = "createdAt"
+) {
+  try {
+    const articles = await db.news.findMany({
+      where: {
+        featuredOption: option,
+      },
+      orderBy: { [orderBy]: "desc" },
+      include: {
+        Category: true,
+        MediaHouse: true,
+        User: true,
+      },
+    });
+
+    return articles;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//fetching business news
+export async function getBusinessNews() {
+  try {
+    const businessNews = await db.news.findMany({
+      where: {
+        Category: {
+          title: "Business",
+        },
+      },
+      include: {
+        User: true,
+        Category: true,
+        MediaHouse: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return businessNews;
+  } catch (error) {
+    console.error("Error fetching business news:", error);
+    throw error;
+  }
+}
+//fetching sports news
+export async function getSportsNews() {
+  try {
+    const businessNews = await db.news.findMany({
+      where: {
+        Category: {
+          title: "Sports",
+        },
+      },
+      include: {
+        User: true,
+        Category: true,
+        MediaHouse: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return businessNews;
+  } catch (error) {
+    console.error("Error fetching business news:", error);
+    throw error;
   }
 }

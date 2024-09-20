@@ -1,64 +1,58 @@
+import { fetchArticles } from '@/actions/articleActions'
+import { News } from '@prisma/client';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const latestNews = [
-    {
-        image:{
-          one:"/images/john.avif",
-          two:"/images/net.png"
-        },
-title:"Where To Watch John Wick Chapter 4",
-description:"There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will eventually be released on Starz,..."
 
-    },
-    {
-        image:{
-            one:"/images/john.avif",
-          two:"/images/net.png"
-        },
-title:"Where To Watch John Wick Chapter 4",
-description:"There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will eventually be released on Starz,..."
 
-    },
-    {
-        image:{
-            one:"/images/john.avif",
-          two:"/images/net.png"
-        },
-title:"Where To Watch John Wick Chapter 4",
-description:"There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will eventually be released on Starz,..."
+export default async function LatestNews() {
+  function getLatestNews(articles:News | any) {
+    // Step 1: Sort the articles by date
+    const sortedArticles = articles.sort((a:any, b:any) => {
+      const dateA:any = new Date(a.createdAt);
+      const dateB:any = new Date(b.createdAt);
+      return dateB - dateA;  // This sorts from newest to oldest
+    });
+  
+    // Step 2: Get the first 4 articles
+    const latestNews = sortedArticles.slice(0, 4);
+  
+    return latestNews;
+  }
+  
+  // Usage
+  const allArticles = await fetchArticles();
+  const latestNews = getLatestNews(allArticles);
 
-    },
-]
-
-export default function LatestNews() {
+ 
+  
   return (
     <div className="overflow-x-auto pb-4 lg:pb-0">
     <div className="flex lg:flex-wrap md:flex-wrap flex-nowrap gap-4 lg:gap-8 md:gap-8 lg:mt-10 md:mt-10 mt-4">
-      {latestNews.map((news, i) => (
-        <Link href="/detailed" key={i} className="flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[calc(50%-1rem)] lg:w-[calc(33%-1.33rem)]">
+      {latestNews.map((news:any, i:any) => (
+        <Link href="/detailed" key={i} className="flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[calc(50%-1rem)] lg:w-[calc(23.6%-1.1rem)]">
           <div className="w-full overflow-hidden">
-            <Image className="w-full rounded-[1.1rem] overflow-hidden" width={183} height={275} src={news.image.one} alt="wick" />
+            <Image className="w-full rounded-[1.1rem] overflow-hidden" width={183} height={275} src={news.thumbnail} alt="thumbnail" />
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-5 mt-3">
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full">
-                  <Image width={225} height={225} className="w-full rounded-full" src="/images/net.png" alt="netflix" />
+                  <Image width={225} height={225} className="w-full rounded-full" src={news. MediaHouse.image} alt="netflix" />
                 </div>
-                <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem] font-bold">Netflix</h3>
+                <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem] font-bold">{news. MediaHouse.title}</h3>
               </div>
               <div>
-                <h3 className="text-[0.8rem] headlineFont text-gray-600">12 minutes ago</h3>
+                <h3 className="text-[0.8rem] headlineFont text-gray-600">{news.readTime}</h3>
               </div>
             </div>
             <div>
-              <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold">Where To Watch John Wick Chapter 4</h1>
-              <p className="line-clamp-3">There has been an official announcement about John Wick: Chapter 4{"'"}s streaming release. However, given it{"'"}s a Lionsgate film, John Wick: Chapter 4 will eventually be released on Starz,...</p>
+              <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold">{news.title}</h1>
+              <p className="line-clamp-3">{news.description}</p>
             </div>
             <div>
-              <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">Movies</h3>
+              <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">{news.Category.title}</h3>
             </div>
           </div>
         </Link>
@@ -67,3 +61,19 @@ export default function LatestNews() {
   </div>
   )
 }
+
+// function formatDate(dateString) {
+//   const date = new Date(dateString)
+//   const now = new Date()
+//   const diffTime = Math.abs(now - date)
+//   const diffMinutes = Math.ceil(diffTime / (1000 * 60))
+
+//   if (diffMinutes < 60) {
+//     return `${diffMinutes} minutes ago`
+//   } else if (diffMinutes < 1440) {
+//     const hours = Math.floor(diffMinutes / 60)
+//     return `${hours} hours ago`
+//   } else {
+//     return date.toLocaleDateString()
+//   }
+// }

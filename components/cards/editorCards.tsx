@@ -1,41 +1,28 @@
-import React from 'react'
-import CardComp from './cardComp'
+import React from "react";
+import CardComp from "./cardComp";
+import { getFeaturedArticles } from "@/actions/articleActions";
 
-export default function EditorCards() {
+export default async function EditorCards() {
+  const editorCardData = await getFeaturedArticles("editors_pick");
+  const filteredEditorCardData = editorCardData?.slice(1, 5);
+
   return (
-    <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4 grid-cols-1'>
-      <CardComp 
-      image='/images/john.avif'
-      title='Where To Watch John Wick Chapter 4'
-      category='#'
-       link='/detailed'
-       time='#'  
-     description='There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will'
-      />
-      <CardComp 
-      image='/images/john.avif'
-      title='Where To Watch John Wick Chapter 4'
-      category='#'
-       link='/detailed'
-       time='#'  
-     description='There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will'
-      />
-      <CardComp 
-      image='/images/john.avif'
-      title='Where To Watch John Wick Chapter 4'
-      category='#'
-       link='/detailed'
-       time='#'  
-     description='There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will'
-      />
-      <CardComp 
-      image='/images/john.avif'
-      title='Where To Watch John Wick Chapter 4'
-      category='#'
-       link='/detailed'
-       time='#'  
-     description='There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will'
-      />
+    <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-4 grid-cols-1">
+      {filteredEditorCardData?.map((cardData) => {
+        return (
+          <CardComp
+            key={cardData.id}
+            image={cardData.thumbnail as string}
+            title={cardData.title}
+            category={cardData.Category?.title as string}
+            link="/detailed"
+            time={cardData.readTime as string}
+            mediahouse={cardData.MediaHouse?.title as string}
+            mediahouseImage={cardData.MediaHouse?.image as string}
+            description={cardData.description as string}
+          />
+        );
+      })}
     </div>
-  )
+  );
 }

@@ -8,8 +8,10 @@ type CardProps = {
   time: string;
   title: string;
   link: string;
-  description:string
-  };
+  description: string;
+  mediahouse: string;
+  mediahouseImage: string;
+};
 
 export default function CardComp({
   image,
@@ -17,9 +19,10 @@ export default function CardComp({
   time,
   title,
   link,
-  description
-  }: CardProps) {
-
+  description,
+  mediahouse,
+  mediahouseImage,
+}: CardProps) {
   return (
     <Link href={link} className="w-full  col-span-1">
       <div className="w-full overflow-hidden">
@@ -39,29 +42,27 @@ export default function CardComp({
                 width={225}
                 height={225}
                 className="w-full rounded-full"
-                src="/images/net.png"
+                src={mediahouseImage}
                 alt="netflix"
               />
             </div>
             <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem]  font-bold">
-              Netflix
+              {mediahouse}
             </h3>
           </div>
           <div>
-            <h3 className="text-[0.8rem] headlineFont text-gray-600">12 minutes ago</h3>
+            <h3 className="text-[0.8rem] headlineFont text-gray-600">{time}</h3>
           </div>
         </div>
         <div className="">
-          <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
+          <h1 className="lg:text-[1.3rem] line-clamp-2 subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
             {title}{" "}
           </h1>
-          <p className="line-clamp-3">
-            {description}
-          </p>
+          <p className="line-clamp-2">{description}</p>
         </div>
         <div className="">
           <h3 className="text-[#e00e0e] lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
-            Movies
+            {category}
           </h3>
         </div>
       </div>

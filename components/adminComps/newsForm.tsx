@@ -127,6 +127,7 @@ const router = useRouter()
     data.mediaHouseId = selectedMedia?.value;
     data.readTime = elapsedTime;
     data.userId = session?.user?.id;
+    console.log(data,"form data")
   if(initialData){
     try {
     setLoading(true);

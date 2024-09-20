@@ -1,25 +1,28 @@
-import React from 'react'
-import CardComp from './cardComp'
+import React from "react";
+import CardComp from "./cardComp";
+import { getSportsNews } from "@/actions/articleActions";
 
-export default function SportsComp() {
+export default async function SportsComp() {
+  const sportsNews = await getSportsNews();
+  const newsportsNews = sportsNews.slice(0, 2);
+
   return (
-    <div className='grid lg:grid-cols-2 gap-4 md:grid-cols-1 grid-cols-1'>
-        <CardComp
-      image='/images/john.avif'
-      title='Where To Watch John Wick Chapter 4'
-      category='#'
-       link='/detailed'
-       time='#'  
-     description='There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will'
-      />
-        <CardComp
-      image='/images/john.avif'
-      title='Where To Watch John Wick Chapter 4'
-      category='#'
-       link='/detailed'
-       time='#'  
-     description='There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will'
-      />
+    <div className="grid lg:grid-cols-2 gap-4 md:grid-cols-1 grid-cols-1">
+      {newsportsNews.map((newSports, i) => {
+        return (
+          <CardComp
+            key={newSports.id}
+            image={newSports.thumbnail as string}
+            title={newSports.title}
+            category={newSports.Category?.title as string}
+            link="/detailed"
+            time={newSports.readTime as string}
+            mediahouse={newSports.MediaHouse?.title as string}
+            mediahouseImage={newSports.MediaHouse?.image as string}
+            description={newSports.description as string}
+          />
+        );
+      })}
     </div>
-  )
+  );
 }

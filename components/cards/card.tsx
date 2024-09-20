@@ -1,35 +1,17 @@
+import { News } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-type CardProps = {
-  image: string;
-  category: string;
-  time: string;
-  title: string;
-  link: string;
-  articalLeft: any;
-};
-
-export default function LeftCard({
-  image,
-  category,
-  time,
-  title,
-  link,
-  articalLeft,
-}: any) {
-  // console.log(articalLeft)
-  console.log(`this is the left data ${articalLeft}`);
-
+export default function LeftCard({ articalLeft }: any) {
   return (
-    <Link href='/detailed' className="w-full  col-span-1">
+    <Link href="/detailed" className="w-full  col-span-1">
       <div className="w-full overflow-hidden">
         <Image
           className="w-full rounded-[1.1rem] overflow-hidden"
           width={183}
           height={275}
-          src="/images/john.avif"
+          src={articalLeft.thumbnail as string}
           alt="wick"
         />
       </div>
@@ -41,31 +23,29 @@ export default function LeftCard({
                 width={225}
                 height={225}
                 className="w-full rounded-full"
-                src="/images/net.png"
-                alt="netflix"
+                src={articalLeft.MediaHouse.image}
+                alt="mediahouse"
               />
             </div>
             <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem]  font-bold">
-              {articalLeft.category}
+              {articalLeft.MediaHouse.title}
             </h3>
           </div>
           <div>
-            <h3 className="text-[0.8rem] headlineFont text-gray-600">12 minutes ago</h3>
+            <h3 className="text-[0.8rem] headlineFont text-gray-600">
+              {articalLeft.readTime}
+            </h3>
           </div>
         </div>
         <div className="">
           <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
             {articalLeft.title}{" "}
           </h1>
-          <p className="line-clamp-3">
-            There has been an official announcment about John Wick: Chapter 4s
-            streaming release. However given its a lionsgate film John Wick:
-            chapter 4 will eventually be released on Starz,...
-          </p>
+          <p className="line-clamp-3">{articalLeft.description}</p>
         </div>
         <div className="">
           <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
-            Movies
+            {articalLeft.Category.title}
           </h3>
         </div>
       </div>

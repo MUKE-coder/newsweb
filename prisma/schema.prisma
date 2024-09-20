@@ -41,14 +41,15 @@ model News {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
   User             User?    @relation(fields: [userId], references: [id])
-  userId           String?  @db.ObjectId
+  userId           String  @db.ObjectId @default("66cd601ab578251bf5b418de")
 
   Category     Category?   @relation(fields: [categoryId], references: [id])
   categoryId   String?     @db.ObjectId
   MediaHouse   MediaHouse? @relation(fields: [mediaHouseId], references: [id])
   mediaHouseId String?     @db.ObjectId
 }
-
+ 
+ 
 
 
 model MediaHouse {

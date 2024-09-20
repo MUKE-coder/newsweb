@@ -1,25 +1,28 @@
-import React from 'react'
-import CardComp from './cardComp'
+import React from "react";
+import CardComp from "./cardComp";
+import { getBusinessNews } from "@/actions/articleActions";
 
-export default function Business() {
+export default async function Business() {
+  const businessNewsFetched = await getBusinessNews();
+  const newBusinessNewsFetched = businessNewsFetched.slice(0, 2);
+
   return (
-    <div className='grid lg:grid-cols-2 gap-4 md:grid-cols-1 grid-cols-1'>
-        <CardComp
-      image='/images/john.avif'
-      title='Where To Watch John Wick Chapter 4'
-      category='#'
-       link='/detailed'
-       time='#'  
-     description='There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will'
-      />
-        <CardComp
-      image='/images/john.avif'
-      title='Where To Watch John Wick Chapter 4'
-      category='#'
-       link='/detailed'
-       time='#'  
-     description='There has been an official announcment about John Wick: Chapter 4s streaming release. However given its a lionsgate film John Wick: chapter 4 will'
-      />
+    <div className="grid lg:grid-cols-2 gap-4 md:grid-cols-1 grid-cols-1">
+      {newBusinessNewsFetched.map((newBusiness, i) => {
+        return (
+          <CardComp
+            key={newBusiness.id}
+            image={newBusiness.thumbnail as string}
+            title={newBusiness.title}
+            category={newBusiness.Category?.title as string}
+            link="/detailed"
+            time={newBusiness.readTime as string}
+            mediahouse={newBusiness.MediaHouse?.title as string}
+            mediahouseImage={newBusiness.MediaHouse?.image as string}
+            description={newBusiness.description as string}
+          />
+        );
+      })}
     </div>
-  )
+  );
 }
