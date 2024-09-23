@@ -1,17 +1,7 @@
-
-
 import React from "react";
 
-import {
-   FolderPen,
-  Menu,
-  Package2,
-  PenIcon,
-  Search,
-} from "lucide-react";
+import { FolderPen, Menu, Package2, PenIcon, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
@@ -24,41 +14,62 @@ import DropDownComp from "./dropDown";
 export default async function Header({ session }: { session: Session }) {
   const smallnavigation = [
     {
-      name: "Stories",
+      name: "Sports",
       href: "/",
     },
     {
-      name: "Creator",
+      name: "Business",
       href: "/",
     },
     {
-      name: "community",
+      name: "Technology",
       href: "/",
     },
     {
-      name: "Subscribe",
+      name: "Politics",
       href: "/",
     },
     {
-      name: "Signup",
-      href: "/signup",
+      name: "Entertainment",
+      href: "/",
+    },
+    {
+      name: "Crime",
+      href: "/",
+    },
+    {
+      name: "Health",
+      href: "/",
     },
   ];
+
   const navigation = [
     {
-      name: "Stories",
+      name: "Sports",
       href: "/",
     },
     {
-      name: "Creator",
+      name: "Business",
       href: "/",
     },
     {
-      name: "community",
+      name: "Technology",
       href: "/",
     },
     {
-      name: "Subscribe",
+      name: "Politics",
+      href: "/",
+    },
+    {
+      name: "Entertainment",
+      href: "/",
+    },
+    {
+      name: "Crime",
+      href: "/",
+    },
+    {
+      name: "Health",
       href: "/",
     },
   ];
@@ -105,7 +116,6 @@ export default async function Header({ session }: { session: Session }) {
                   href={item.href}
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
-                  <Package2 className="h-6 w-6" />
                   <span>{item.name}</span>
                 </Link>
               );
@@ -125,14 +135,15 @@ export default async function Header({ session }: { session: Session }) {
         )}
 
         {session && (
-          <Link href="/dashboard/article-managment/add-article" className="flex gap-3 items-center">
+          <Link
+            href="/dashboard/article-managment/add-article"
+            className="flex gap-3 items-center"
+          >
             write <FolderPen className="w-4 h-4" />
           </Link>
         )}
 
-        {session && (
-            <DropDownComp session={session}/>
-        )}
+        {session && <DropDownComp session={session} />}
       </div>
     </header>
   );
