@@ -11,7 +11,7 @@ export default async function TopCard() {
   }
   return (
     <Link
-      href="/detailed"
+      href={`/detailed/${newArticle.id}`}
       className="grid gap-4 lg:mt-[3rem] md:mt-[3rem] mt-[2rem] lg:grid-cols-2 md:grid-cols-2 grid-cols-1"
     >
       <div className="w-full overflow-hidden">
@@ -46,10 +46,10 @@ export default async function TopCard() {
           </div>
         </div>
         <div className="lg:mt-[0.7rem] md:mt-[0.7rem] mt-0 ">
-          <h1 className="lg:text-[3rem] md:text-[2.5rem] subHeaderFont text-[1.5rem] lg:mb-[1rem] md:mb-[1rem] mb-0">
+          <h1 className="lg:text-[3rem] line-clamp-2 md:text-[2.5rem] subHeaderFont text-[1.5rem] lg:mb-[1rem] md:mb-[1rem] mb-0">
             {newArticle.title}
           </h1>
-          <p className="line-clamp-3">{newArticle.description}</p>
+          <p className="line-clamp-2">{newArticle.description}</p>
         </div>
         <div className="lg:mt-[0.7rem] md:mt-[0.7rem] mt-0 ">
           <h3 className="text-[#e00e0e] lg:text-[1rem] md:text-[1rem] text-[0.5rem] font-bold headlineFont">
