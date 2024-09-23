@@ -22,20 +22,20 @@ import { ColorSelector } from "./editorComponents/selector/color-selector";
 import { slashCommand, suggestionItems } from "./editorComponents/slash";
 import { defaultExtensions } from "./editorComponents/extensions";
 import { uploadFn } from "./editorComponents/image-command";
- 
+
 const extensions = [...defaultExtensions, slashCommand];
- 
+
 interface EditorProp {
   initialValue?: any;
   isEditable?: boolean;
-  onChange: (value: any) => void;
+  onChange?: (value: any) => void | null;
 }
- 
+
 const Editor = ({ initialValue, onChange, isEditable = true }: EditorProp) => {
   const [openNode, setOpenNode] = useState(false);
   const [openColor, setOpenColor] = useState(false);
   const [openLink, setOpenLink] = useState(false);
- 
+
   return (
     <EditorRoot>
       <EditorContent
@@ -59,12 +59,14 @@ const Editor = ({ initialValue, onChange, isEditable = true }: EditorProp) => {
         }}
         editable={isEditable}
         onUpdate={({ editor }) => {
-          onChange(editor.getJSON());
+          if (onChange) {
+            onChange(editor.getJSON());
+          }
         }}
         slotAfter={<ImageResizer />}
       >
-        <EditorCommand className='z-50 h-auto max-h-[330px] overflow-y-auto rounded-md border border-muted bg-background px-1 py-2 shadow-md transition-all'>
-          <EditorCommandEmpty className='px-2 text-muted-foreground'>
+        <EditorCommand className="z-50 h-auto max-h-[330px] overflow-y-auto rounded-md border border-muted bg-background px-1 py-2 shadow-md transition-all">
+          <EditorCommandEmpty className="px-2 text-muted-foreground">
             No results
           </EditorCommandEmpty>
           <EditorCommandList>
@@ -75,12 +77,12 @@ const Editor = ({ initialValue, onChange, isEditable = true }: EditorProp) => {
                 className={`flex w-full items-center space-x-2 rounded-md px-2 py-1 text-left text-sm hover:bg-accent aria-selected:bg-accent `}
                 key={item.title}
               >
-                <div className='flex h-10 w-10 items-center justify-center rounded-md border border-muted bg-background'>
+                <div className="flex h-10 w-10 items-center justify-center rounded-md border border-muted bg-background">
                   {React.isValidElement(item.icon) ? item.icon : null}
                 </div>
                 <div>
-                  <p className='font-medium'>{item.title}</p>
-                  <p className='text-xs text-muted-foreground'>
+                  <p className="font-medium">{item.title}</p>
+                  <p className="text-xs text-muted-foreground">
                     {item.description}
                   </p>
                 </div>
@@ -88,25 +90,25 @@ const Editor = ({ initialValue, onChange, isEditable = true }: EditorProp) => {
             ))}
           </EditorCommandList>
         </EditorCommand>
- 
+
         <EditorBubble
           tippyOptions={{
             placement: "top",
           }}
-          className='flex w-fit max-w-[90vw] overflow-hidden rounded-md border border-muted bg-background shadow-xl'
+          className="flex w-fit max-w-[90vw] overflow-hidden rounded-md border border-muted bg-background shadow-xl"
         >
-          <Separator orientation='vertical' />
+          <Separator orientation="vertical" />
           <NodeSelector open={openNode} onOpenChange={setOpenNode} />
-          <Separator orientation='vertical' />
+          <Separator orientation="vertical" />
           <LinkSelector open={openLink} onOpenChange={setOpenLink} />
-          <Separator orientation='vertical' />
+          <Separator orientation="vertical" />
           <TextButtons />
-          <Separator orientation='vertical' />
+          <Separator orientation="vertical" />
           <ColorSelector open={openColor} onOpenChange={setOpenColor} />
         </EditorBubble>
       </EditorContent>
     </EditorRoot>
   );
 };
- 
+
 export default Editor;
