@@ -15,7 +15,7 @@ export default async function EditorCards() {
             image={cardData.thumbnail as string}
             title={cardData.title}
             category={cardData.Category?.title as string}
-            link="/detailed"
+            link={`/detailed/${cardData.id}`}
             time={cardData.readTime as string}
             mediahouse={cardData.MediaHouse?.title as string}
             mediahouseImage={cardData.MediaHouse?.image as string}

@@ -15,7 +15,7 @@ export default async function Business() {
             image={newBusiness.thumbnail as string}
             title={newBusiness.title}
             category={newBusiness.Category?.title as string}
-            link="/detailed"
+            link={`/detailed/${newBusiness.id}`}
             time={newBusiness.readTime as string}
             mediahouse={newBusiness.MediaHouse?.title as string}
             mediahouseImage={newBusiness.MediaHouse?.image as string}

@@ -61,7 +61,7 @@ export default async function MiddleCard({
 }) {
   return (
     <Link
-      href="/detailed"
+      href={`/detailed/${MiddleCardData.id}`}
       className="group w-[100%] col-span-2 rounded-lg relative block bg-black"
     >
       <Image

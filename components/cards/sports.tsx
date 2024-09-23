@@ -15,7 +15,7 @@ export default async function SportsComp() {
             image={newSports.thumbnail as string}
             title={newSports.title}
             category={newSports.Category?.title as string}
-            link="/detailed"
+            link={`/detailed/${newSports.id}`}
             time={newSports.readTime as string}
             mediahouse={newSports.MediaHouse?.title as string}
             mediahouseImage={newSports.MediaHouse?.image as string}

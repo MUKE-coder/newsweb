@@ -10,7 +10,7 @@ export default async function EditorCard() {
   }
   return (
     <a
-      href="/detailed"
+      href={`/detailed/${cardFiltered.id}`}
       className="group w-[100%] col-span-2 rounded-lg relative block bg-black"
     >
       <Image

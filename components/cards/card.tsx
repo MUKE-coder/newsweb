@@ -5,7 +5,7 @@ import React from "react";
 
 export default function LeftCard({ articalLeft }: any) {
   return (
-    <Link href="/detailed" className="w-full  col-span-1">
+    <Link href={`/detailed/${articalLeft.id}`} className="w-full  col-span-1">
       <div className="w-full overflow-hidden">
         <Image
           className="w-full rounded-[1.1rem] overflow-hidden"

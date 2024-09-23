@@ -61,9 +61,9 @@ export default async function RightCards({
 }) {
   return (
     <div className="w-[100%] lg:col-span-1 md:col-span-1 col-span-2 flex gap-4 flex-col">
-      {articalRight.map((item, i) => {
+      {articalRight.map((item) => {
         return (
-          <Link key={i} href="/detailed" className="w-full">
+          <Link key={item.id} href={`/detailed/${item.id}`} className="w-full">
             <div className="w-full lg:h-[5rem] md:h-[15rem] h-[10rem] overflow-hidden">
               <Image
                 className="w-full rounded-md overflow-hidden"
