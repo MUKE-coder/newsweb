@@ -1,6 +1,7 @@
 import React from "react";
 import CardComp from "./cardComp";
 import { getBusinessNews } from "@/actions/articleActions";
+import { FormatDate } from "@/lib/formatDate";
 
 export default async function Business() {
   const businessNewsFetched = await getBusinessNews();
@@ -16,7 +17,7 @@ export default async function Business() {
             title={newBusiness.title}
             category={newBusiness.Category?.title as string}
             link={`/detailed/${newBusiness.id}`}
-            time={newBusiness.readTime as string}
+            time={FormatDate(newBusiness.createdAt)}
             mediahouse={newBusiness.MediaHouse?.title as string}
             mediahouseImage={newBusiness.MediaHouse?.image as string}
             description={newBusiness.description as string}

@@ -1,4 +1,5 @@
 import { getFeaturedArticles } from "@/actions/articleActions";
+import { FormatDate } from "@/lib/formatDate";
 import { News } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -95,7 +96,7 @@ export default async function RightCards({
                 </div>
                 <div>
                   <h3 className="text-[0.8rem] headlineFont text-gray-600">
-                    {item.readTime || "Unknown read time"}
+                    {FormatDate(item.createdAt) || "Unknown read time"}
                   </h3>
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import { fetchArticles } from "@/actions/articleActions";
+import { FormatDate } from "@/lib/formatDate";
 import { News } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -111,7 +112,7 @@ export default async function LatestNews() {
                 </div>
                 <div>
                   <h3 className="text-[0.8rem] headlineFont text-gray-600">
-                    {news.readTime}
+                    {FormatDate(news.createdAt)}
                   </h3>
                 </div>
               </div>
@@ -133,19 +134,3 @@ export default async function LatestNews() {
     </div>
   );
 }
-
-// function formatDate(dateString) {
-//   const date = new Date(dateString)
-//   const now = new Date()
-//   const diffTime = Math.abs(now - date)
-//   const diffMinutes = Math.ceil(diffTime / (1000 * 60))
-
-//   if (diffMinutes < 60) {
-//     return `${diffMinutes} minutes ago`
-//   } else if (diffMinutes < 1440) {
-//     const hours = Math.floor(diffMinutes / 60)
-//     return `${hours} hours ago`
-//   } else {
-//     return date.toLocaleDateString()
-//   }
-// }

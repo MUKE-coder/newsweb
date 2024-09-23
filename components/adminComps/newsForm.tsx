@@ -35,7 +35,7 @@ type FormProps = {
 };
 export default function NewsForm({ categories, mediahouse, initialData }: any) {
   const { data: session } = useSession<any>();
-  const step = useAppSelector((state) => state.createArticle.step);
+  const step = useAppSelector((state: any) => state.createArticle.step);
   const [loading, setLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(step || 1);
   const [image, setImage] = useState(

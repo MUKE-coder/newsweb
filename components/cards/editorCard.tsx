@@ -1,4 +1,5 @@
 import { getFeaturedArticles } from "@/actions/articleActions";
+import { FormatDate } from "@/lib/formatDate";
 import Image from "next/image";
 import React from "react";
 
@@ -41,7 +42,7 @@ export default async function EditorCard() {
               </div>
               <div>
                 <h3 className="text-[0.8rem] text-gray-200 headlineFont">
-                  {cardFiltered.readTime}
+                  {FormatDate(cardFiltered.createdAt)}
                 </h3>
               </div>
             </div>

@@ -1,3 +1,4 @@
+import { FormatDate } from "@/lib/formatDate";
 import { News } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,7 +34,7 @@ export default function LeftCard({ articalLeft }: any) {
           </div>
           <div>
             <h3 className="text-[0.8rem] headlineFont text-gray-600">
-              {articalLeft.readTime}
+              {FormatDate(articalLeft.createdAt)}
             </h3>
           </div>
         </div>

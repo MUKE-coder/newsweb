@@ -1,4 +1,5 @@
 import { getFeaturedArticles } from "@/actions/articleActions";
+import { FormatDate } from "@/lib/formatDate";
 import { News } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -97,7 +98,7 @@ export default async function MiddleCard({
               </div>
               <div>
                 <h3 className="text-[0.8rem] headlineFont text-gray-200">
-                  {MiddleCardData.readTime || "N/A"}
+                  {FormatDate(MiddleCardData.createdAt) || "N/A"}
                 </h3>
               </div>
             </div>

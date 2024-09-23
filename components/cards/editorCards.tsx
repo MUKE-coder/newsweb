@@ -1,6 +1,7 @@
 import React from "react";
 import CardComp from "./cardComp";
 import { getFeaturedArticles } from "@/actions/articleActions";
+import { FormatDate } from "@/lib/formatDate";
 
 export default async function EditorCards() {
   const editorCardData = await getFeaturedArticles("editors_pick");
@@ -16,7 +17,7 @@ export default async function EditorCards() {
             title={cardData.title}
             category={cardData.Category?.title as string}
             link={`/detailed/${cardData.id}`}
-            time={cardData.readTime as string}
+            time={FormatDate(cardData.createdAt)}
             mediahouse={cardData.MediaHouse?.title as string}
             mediahouseImage={cardData.MediaHouse?.image as string}
             description={cardData.description as string}

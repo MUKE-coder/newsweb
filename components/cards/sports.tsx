@@ -1,6 +1,7 @@
 import React from "react";
 import CardComp from "./cardComp";
 import { getSportsNews } from "@/actions/articleActions";
+import { FormatDate } from "@/lib/formatDate";
 
 export default async function SportsComp() {
   const sportsNews = await getSportsNews();
@@ -16,7 +17,7 @@ export default async function SportsComp() {
             title={newSports.title}
             category={newSports.Category?.title as string}
             link={`/detailed/${newSports.id}`}
-            time={newSports.readTime as string}
+            time={FormatDate(newSports.createdAt)}
             mediahouse={newSports.MediaHouse?.title as string}
             mediahouseImage={newSports.MediaHouse?.image as string}
             description={newSports.description as string}

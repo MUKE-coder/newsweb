@@ -1,4 +1,5 @@
 import { fetchArticles } from "@/actions/articleActions";
+import { FormatDate } from "@/lib/formatDate";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -41,7 +42,7 @@ export default async function TopCard() {
           </div>
           <div>
             <h3 className="text-gray-600 lg:text-[0.9rem] headlineFont md:text-[0.9rem] text-[0.8rem]">
-              {newArticle.readTime}
+              {FormatDate(newArticle.createdAt)}
             </h3>
           </div>
         </div>
