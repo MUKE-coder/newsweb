@@ -170,7 +170,7 @@ const renderContent: any = (content: ContentBlock[]) => {
 export default function Details({
   articleFetched,
 }: {
-  articleFetched: ArticleProps;
+  articleFetched: ArticleProps | any;
 }) {
   let contentData: ContentBlock[];
   try {
