@@ -10,7 +10,7 @@ export default function LeftCard({ articalLeft }: any) {
       <Link href={`/detailed/${articalLeft.id}`} className="w-full  col-span-1">
         <div className="w-full overflow-hidden">
           <Image
-            className="w-full lg:h-[12rem] md:h-[10rem] h-[8rem] rounded-[0.6rem] overflow-hidden"
+            className="w-full lg:h-[12rem] md:h-[10rem] h-[10rem] rounded-[0.6rem] overflow-hidden"
             width={183}
             height={275}
             src={articalLeft.thumbnail as string}
