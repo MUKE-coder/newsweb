@@ -88,7 +88,7 @@ export default async function LatestNews() {
             >
               <div className="w-full overflow-hidden">
                 <Image
-                  className="w-full rounded-[0.6rem]  lg:h-[10rem] md:h-[10rem] h-[8rem] overflow-hidden"
+                  className="w-full rounded-[0.6rem]  lg:h-[10rem] md:h-[10rem] h-[10rem] overflow-hidden"
                   width={183}
                   height={275}
                   src={news.thumbnail as string}
