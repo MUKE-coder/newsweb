@@ -1,20 +1,20 @@
-import FooterComp from "@/components/footerComp";
-import Header from "@/components/header";
-import { InputWithButton } from "@/components/subscribeComp";
-import { authOptions } from "@/config/auth";
-import { getServerSession } from "next-auth";
 import React, { ReactNode } from "react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/config/auth";
+import Header from "@/components/header";
+import FooterComp from "@/components/footerComp";
+import { InputWithButton } from "@/components/subscribeComp";
 
 export default async function Layout({ children }: { children: ReactNode }) {
-  const session: any = await getServerSession(authOptions);
-  // console.log(`Session Data:`, session);
+  const session = await getServerSession(authOptions);
+
   return (
     <div>
-      <Header session={session} />
+      <Header />
       {children}
-      <div className="lg:px-16 md:px-12 px-4 lg:mt-[4rem]  md:mt-[3rem] mt-[2rem] ">
-        <div className="bg-[#ffffff] px-4 py-6 gap-4 rounded-lg  grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1   items-center  ">
-          <div className="lg:text-[1rem]  md:text-[1rem] text-[0.7rem]">
+      <div className="lg:px-16 md:px-12 px-4 lg:mt-[4rem] md:mt-[3rem] mt-[2rem]">
+        <div className="bg-[#ffffff] px-4 py-6 gap-4 rounded-lg grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 items-center">
+          <div className="lg:text-[1rem] md:text-[1rem] text-[0.7rem]">
             <h3 className="logoFont">GET FIRST UPDATES</h3>
             <h2 className="lg:text-[1.5rem] headlineFont md:text-[1.3rem] text-[1rem] font-bold">
               Get the news in front line by <br />
