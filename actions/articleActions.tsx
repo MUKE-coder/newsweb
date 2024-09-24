@@ -209,3 +209,28 @@ export async function getCatArticles(
     console.log(error);
   }
 }
+
+export async function fetchArticleCats({ slug }: { slug: string }) {
+  try {
+    const fetchedArticles = await db.news.findMany({
+      where: {
+        Category: {
+          slug: slug,
+        },
+      },
+      include: {
+        Category: true,
+        MediaHouse: true,
+        User: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return fetchedArticles;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}

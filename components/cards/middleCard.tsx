@@ -103,10 +103,10 @@ export default async function MiddleCard({
               </div>
             </div>
             <div className="">
-              <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
+              <h1 className="lg:text-[1.3rem] line-clamp-2 subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
                 {MiddleCardData.title}
               </h1>
-              <p className="line-clamp-3">
+              <p className="line-clamp-2">
                 {MiddleCardData.description || "No description available"}
               </p>
             </div>

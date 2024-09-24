@@ -6,9 +6,8 @@ import CardComp from "./cards/cardComp";
 export default async function BusinessNews() {
   const businessNewsFetched = await getBusinessNews();
 
-
   return (
-    <div className="grid lg:grid-cols-2 gap-4 md:grid-cols-1 grid-cols-1">
+    <div className="grid lg:grid-cols-4 gap-4 lg:px-4 md:px-4 px-4 lg:mt-6 md:mt-4 mt-4 md:grid-cols-2 grid-cols-1">
       {businessNewsFetched.map((newBusiness) => {
         return (
           <CardComp

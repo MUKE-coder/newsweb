@@ -1,6 +1,4 @@
-import { getFeaturedArticles } from "@/actions/articleActions";
 import { FormatDate } from "@/lib/formatDate";
-import { News } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -101,10 +99,10 @@ export default async function RightCards({
                 </div>
               </div>
               <div className="">
-                <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
+                <h1 className="lg:text-[1.3rem] line-clamp-2 subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
                   {item.title}
                 </h1>
-                <p className="line-clamp-3">
+                <p className="line-clamp-2">
                   {item.description || "No description available"}
                 </p>
               </div>

@@ -1,78 +1,83 @@
-import React from "react";
+"use client";
 
-import { FolderPen, Menu, Package2, PenIcon, Search } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { FolderPen, Menu, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
-import { Session } from "next-auth";
+import { useSession } from "next-auth/react";
 import DropDownComp from "./dropDown";
+import { getAllCats } from "@/actions/catActions";
+import { usePathname } from "next/navigation";
 
-export default async function Header({ session }: { session: Session }) {
-  const smallnavigation = [
-    {
-      name: "Sports",
-      href: "/",
-    },
-    {
-      name: "Business",
-      href: "/",
-    },
-    {
-      name: "Technology",
-      href: "/",
-    },
-    {
-      name: "Politics",
-      href: "/",
-    },
-    {
-      name: "Entertainment",
-      href: "/",
-    },
-    {
-      name: "Crime",
-      href: "/",
-    },
-    {
-      name: "Health",
-      href: "/",
-    },
-  ];
+interface NewsProps {
+  id: string;
+  thumbnail?: string | null;
+  title: string;
+  content: any;
+  description?: string | null;
+  readTime?: string | null;
+  featuredOption: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+  userId: string;
+  categoryId?: string | null;
+  mediaHouseId?: string | null;
+  User: UserWithoutNews | null;
+  Category: CategoryWithoutNews | null;
+  MediaHouse: MediaHouseWithoutNews | null;
+}
 
-  const navigation = [
-    {
-      name: "Sports",
-      href: "/",
-    },
-    {
-      name: "Business",
-      href: "/",
-    },
-    {
-      name: "Technology",
-      href: "/",
-    },
-    {
-      name: "Politics",
-      href: "/",
-    },
-    {
-      name: "Entertainment",
-      href: "/",
-    },
-    {
-      name: "Crime",
-      href: "/",
-    },
-    {
-      name: "Health",
-      href: "/",
-    },
-  ];
+interface UserWithoutNews {
+  id: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  userName: string;
+  phone?: string | null;
+  email?: string | null;
+  emailVerified?: Date | null;
+  image?: string | null;
+  password: string;
+  isVerfied: boolean;
+  token?: number | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface MediaHouseWithoutNews {
+  id: string;
+  title: string;
+  image?: string | null;
+  slug: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface CategoryWithoutNews {
+  id: string;
+  title: string;
+  slug: string;
+  image?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export default function Header() {
+  const [categories, setCategories] = useState<CategoryWithoutNews[]>([]);
+  const pathname = usePathname();
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const cats = await getAllCats();
+      setCategories(cats || []);
+    };
+    fetchCategories();
+  }, []);
+
   return (
-    <header className="sticky justify-between  z-[20] top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 w-full">
-      <nav className="hidden  flex-col justify-between gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+    <header className="sticky justify-between z-[40] top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 w-full">
+      <nav className="hidden flex-col justify-between gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <div className="text-[#f45b42]">
           <Link
             href="/"
@@ -83,14 +88,19 @@ export default async function Header({ session }: { session: Session }) {
         </div>
 
         <div className="flex gap-4 items-center">
-          {navigation.map((item, i) => {
+          {categories?.map((item, i) => {
+            const isActive = pathname === `/category-page/${item.slug}`;
             return (
               <Link
                 key={i}
-                href={item.href}
-                className="text-muted-foreground transition-colors hover:text-foreground"
+                href={`/category-page/${item.slug}`}
+                className={`relative px-3 py-2 rounded-md transition-colors ${
+                  isActive
+                    ? "text-foreground text-red-500"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
-                {item.name}
+                {item.title}
               </Link>
             );
           })}
@@ -105,15 +115,20 @@ export default async function Header({ session }: { session: Session }) {
           </Button>
         </SheetTrigger>
         <SheetContent side="left">
-          <nav className="grid gap-6 text-lg font-medium z-[30]">
-            {smallnavigation.map((item, i) => {
+          <nav className="grid gap-6 text-lg font-medium z-[70]">
+            {categories?.map((item, i) => {
+              const isActive = pathname === `/category-page/${item.slug}`;
               return (
                 <Link
                   key={i}
-                  href={item.href}
-                  className="flex items-center gap-2 text-lg font-semibold"
+                  href={`/category-page/${item.slug}`}
+                  className={`relative px-3 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "text-foreground text-red-500"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
-                  <span>{item.name}</span>
+                  {item.title}
                 </Link>
               );
             })}

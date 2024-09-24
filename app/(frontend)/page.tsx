@@ -12,7 +12,7 @@ import React from "react";
 export default function page() {
   return (
     <div>
-      <div className="px-4  mt-10">
+      <div className="lg:px-4 md:px-4 px-2  mt-10">
         <div className="lg:px-16 md:px-bg-[12 px-4">
           <div className="bg-[#ffffff] px-4 py-6 text-center rounded-lg flex flex-col gap-3">
             <div className="lg:text-[1rem] md:text-[1rem] text-[0.7rem]">
@@ -92,7 +92,7 @@ export default function page() {
               </h1>
               <Link
                 className="flex items-center gap-2 text-[#e00e0e] font-bold"
-                href="/"
+                href="/business-news"
               >
                 {" "}
                 <MoveRight className="w-4 h-5" />

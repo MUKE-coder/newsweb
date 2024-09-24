@@ -9,7 +9,7 @@ export default function LeftCard({ articalLeft }: any) {
     <Link href={`/detailed/${articalLeft.id}`} className="w-full  col-span-1">
       <div className="w-full overflow-hidden">
         <Image
-          className="w-full rounded-[1.1rem] overflow-hidden"
+          className="w-full lg:h-[12rem] md:h-[10rem] h-[8rem] rounded-[0.6rem] overflow-hidden"
           width={183}
           height={275}
           src={articalLeft.thumbnail as string}
@@ -39,10 +39,10 @@ export default function LeftCard({ articalLeft }: any) {
           </div>
         </div>
         <div className="">
-          <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
+          <h1 className="lg:text-[1.3rem] line-clamp-2 subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
             {articalLeft.title}{" "}
           </h1>
-          <p className="line-clamp-3">{articalLeft.description}</p>
+          <p className="line-clamp-2">{articalLeft.description}</p>
         </div>
         <div className="">
           <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">

@@ -68,6 +68,15 @@
   }
 }
 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
 .background-color {
   background-color: #f3f4f693;
 }
@@ -106,6 +115,7 @@
     bottom: 1%;
   }
 }
+
 .parsed-html h1 {
   @apply text-2xl font-bold my-4;
 }

@@ -83,11 +83,11 @@ export default async function LatestNews() {
           <Link
             href={`/detailed/${news.id}`}
             key={news.id}
-            className="flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[calc(50%-1rem)] lg:w-[calc(23.6%-1.1rem)]"
+            className="flex-shrink-0 w-[80vw]  sm:w-[45vw] md:w-[calc(50%-1rem)] lg:w-[calc(23.6%-1.1rem)]"
           >
             <div className="w-full overflow-hidden">
               <Image
-                className="w-full rounded-[1.1rem] overflow-hidden"
+                className="w-full rounded-[0.6rem]  lg:h-[10rem] md:h-[10rem] h-[8rem] overflow-hidden"
                 width={183}
                 height={275}
                 src={news.thumbnail as string}
@@ -117,10 +117,10 @@ export default async function LatestNews() {
                 </div>
               </div>
               <div>
-                <h1 className="lg:text-[1.3rem] subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold">
+                <h1 className="lg:text-[1.3rem] subHeaderFont line-clamp-2 md:text-[1.3rem] text-[1.1rem] font-bold">
                   {news.title}
                 </h1>
-                <p className="line-clamp-3">{news.description}</p>
+                <p className="line-clamp-2">{news.description}</p>
               </div>
               <div>
                 <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">

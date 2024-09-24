@@ -17,7 +17,7 @@ export default async function TopCard() {
     >
       <div className="w-full overflow-hidden">
         <Image
-          className="w-full rounded-3xl overflow-hidden"
+          className="w-full rounded-[0.6rem] overflow-hidden"
           width={183}
           height={275}
           src={newArticle.thumbnail as string}

@@ -57,7 +57,6 @@ export async function updateCat(data: CatPropsUpdate, id: string) {
     });
     revalidatePath("/dashboard/article-managment/add-category");
     revalidatePath("/dashboard/article-managment/add-article");
-    console.log(category);
     return category;
   } catch (error) {
     console.log(error);
