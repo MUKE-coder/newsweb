@@ -27,7 +27,7 @@ export default function CardComp({
     <Link href={link} className="w-full  col-span-1">
       <div className="w-full overflow-hidden">
         <Image
-          className="w-full rounded-[1.1rem] overflow-hidden"
+          className="w-full h-[12rem] rounded-[0.6rem] overflow-hidden"
           width={183}
           height={275}
           src={image}

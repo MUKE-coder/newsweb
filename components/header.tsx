@@ -5,10 +5,7 @@ import { Button } from "@/components/ui/button";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
-import { getServerSession, Session } from "next-auth";
-import { authOptions } from "@/config/auth";
-import { signOut } from "next-auth/react";
-import Image from "next/image";
+import { Session } from "next-auth";
 import DropDownComp from "./dropDown";
 
 export default async function Header({ session }: { session: Session }) {

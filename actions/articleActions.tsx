@@ -162,7 +162,7 @@ export async function getBusinessNews() {
 //fetching sports news
 export async function getSportsNews() {
   try {
-    const businessNews = await db.news.findMany({
+    const sportsNews = await db.news.findMany({
       where: {
         Category: {
           title: "Sports",
@@ -178,9 +178,34 @@ export async function getSportsNews() {
       },
     });
 
-    return businessNews;
+    return sportsNews;
   } catch (error) {
     console.error("Error fetching business news:", error);
     throw error;
+  }
+}
+
+export async function getCatArticles(
+  option: string,
+  orderBy: "createdAt" | "updatedAt" = "createdAt"
+) {
+  try {
+    const articles = await db.news.findMany({
+      where: {
+        Category: {
+          title: option,
+        },
+      },
+      include: {
+        User: true,
+        Category: true,
+        MediaHouse: true,
+      },
+      orderBy: { [orderBy]: "desc" },
+    });
+
+    return articles;
+  } catch (error) {
+    console.log(error);
   }
 }

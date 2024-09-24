@@ -41,7 +41,7 @@ export default function page() {
             </h1>
             <Link
               className="flex items-center gap-2 text-[#e00e0e] font-bold"
-              href="/"
+              href="/all-articles"
             >
               see all <MoveRight className="w-4 h-5" />
             </Link>
@@ -56,7 +56,7 @@ export default function page() {
             </h1>
             <Link
               className="flex items-center gap-2 text-[#e00e0e] font-bold"
-              href="/"
+              href="/must-read-articles"
             >
               see all <MoveRight className="w-4 h-5" />
             </Link>
@@ -71,7 +71,7 @@ export default function page() {
             </h1>
             <Link
               className="flex items-center gap-2 text-[#e00e0e] font-bold"
-              href="/"
+              href="/editors-pick-articles"
             >
               see all <MoveRight className="w-4 h-5" />
             </Link>
@@ -110,7 +110,7 @@ export default function page() {
               </h1>
               <Link
                 className="flex items-center gap-2 text-[#e00e0e] font-bold"
-                href="/"
+                href="/sports"
               >
                 {" "}
                 <MoveRight className="w-4 h-5" />
