@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import CardComp from "./cardComp";
 import { getSportsNews } from "@/actions/articleActions";
 import { FormatDate } from "@/lib/formatDate";
+import SkeletonComp from "../skeletonComp";
 
 export default async function SportsComp() {
   const sportsNews = await getSportsNews();
@@ -11,17 +12,18 @@ export default async function SportsComp() {
     <div className="grid lg:grid-cols-2 gap-4 md:grid-cols-1 grid-cols-1">
       {newsportsNews.map((newSports, i) => {
         return (
-          <CardComp
-            key={newSports.id}
-            image={newSports.thumbnail as string}
-            title={newSports.title}
-            category={newSports.Category?.title as string}
-            link={`/detailed/${newSports.id}`}
-            time={FormatDate(newSports.createdAt)}
-            mediahouse={newSports.MediaHouse?.title as string}
-            mediahouseImage={newSports.MediaHouse?.image as string}
-            description={newSports.description as string}
-          />
+          <Suspense key={newSports.id} fallback={<SkeletonComp />}>
+            <CardComp
+              image={newSports.thumbnail as string}
+              title={newSports.title}
+              category={newSports.Category?.title as string}
+              link={`/detailed/${newSports.id}`}
+              time={FormatDate(newSports.createdAt)}
+              mediahouse={newSports.MediaHouse?.title as string}
+              mediahouseImage={newSports.MediaHouse?.image as string}
+              description={newSports.description as string}
+            />
+          </Suspense>
         );
       })}
     </div>

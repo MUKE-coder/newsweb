@@ -2,10 +2,11 @@
 
 import { getFeaturedArticles } from "@/actions/articleActions";
 import CardComp from "@/components/cards/cardComp";
+import SkeletonComp from "@/components/skeletonComp";
 import { Button } from "@/components/ui/button";
 import { FormatDate } from "@/lib/formatDate";
 import { ChevronsLeft, ChevronsRight } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 interface NewsProps {
   id: string;
@@ -84,17 +85,18 @@ export default function Page() {
       <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1">
         {getCurrentPageArticles().map((article) => {
           return (
-            <CardComp
-              key={article.id}
-              image={article.thumbnail as string}
-              title={article.title}
-              category={article.Category?.title as string}
-              link={`/detailed/${article.id}`}
-              time={FormatDate(article.createdAt)}
-              mediahouse={article.MediaHouse?.title as string}
-              description={article.description as string}
-              mediahouseImage={article.MediaHouse?.image as string}
-            />
+            <Suspense key={article.id} fallback={<SkeletonComp />}>
+              <CardComp
+                image={article.thumbnail as string}
+                title={article.title}
+                category={article.Category?.title as string}
+                link={`/detailed/${article.id}`}
+                time={FormatDate(article.createdAt)}
+                mediahouse={article.MediaHouse?.title as string}
+                description={article.description as string}
+                mediahouseImage={article.MediaHouse?.image as string}
+              />
+            </Suspense>
           );
         })}
       </div>

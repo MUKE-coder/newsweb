@@ -3,7 +3,8 @@ import { FormatDate } from "@/lib/formatDate";
 import { News } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
+import SkeletonComp from "../skeletonComp";
 
 interface NewsProps {
   id: string;
@@ -80,55 +81,56 @@ export default async function LatestNews() {
     <div className="overflow-x-auto pb-4 lg:pb-0">
       <div className="flex lg:flex-wrap md:flex-wrap flex-nowrap gap-4 lg:gap-8 md:gap-8 lg:mt-10 md:mt-10 mt-4">
         {latestNews.map((news) => (
-          <Link
-            href={`/detailed/${news.id}`}
-            key={news.id}
-            className="flex-shrink-0 w-[80vw]  sm:w-[45vw] md:w-[calc(50%-1rem)] lg:w-[calc(23.6%-1.1rem)]"
-          >
-            <div className="w-full overflow-hidden">
-              <Image
-                className="w-full rounded-[0.6rem]  lg:h-[10rem] md:h-[10rem] h-[8rem] overflow-hidden"
-                width={183}
-                height={275}
-                src={news.thumbnail as string}
-                alt="thumbnail"
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-5 mt-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full">
-                    <Image
-                      width={225}
-                      height={225}
-                      className="w-full rounded-full"
-                      src={news.MediaHouse?.image as string}
-                      alt="netflix"
-                    />
+          <Suspense key={news.id} fallback={<SkeletonComp />}>
+            <Link
+              href={`/detailed/${news.id}`}
+              className="flex-shrink-0 w-[80vw]  sm:w-[45vw] md:w-[calc(50%-1rem)] lg:w-[calc(23.6%-1.1rem)]"
+            >
+              <div className="w-full overflow-hidden">
+                <Image
+                  className="w-full rounded-[0.6rem]  lg:h-[10rem] md:h-[10rem] h-[8rem] overflow-hidden"
+                  width={183}
+                  height={275}
+                  src={news.thumbnail as string}
+                  alt="thumbnail"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-5 mt-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full">
+                      <Image
+                        width={225}
+                        height={225}
+                        className="w-full rounded-full"
+                        src={news.MediaHouse?.image as string}
+                        alt="netflix"
+                      />
+                    </div>
+                    <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem] font-bold">
+                      {news.MediaHouse?.title}
+                    </h3>
                   </div>
-                  <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem] font-bold">
-                    {news.MediaHouse?.title}
-                  </h3>
+                  <div>
+                    <h3 className="text-[0.8rem] headlineFont text-gray-600">
+                      {FormatDate(news.createdAt)}
+                    </h3>
+                  </div>
                 </div>
                 <div>
-                  <h3 className="text-[0.8rem] headlineFont text-gray-600">
-                    {FormatDate(news.createdAt)}
+                  <h1 className="lg:text-[1.3rem] subHeaderFont line-clamp-2 md:text-[1.3rem] text-[1.1rem] font-bold">
+                    {news.title}
+                  </h1>
+                  <p className="line-clamp-2">{news.description}</p>
+                </div>
+                <div>
+                  <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
+                    {news.Category?.title}
                   </h3>
                 </div>
               </div>
-              <div>
-                <h1 className="lg:text-[1.3rem] subHeaderFont line-clamp-2 md:text-[1.3rem] text-[1.1rem] font-bold">
-                  {news.title}
-                </h1>
-                <p className="line-clamp-2">{news.description}</p>
-              </div>
-              <div>
-                <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
-                  {news.Category?.title}
-                </h3>
-              </div>
-            </div>
-          </Link>
+            </Link>
+          </Suspense>
         ))}
       </div>
     </div>

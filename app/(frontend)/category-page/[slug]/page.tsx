@@ -1,11 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { fetchArticleCats } from "@/actions/articleActions";
 import CardComp from "@/components/cards/cardComp";
 import { Button } from "@/components/ui/button";
 import { FormatDate } from "@/lib/formatDate";
 import { ChevronsLeft, ChevronsRight } from "lucide-react";
 import SparklesText from "@/components/magicui/sparkles-text";
+import SkeletonComp from "@/components/skeletonComp";
 
 interface NewsProps {
   id: string;
@@ -95,17 +96,18 @@ export default function ArticleCategoryPage({
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {getCurrentPageArticles().map((article) => (
-          <CardComp
-            key={article.id}
-            image={article.thumbnail || ""}
-            title={article.title}
-            category={article.Category?.title || ""}
-            link={`/detailed/${article.id}`}
-            time={FormatDate(article.createdAt)}
-            mediahouse={article.MediaHouse?.title || ""}
-            description={article.description || ""}
-            mediahouseImage={article.MediaHouse?.image || ""}
-          />
+          <Suspense key={article.id} fallback={<SkeletonComp />}>
+            <CardComp
+              image={article.thumbnail || ""}
+              title={article.title}
+              category={article.Category?.title || ""}
+              link={`/detailed/${article.id}`}
+              time={FormatDate(article.createdAt)}
+              mediahouse={article.MediaHouse?.title || ""}
+              description={article.description || ""}
+              mediahouseImage={article.MediaHouse?.image || ""}
+            />
+          </Suspense>
         ))}
       </div>
 

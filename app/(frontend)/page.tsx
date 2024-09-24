@@ -5,9 +5,10 @@ import LatestNews from "@/components/cards/latestNews";
 import MustRead from "@/components/cards/mustRead";
 import SportsComp from "@/components/cards/sports";
 import TopCard from "@/components/cards/topCard";
+import SkeletonComp from "@/components/skeletonComp";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 
 export default function page() {
   return (
@@ -31,7 +32,7 @@ export default function page() {
           </div>
         </div>
         <div className="lg:px-16 md:px-12 px-4">
-          <TopCard />
+            <TopCard />
         </div>
 
         <div className="lg:px-16 md:px-12 px-4 lg:mt-[3rem] md:mt-[3rem] mt-[2rem]">
@@ -46,7 +47,9 @@ export default function page() {
               see all <MoveRight className="w-4 h-5" />
             </Link>
           </div>
-          <LatestNews />
+          <Suspense fallback={<SkeletonComp />}>
+            <LatestNews />
+          </Suspense>
         </div>
 
         <div className="lg:px-16 md:px-12 px-4 lg:mt-[3rem] md:mt-[3rem] mt-[2rem]">
@@ -78,6 +81,7 @@ export default function page() {
           </div>
           <div className="lg:mt-[2rem] md:mt-[2rem] mt-[2rem]">
             <EditorCard />
+
             <div className="lg:mt-[3rem] md:mt-[3rem] mt-[2rem]">
               <EditorCards />
             </div>
