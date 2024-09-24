@@ -63,59 +63,57 @@ export default async function RightCards({
     <div className="w-[100%] lg:col-span-1 md:col-span-1 col-span-2 flex gap-4 flex-col">
       {articalRight.map((item) => {
         return (
-          <Suspense key={item.id} fallback={<SkeletonComp />}>
-            <Link href={`/detailed/${item.id}`} className="w-full">
-              <div className="w-full lg:h-[5rem] md:h-[15rem] h-[10rem] overflow-hidden">
-                <Image
-                  className="w-full rounded-md overflow-hidden"
-                  width={183}
-                  height={275}
-                  src={item.thumbnail || "/default-thumbnail.jpg"}
-                  alt="article thumbnail"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-5 mt-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full">
-                      {item.MediaHouse && (
-                        <Image
-                          width={225}
-                          height={225}
-                          className="w-full rounded-full"
-                          src={
-                            item.MediaHouse.image || "/default-media-house.jpg"
-                          }
-                          alt="media house logo"
-                        />
-                      )}
-                    </div>
-                    <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem] font-bold">
-                      {item.MediaHouse?.title || "Unknown Media House"}
-                    </h3>
+          <Link key={item.id} href={`/detailed/${item.id}`} className="w-full">
+            <div className="w-full lg:h-[5rem] md:h-[15rem] h-[10rem] overflow-hidden">
+              <Image
+                className="w-full rounded-md overflow-hidden"
+                width={183}
+                height={275}
+                src={item.thumbnail || "/default-thumbnail.jpg"}
+                alt="article thumbnail"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-5 mt-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full">
+                    {item.MediaHouse && (
+                      <Image
+                        width={225}
+                        height={225}
+                        className="w-full rounded-full"
+                        src={
+                          item.MediaHouse.image || "/default-media-house.jpg"
+                        }
+                        alt="media house logo"
+                      />
+                    )}
                   </div>
-                  <div>
-                    <h3 className="text-[0.8rem] headlineFont text-gray-600">
-                      {FormatDate(item.createdAt) || "Unknown read time"}
-                    </h3>
-                  </div>
+                  <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem] font-bold">
+                    {item.MediaHouse?.title || "Unknown Media House"}
+                  </h3>
                 </div>
-                <div className="">
-                  <h1 className="lg:text-[1.3rem] line-clamp-2 subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
-                    {item.title}
-                  </h1>
-                  <p className="line-clamp-2">
-                    {item.description || "No description available"}
-                  </p>
-                </div>
-                <div className="">
-                  <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
-                    {item.Category?.title || "Uncategorized"}
+                <div>
+                  <h3 className="text-[0.8rem] headlineFont text-gray-600">
+                    {FormatDate(item.createdAt) || "Unknown read time"}
                   </h3>
                 </div>
               </div>
-            </Link>
-          </Suspense>
+              <div className="">
+                <h1 className="lg:text-[1.3rem] line-clamp-2 subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
+                  {item.title}
+                </h1>
+                <p className="line-clamp-2">
+                  {item.description || "No description available"}
+                </p>
+              </div>
+              <div className="">
+                <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
+                  {item.Category?.title || "Uncategorized"}
+                </h3>
+              </div>
+            </div>
+          </Link>
         );
       })}
     </div>

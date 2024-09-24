@@ -32,7 +32,9 @@ export default function page() {
           </div>
         </div>
         <div className="lg:px-16 md:px-12 px-4">
+          <Suspense fallback={<SkeletonComp />}>
             <TopCard />
+          </Suspense>
         </div>
 
         <div className="lg:px-16 md:px-12 px-4 lg:mt-[3rem] md:mt-[3rem] mt-[2rem]">
@@ -64,7 +66,9 @@ export default function page() {
               see all <MoveRight className="w-4 h-5" />
             </Link>
           </div>
-          <MustRead />
+          <Suspense fallback={<SkeletonComp />}>
+            <MustRead />
+          </Suspense>
         </div>
 
         <div className="lg:px-16 md:px-12 px-4 lg:mt-[4rem] md:mt-[3rem] top-margin">
@@ -80,10 +84,13 @@ export default function page() {
             </Link>
           </div>
           <div className="lg:mt-[2rem] md:mt-[2rem] mt-[2rem]">
-            <EditorCard />
-
+            <Suspense fallback={<SkeletonComp />}>
+              <EditorCard />
+            </Suspense>
             <div className="lg:mt-[3rem] md:mt-[3rem] mt-[2rem]">
-              <EditorCards />
+              <Suspense fallback={<SkeletonComp />}>
+                <EditorCards />
+              </Suspense>
             </div>
           </div>
         </div>
@@ -103,7 +110,9 @@ export default function page() {
               </Link>
             </div>
             <div className="lg:mt-[2rem] md:mt-[2rem] mt-[2rem]">
-              <Business />
+              <Suspense fallback={<SkeletonComp />}>
+                <Business />
+              </Suspense>
             </div>
           </div>
 
@@ -121,7 +130,9 @@ export default function page() {
               </Link>
             </div>
             <div className="lg:mt-[1rem] md:mt-[2rem] mt-[2rem]">
-              <SportsComp />
+              <Suspense fallback={<SkeletonComp />}>
+                <SportsComp />
+              </Suspense>
             </div>
           </div>
         </div>

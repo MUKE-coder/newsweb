@@ -1,6 +1,7 @@
 import { getSingleArticle } from "@/actions/articleActions";
 import Details from "@/components/details";
-import React from "react";
+import SkeletonComp from "@/components/skeletonComp";
+import React, { Suspense } from "react";
 
 export default async function page({
   params: { id },

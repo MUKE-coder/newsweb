@@ -2,10 +2,11 @@
 
 import { getFeaturedArticles } from "@/actions/articleActions";
 import CardComp from "@/components/cards/cardComp";
+import SkeletonComp from "@/components/skeletonComp";
 import { Button } from "@/components/ui/button";
 import { FormatDate } from "@/lib/formatDate";
 import { ChevronsLeft, ChevronsRight } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 interface NewsProps {
   id: string;
@@ -81,6 +82,7 @@ export default function Page() {
 
   return (
     <div className="px-4 mt-6">
+      <Suspense fallback={<SkeletonComp/>}>
       <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1">
         {getCurrentPageArticles().map((article) => {
           return (
@@ -98,6 +100,7 @@ export default function Page() {
           );
         })}
       </div>
+      </Suspense>
       <div className="flex justify-center mt-6 space-x-2">
         <Button
           onClick={() => setCurrentPage((prev: any) => Math.max(prev - 1, 1))}

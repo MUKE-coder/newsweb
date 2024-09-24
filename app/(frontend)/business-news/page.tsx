@@ -1,10 +1,13 @@
 import BusinessNews from "@/components/business-news";
-import React from "react";
+import SkeletonComp from "@/components/skeletonComp";
+import React, { Suspense } from "react";
 
 export default function page() {
   return (
     <div>
-      <BusinessNews />
+      <Suspense fallback={<SkeletonComp />}>
+        <BusinessNews />
+      </Suspense>
     </div>
   );
 }

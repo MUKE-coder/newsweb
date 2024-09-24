@@ -93,11 +93,11 @@ export default function ArticleCategoryPage({
       <h1 className="text-4xl font-bold mb-5">
         <SparklesText text={newSlug} />
       </h1>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {getCurrentPageArticles().map((article) => (
-          <Suspense key={article.id} fallback={<SkeletonComp />}>
+      <Suspense fallback={<SkeletonComp />}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {getCurrentPageArticles().map((article) => (
             <CardComp
+              key={article.id}
               image={article.thumbnail || ""}
               title={article.title}
               category={article.Category?.title || ""}
@@ -107,9 +107,9 @@ export default function ArticleCategoryPage({
               description={article.description || ""}
               mediahouseImage={article.MediaHouse?.image || ""}
             />
-          </Suspense>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Suspense>
 
       <div className="flex justify-center mt-6 space-x-2">
         <Button

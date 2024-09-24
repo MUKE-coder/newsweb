@@ -82,11 +82,12 @@ export default function Page() {
 
   return (
     <div className="px-4 mt-6">
-      <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1">
-        {getCurrentPageArticles().map((article) => {
-          return (
-            <Suspense key={article.id} fallback={<SkeletonComp />}>
+      <Suspense fallback={<SkeletonComp />}>
+        <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1">
+          {getCurrentPageArticles().map((article) => {
+            return (
               <CardComp
+                key={article.id}
                 image={article.thumbnail as string}
                 title={article.title}
                 category={article.Category?.title as string}
@@ -96,10 +97,10 @@ export default function Page() {
                 description={article.description as string}
                 mediahouseImage={article.MediaHouse?.image as string}
               />
-            </Suspense>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      </Suspense>
       <div className="flex justify-center mt-6 space-x-2">
         <Button
           onClick={() => setCurrentPage((prev: any) => Math.max(prev - 1, 1))}

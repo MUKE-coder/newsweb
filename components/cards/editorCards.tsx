@@ -12,18 +12,17 @@ export default async function EditorCards() {
     <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-4 grid-cols-1">
       {filteredEditorCardData?.map((cardData) => {
         return (
-          <Suspense key={cardData.id} fallback={<SkeletonComp />}>
-            <CardComp
-              image={cardData.thumbnail as string}
-              title={cardData.title}
-              category={cardData.Category?.title as string}
-              link={`/detailed/${cardData.id}`}
-              time={FormatDate(cardData.createdAt)}
-              mediahouse={cardData.MediaHouse?.title as string}
-              mediahouseImage={cardData.MediaHouse?.image as string}
-              description={cardData.description as string}
-            />
-          </Suspense>
+          <CardComp
+            key={cardData.id}
+            image={cardData.thumbnail as string}
+            title={cardData.title}
+            category={cardData.Category?.title as string}
+            link={`/detailed/${cardData.id}`}
+            time={FormatDate(cardData.createdAt)}
+            mediahouse={cardData.MediaHouse?.title as string}
+            mediahouseImage={cardData.MediaHouse?.image as string}
+            description={cardData.description as string}
+          />
         );
       })}
     </div>
