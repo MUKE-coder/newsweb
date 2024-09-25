@@ -9,11 +9,12 @@ export default async function SportsComp() {
   const newsportsNews = sportsNews.slice(0, 2);
 
   return (
-    <div className="grid lg:grid-cols-2 gap-4 md:grid-cols-1 grid-cols-1">
-      {newsportsNews.map((newSports, i) => {
-        return (
-          <Suspense key={newSports.id} fallback={<SkeletonComp />}>
+    <div>
+      <div className="grid lg:grid-cols-2 gap-4 md:grid-cols-1 grid-cols-1">
+        {newsportsNews.map((newSports) => {
+          return (
             <CardComp
+              key={newSports.id}
               image={newSports.thumbnail as string}
               title={newSports.title}
               category={newSports.Category?.title as string}
@@ -23,9 +24,9 @@ export default async function SportsComp() {
               mediahouseImage={newSports.MediaHouse?.image as string}
               description={newSports.description as string}
             />
-          </Suspense>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

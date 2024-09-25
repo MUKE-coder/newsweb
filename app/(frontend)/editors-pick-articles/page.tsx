@@ -2,6 +2,7 @@
 
 import { getFeaturedArticles } from "@/actions/articleActions";
 import CardComp from "@/components/cards/cardComp";
+import LoadingComp from "@/components/loadComp";
 import SkeletonComp from "@/components/skeletonComp";
 import { Button } from "@/components/ui/button";
 import { FormatDate } from "@/lib/formatDate";
@@ -64,12 +65,14 @@ export default function Page() {
   const [articles, setArticles] = useState<NewsProps[]>([]);
   const [currentPage, setCurrentPage] = useState<any>(1);
   const [totalPages, setTotalPages] = useState<any>(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadArticles = async () => {
       const allArticles = await getFeaturedArticles("editors_pick");
       setArticles(allArticles || []);
       setTotalPages(Math.ceil((allArticles?.length || 0) / ARTICLES_PER_PAGE));
+      setIsLoading(false);
     };
     loadArticles();
   }, []);
@@ -82,7 +85,9 @@ export default function Page() {
 
   return (
     <div className="px-4 mt-6">
-      <Suspense fallback={<SkeletonComp />}>
+      {isLoading ? (
+        <LoadingComp />
+      ) : (
         <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1">
           {getCurrentPageArticles().map((article) => {
             return (
@@ -100,7 +105,8 @@ export default function Page() {
             );
           })}
         </div>
-      </Suspense>
+      )}
+
       <div className="flex justify-center mt-6 space-x-2">
         <Button
           onClick={() => setCurrentPage((prev: any) => Math.max(prev - 1, 1))}

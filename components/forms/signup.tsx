@@ -11,7 +11,7 @@ import { registerUser } from "@/actions/userActions";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-export default function SignupForm() {
+export default function SignupForm({ role }: { role: string }) {
   // console.log(singleUserData)
   const {
     register,
@@ -21,16 +21,16 @@ export default function SignupForm() {
   } = useForm<UserProps>();
 
   const [loading, setLoading] = useState(false);
-  const [image, setImage] = useState( "/placeholder.svg");
+  const [image, setImage] = useState("/placeholder.svg");
   const [emailError, setEmailError] = useState("");
   const router = useRouter();
   console.log(image);
 
   async function submitUser(data: UserProps) {
     data.image = image;
+    data.role = role;
     data.userName = `${data.firstName} ${data.lastName}`;
     setLoading(true);
-    console.log(data);
     try {
       const res = await registerUser(data);
       if (res && res.status === 409) {
@@ -153,6 +153,21 @@ export default function SignupForm() {
             Login?
           </Link>
         </p>
+        {role === "user" ? (
+          <p className="text-[0.9rem]">
+            Register as an{" "}
+            <Link className="text-blue-700 " href="/article-writer-form">
+              article writer?
+            </Link>
+          </p>
+        ) : (
+          <p className="text-[0.9rem]">
+            Register as a{" "}
+            <Link className="text-blue-700 " href="/signup">
+              normal user?
+            </Link>
+          </p>
+        )}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import { FormatDate } from "@/lib/formatDate";
 import { ChevronsLeft, ChevronsRight } from "lucide-react";
 import SparklesText from "@/components/magicui/sparkles-text";
 import SkeletonComp from "@/components/skeletonComp";
+import LoadingComp from "@/components/loadComp";
 
 interface NewsProps {
   id: string;
@@ -71,13 +72,14 @@ export default function ArticleCategoryPage({
   const [articles, setArticles] = useState<NewsProps[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const loadArticles = async () => {
       if (!slug) return;
       const allArticles = await fetchArticleCats({ slug });
       setArticles(allArticles || []);
       setTotalPages(Math.ceil((allArticles?.length || 0) / ARTICLES_PER_PAGE));
+      setIsLoading(false);
     };
     loadArticles();
   }, [slug]);
@@ -93,7 +95,9 @@ export default function ArticleCategoryPage({
       <h1 className="text-4xl font-bold mb-5">
         <SparklesText text={newSlug} />
       </h1>
-      <Suspense fallback={<SkeletonComp />}>
+      {isLoading ? (
+        <LoadingComp />
+      ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {getCurrentPageArticles().map((article) => (
             <CardComp
@@ -109,7 +113,7 @@ export default function ArticleCategoryPage({
             />
           ))}
         </div>
-      </Suspense>
+      )}
 
       <div className="flex justify-center mt-6 space-x-2">
         <Button

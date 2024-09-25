@@ -7,6 +7,7 @@ export type UserProps = {
   password: string;
   userName: string;
   id: string;
+  role: string;
 };
 
 export type SingleUserDetails = {

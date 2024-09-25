@@ -35,21 +35,6 @@ export default function Details({
         <div className="mb-6">
           <h1 className="text-3xl font-bold mb-4">{articleFetched.title}</h1>
           <p className="text-gray-600">{articleFetched.description}</p>
-
-          {/* <div className="flex flex-wrap items-center text-sm text-gray-500 mt-4">
-            <span className="flex items-center mr-4">
-              <Clock className="w-4 h-4 mr-1" />
-              {articleFetched.readTime || "Unknown read time"}
-            </span>
-            <span className="flex items-center mr-4">
-              <Tag className="w-4 h-4 mr-1" />
-              {articleFetched.Category?.title || "Uncategorized"}
-            </span>
-            <span className="flex items-center">
-              <Building className="w-4 h-4 mr-1" />
-              {articleFetched.Category?.title || "Unknown Media House"}
-            </span>
-          </div> */}
         </div>
 
         {articleFetched.thumbnail && (

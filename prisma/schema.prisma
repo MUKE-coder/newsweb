@@ -22,6 +22,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  role          String @default("user")
   password      String
   isVerfied     Boolean   @default(false)
   token         Int?
@@ -40,7 +41,7 @@ model News {
   featuredOption   String? @default("")
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
-  User             User?    @relation(fields: [userId], references: [id])
+  User             User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId           String  @db.ObjectId @default("66cd601ab578251bf5b418de")
 
   Category     Category?   @relation(fields: [categoryId], references: [id])
