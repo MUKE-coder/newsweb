@@ -38,8 +38,8 @@ export default function LoginForm() {
         reset();
         setLoading(false);
         toast.success("Login Successful");
-        router.push("/"); 
-        router.refresh()
+        router.push("/");
+        router.refresh();
       }
     } catch (error) {
       setLoading(false);
@@ -60,10 +60,10 @@ export default function LoginForm() {
           </Link>
         </div>
         <div>
-          <h1 className="text-[2rem]">Welcome Back</h1>
-          <p className="text-gray-500">
+          <h1 className="text-[2rem]">Login</h1>
+          {/* <p className="text-gray-500">
             We are glad that you are back👏. Please login to your account
-          </p>
+          </p> */}
         </div>
       </div>
       <form className="mt-4" onSubmit={handleSubmit(loginUser)} action="">
@@ -85,7 +85,7 @@ export default function LoginForm() {
         </div>
         <div className="mt-4 flex">
           <SubmitButton
-          className="w-full"
+            className="w-full"
             title="Login"
             loading={loading}
             loadingTitle="loging-in..."
@@ -93,12 +93,12 @@ export default function LoginForm() {
         </div>
       </form>
       <div className="mt-4">
-        <p className="text-[0.9rem]">
+        {/* <p className="text-[0.9rem]">
           Don{"'"}t have an account{" "}
           <Link className="text-blue-700 " href="/signup">
             Signup?
           </Link>
-        </p>
+        </p> */}
       </div>
     </div>
   );
