@@ -106,25 +106,31 @@ export default function Page() {
         </div>
       )}
 
-      <div className="flex justify-center mt-6 space-x-2">
-        <Button
-          onClick={() => setCurrentPage((prev: any) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          <ChevronsLeft />
-        </Button>
-        <span className="self-center">
-          Page {currentPage} of {totalPages}
-        </span>
-        <Button
-          onClick={() =>
-            setCurrentPage((prev: any) => Math.min(prev + 1, totalPages))
-          }
-          disabled={currentPage === totalPages}
-        >
-          <ChevronsRight />
-        </Button>
-      </div>
+      {totalPages > 1 ? (
+        <div className="flex justify-center mt-6 space-x-2">
+          {/* <Button
+            onClick={() => setCurrentPage((prev: any) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            <ChevronsLeft />
+          </Button>
+          <span className="self-center">
+            Page {currentPage} of {totalPages}
+          </span> */}
+          <Button
+            className=""
+            onClick={() =>
+              setCurrentPage((prev: any) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+          >
+            {/* <ChevronsRight /> */}
+            Load More
+          </Button>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
