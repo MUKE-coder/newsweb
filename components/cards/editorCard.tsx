@@ -37,12 +37,12 @@ export default async function EditorCard() {
                     alt="mediahouse"
                   />
                 </div>
-                <h3 className="lg:text-[1rem] md:text-[1rem] text-[0.8rem]  font-bold headlineFont">
+                <h3 className="lg:text-[1rem] md:text-[1rem] text-[0.8rem]  font-bold subHeaderFont">
                   {cardFiltered.MediaHouse?.title}
                 </h3>
               </div>
               <div>
-                <h3 className="text-[0.8rem] text-gray-200 headlineFont">
+                <h3 className="text-[0.8rem] text-gray-200 subHeaderFont">
                   {FormatDate(cardFiltered.createdAt)}
                 </h3>
               </div>
@@ -51,7 +51,9 @@ export default async function EditorCard() {
               <h1 className="lg:text-[1.3rem] subHeaderFont  md:text-[1.3rem] text-[1.1rem] font-bold ">
                 {cardFiltered.title}
               </h1>
-              <p className="line-clamp-3">{cardFiltered.description}</p>
+              <p className="line-clamp-3 mt-2 mb-2">
+                {cardFiltered.description}
+              </p>
             </div>
           </div>
         </div>

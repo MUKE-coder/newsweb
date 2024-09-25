@@ -107,12 +107,12 @@ export default async function LatestNews() {
                       alt="netflix"
                     />
                   </div>
-                  <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem] font-bold">
+                  <h3 className="lg:text-[1rem] subHeaderFont md:text-[1rem] text-[0.8rem] font-bold">
                     {news.MediaHouse?.title}
                   </h3>
                 </div>
                 <div>
-                  <h3 className="text-[0.8rem] headlineFont text-gray-600">
+                  <h3 className="text-[0.8rem] subHeaderFont text-gray-600">
                     {FormatDate(news.createdAt)}
                   </h3>
                 </div>
@@ -121,10 +121,10 @@ export default async function LatestNews() {
                 <h1 className="lg:text-[1.3rem] subHeaderFont line-clamp-2 md:text-[1.3rem] text-[1.1rem] font-bold">
                   {news.title}
                 </h1>
-                <p className="line-clamp-2">{news.description}</p>
+                <p className="line-clamp-2 mt-2 mb-2">{news.description}</p>
               </div>
               <div>
-                <h3 className="text-[#e00e0e] headlineFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
+                <h3 className="text-[#e00e0e] subHeaderFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
                   {news.Category?.title}
                 </h3>
               </div>

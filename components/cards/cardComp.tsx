@@ -46,19 +46,21 @@ export default function CardComp({
                 alt="netflix"
               />
             </div>
-            <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem]  font-bold">
+            <h3 className="lg:text-[1rem] subHeaderFont md:text-[1rem] text-[0.8rem]  font-bold">
               {mediahouse}
             </h3>
           </div>
           <div>
-            <h3 className="text-[0.8rem] headlineFont text-gray-600">{time}</h3>
+            <h3 className="text-[0.8rem] subHeaderFont text-gray-600">
+              {time}
+            </h3>
           </div>
         </div>
         <div className="">
           <h1 className="lg:text-[1.3rem] line-clamp-2 subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
             {title}{" "}
           </h1>
-          <p className="line-clamp-2">{description}</p>
+          <p className="line-clamp-2 mt-2 mb-2">{description}</p>
         </div>
         <div className="">
           <h3 className="text-[#e00e0e] lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">

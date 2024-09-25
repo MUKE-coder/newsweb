@@ -35,12 +35,12 @@ export default async function TopCard() {
                 alt="image"
               />
             </div>
-            <h3 className="headlineFont font-bold lg:text-[1rem] md:text-[1rem] text-[0.8rem]">
+            <h3 className="subHeaderFont font-bold lg:text-[1rem] md:text-[1rem] text-[0.8rem]">
               {newArticle.MediaHouse?.title}
             </h3>
           </div>
           <div>
-            <h3 className="text-gray-600 lg:text-[0.9rem] headlineFont md:text-[0.9rem] text-[0.8rem]">
+            <h3 className="text-gray-600 lg:text-[0.9rem] subHeaderFont md:text-[0.9rem] text-[0.8rem]">
               {FormatDate(newArticle.createdAt)}
             </h3>
           </div>

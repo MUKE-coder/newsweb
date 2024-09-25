@@ -93,12 +93,12 @@ export default async function MiddleCard({
                     } logo`}
                   />
                 </div>
-                <h3 className="lg:text-[1rem] headlineFont md:text-[1rem] text-[0.8rem] font-bold">
+                <h3 className="lg:text-[1rem] subHeaderFont md:text-[1rem] text-[0.8rem] font-bold">
                   {MiddleCardData.MediaHouse?.title}
                 </h3>
               </div>
               <div>
-                <h3 className="text-[0.8rem] headlineFont text-gray-200">
+                <h3 className="text-[0.8rem] subHeaderFont text-gray-200">
                   {FormatDate(MiddleCardData.createdAt) || "N/A"}
                 </h3>
               </div>
@@ -107,7 +107,7 @@ export default async function MiddleCard({
               <h1 className="lg:text-[1.3rem] line-clamp-2 subHeaderFont md:text-[1.3rem] text-[1.1rem] font-bold ">
                 {MiddleCardData.title}
               </h1>
-              <p className="line-clamp-2">
+              <p className="line-clamp-2 mt-2 mb-2">
                 {MiddleCardData.description || "No description available"}
               </p>
             </div>

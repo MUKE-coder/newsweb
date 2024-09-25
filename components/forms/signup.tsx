@@ -11,7 +11,7 @@ import { registerUser } from "@/actions/userActions";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-export default function SignupForm({ role }: { role: string }) {
+export default function SignupForm() {
   // console.log(singleUserData)
   const {
     register,
@@ -28,7 +28,6 @@ export default function SignupForm({ role }: { role: string }) {
 
   async function submitUser(data: UserProps) {
     data.image = image;
-    data.role = role;
     data.userName = `${data.firstName} ${data.lastName}`;
     setLoading(true);
     try {
@@ -153,21 +152,6 @@ export default function SignupForm({ role }: { role: string }) {
             Login?
           </Link>
         </p>
-        {role === "user" ? (
-          <p className="text-[0.9rem]">
-            Register as an{" "}
-            <Link className="text-blue-700 " href="/article-writer-form">
-              article writer?
-            </Link>
-          </p>
-        ) : (
-          <p className="text-[0.9rem]">
-            Register as a{" "}
-            <Link className="text-blue-700 " href="/signup">
-              normal user?
-            </Link>
-          </p>
-        )}
       </div>
     </div>
   );

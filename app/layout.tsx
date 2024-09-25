@@ -16,15 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <div >
+      <div>
         <Providers>
-        
-          <body className="subHeaderFont background-color">
-            
-            {children}
-           
-            </body>
-        
+          <body className="body-font background-color">{children}</body>
         </Providers>
       </div>
     </html>
