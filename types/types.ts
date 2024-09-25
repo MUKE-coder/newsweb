@@ -70,3 +70,10 @@ export type ArticleProps = {
   createdAt: Date | string;
   updatedAt: Date | string;
 };
+
+export type SubscriberProps = {
+  id: string;
+  email: string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+};

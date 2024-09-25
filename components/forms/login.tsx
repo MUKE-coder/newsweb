@@ -8,6 +8,7 @@ import { signIn } from "next-auth/react";
 import { UserProps } from "@/types/types";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { LogIn } from "lucide-react";
 
 export default function LoginForm() {
   const {
@@ -89,6 +90,7 @@ export default function LoginForm() {
             title="Login"
             loading={loading}
             loadingTitle="loging-in..."
+            buttonIcon={LogIn}
           />
         </div>
       </form>

@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import { FormatDate } from "@/lib/formatDate";
 import { ChevronsLeft, ChevronsRight } from "lucide-react";
 import SparklesText from "@/components/magicui/sparkles-text";
-import SkeletonComp from "@/components/skeletonComp";
-import LoadingComp from "@/components/loadComp";
+import { Skeleton } from "@/components/ui/skeleton";
+import { SkeletonLoader } from "@/components/loadComp";
 
 interface NewsProps {
   id: string;
@@ -63,6 +63,33 @@ interface CategoryWithoutNews {
 
 const ARTICLES_PER_PAGE = 12;
 
+// function SkeletonLoader() {
+//   return (
+//     <>
+//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+//         {Array(ARTICLES_PER_PAGE)
+//           .fill(null)
+//           .map((_, index) => (
+//             <div key={index} className="flex flex-col space-y-3">
+//               <Skeleton className="h-48 w-full rounded-lg" />
+//               <Skeleton className="h-4 w-3/4" />
+//               <Skeleton className="h-4 w-1/2" />
+//               <div className="flex justify-between items-center">
+//                 <Skeleton className="h-8 w-8 rounded-full" />
+//                 <Skeleton className="h-4 w-1/4" />
+//               </div>
+//             </div>
+//           ))}
+//       </div>
+//       <div className="flex justify-center mt-6 space-x-2">
+//         <Skeleton className="h-10 w-10 rounded" />
+//         <Skeleton className="h-10 w-32" />
+//         <Skeleton className="h-10 w-10 rounded" />
+//       </div>
+//     </>
+//   );
+// }
+
 export default function ArticleCategoryPage({
   params,
 }: {
@@ -96,7 +123,7 @@ export default function ArticleCategoryPage({
         <SparklesText text={newSlug} />
       </h1>
       {isLoading ? (
-        <LoadingComp />
+        <SkeletonLoader />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {getCurrentPageArticles().map((article) => (

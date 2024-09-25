@@ -1,17 +1,28 @@
-export default function LoadingComp() {
+import { Skeleton } from "./ui/skeleton";
+
+export function SkeletonLoader() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="relative w-28 h-28" aria-label="Loading" role="status">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 animate-spin">
-          <div className="absolute top-1/2 left-1/2 w-56 h-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white"></div>
-        </div>
-        <div className="absolute inset-4 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 animate-ping opacity-75"></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-500 animate-pulse"></div>
-          </div>
-        </div>
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {Array(12)
+          .fill(null)
+          .map((_, index) => (
+            <div key={index} className="flex flex-col space-y-3">
+              <Skeleton className="h-48 w-full bg-gray-300 rounded-lg" />
+              <Skeleton className="h-4 bg-gray-300 w-3/4" />
+              <Skeleton className="h-4 bg-gray-300 w-1/2" />
+              <div className="flex justify-between items-center">
+                <Skeleton className="h-8 bg-gray-300 w-8 rounded-full" />
+                <Skeleton className="h-4 bg-gray-300 w-1/4" />
+              </div>
+            </div>
+          ))}
       </div>
-    </div>
+      <div className="flex justify-center mt-6 space-x-2">
+        <Skeleton className="h-10 bg-gray-300 w-10 rounded" />
+        <Skeleton className="h-10 bg-gray-300 w-32" />
+        <Skeleton className="h-10 bg-gray-300 w-10 rounded" />
+      </div>
+    </>
   );
 }

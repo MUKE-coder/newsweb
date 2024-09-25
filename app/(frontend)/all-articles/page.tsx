@@ -2,8 +2,7 @@
 
 import { fetchArticles } from "@/actions/articleActions";
 import CardComp from "@/components/cards/cardComp";
-import LoadingComp from "@/components/loadComp";
-import SkeletonComp from "@/components/skeletonComp";
+import { SkeletonLoader } from "@/components/loadComp";
 import { Button } from "@/components/ui/button";
 import { FormatDate } from "@/lib/formatDate";
 import { ChevronsLeft, ChevronsRight } from "lucide-react";
@@ -86,7 +85,7 @@ export default function Page() {
   return (
     <div className="px-4 mt-6">
       {isLoading ? (
-        <LoadingComp />
+        <SkeletonLoader />
       ) : (
         <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1">
           {getCurrentPageArticles().map((article) => {
