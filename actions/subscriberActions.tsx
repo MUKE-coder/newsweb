@@ -2,8 +2,9 @@
 
 import { db } from "@/lib/db";
 import { SubscriberProps } from "@/types/types";
+import { revalidatePath } from "next/cache";
 
-
+//create a subscriber
 export async function CreateSuscriber(data: SubscriberProps) {
   try {
     const { email } = data;
@@ -22,12 +23,35 @@ export async function CreateSuscriber(data: SubscriberProps) {
     const newSubData = await db.subscriber.create({
       data: { email },
     });
-    console.log(newSubData)
+    revalidatePath("/dashboard/subscribers");
     return {
       data: newSubData,
       error: null,
       status: 201,
     };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//get all subscribers
+export async function fetchSubscribers() {
+  try {
+    const allSubscribers = await db.subscriber.findMany();
+    return allSubscribers;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//delete a subscriber
+export async function deleteSubscriber({ id }: { id: string }) {
+  try {
+    const deletedSub = await db.subscriber.delete({
+      where: { id },
+    });
+    console.log(deletedSub);
+    return deletedSub;
   } catch (error) {
     console.log(error);
   }

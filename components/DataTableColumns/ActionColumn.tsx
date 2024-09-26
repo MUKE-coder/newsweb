@@ -25,8 +25,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { deleteArticle } from "@/actions/articleActions";
 import { useRouter } from "next/navigation";
-import { News } from "@prisma/client";
-
+import { deleteSubscriber } from "@/actions/subscriberActions";
 type ActionColumnProps = {
   row: any;
   model: any;
@@ -41,24 +40,24 @@ export default function ActionColumn({
   id = "",
 }: ActionColumnProps) {
   const isActive = row.isActive;
-  const router = useRouter()
+  const router = useRouter();
   const [isAlertOpen, setIsAlertOpen] = useState(false);
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   async function handleDelete() {
     try {
-      setLoading(true)
-      const deletedArticle = await deleteArticle({id}) ;
-      toast.success("Category deleted successfully.");
-      router.push("/dashboard/article-managment");
+      setLoading(true);
+      const deletedSubscriber = await deleteSubscriber({ id });
+      toast.success("Subscriber deleted successfully.");
+      router.push("/dashboard/subscribers");
       router.refresh();
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
-    }finally{
-      setLoading(false)
-      setIsAlertOpen(false)
-      window.location.reload()
+    } finally {
+      setLoading(false);
+      setIsAlertOpen(false);
+      window.location.reload();
     }
   }
   return (
@@ -95,14 +94,23 @@ export default function ActionColumn({
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel onClick={() => setIsAlertOpen(false)}>Cancel</AlertDialogCancel>
-              {
-                loading ? (<Button disabled variant={"destructive"} onClick={() => handleDelete()}>
-                <LoaderCircle className="animate-spin" /><span>Deleting...</span>
-              </Button>):(<Button variant={"destructive"} onClick={() => handleDelete()}>
-                Permanently Delete
-              </Button>)
-              }
+              <AlertDialogCancel onClick={() => setIsAlertOpen(false)}>
+                Cancel
+              </AlertDialogCancel>
+              {loading ? (
+                <Button
+                  disabled
+                  variant={"destructive"}
+                  onClick={() => handleDelete()}
+                >
+                  <LoaderCircle className="animate-spin" />
+                  <span>Deleting...</span>
+                </Button>
+              ) : (
+                <Button variant={"destructive"} onClick={() => handleDelete()}>
+                  Permanently Delete
+                </Button>
+              )}
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
@@ -113,12 +121,12 @@ export default function ActionColumn({
           <Trash className="w-4 h-4  mr-2 flex-shrink-0" />
           <span>Delete</span>
         </DropdownMenuItem> */}
-        <DropdownMenuItem>
+        {/* <DropdownMenuItem>
           <Link href={editEndpoint} className="flex item gap-2">
             <Pencil className="w-4 h-4 " />
             <span>Edit</span>
           </Link>
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
       </DropdownMenuContent>
     </DropdownMenu>
   );

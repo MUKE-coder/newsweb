@@ -5,7 +5,6 @@ import CardComp from "@/components/cards/cardComp";
 import { SkeletonLoader } from "@/components/loadComp";
 import { Button } from "@/components/ui/button";
 import { FormatDate } from "@/lib/formatDate";
-import { ChevronsLeft, ChevronsRight } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 interface NewsProps {

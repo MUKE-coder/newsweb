@@ -17,6 +17,7 @@ import {
   Settings,
   ShoppingCart,
   Users,
+  UsersRound,
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -56,6 +57,11 @@ const navBtns = [
     icon: <Settings className="h-4 w-4" />,
     title: "Settings",
     link: "/dashboard/settings",
+  },
+  {
+    icon: <UsersRound className="h-4 w-4" />,
+    title: "Subsribers",
+    link: "/dashboard/subscribers",
   },
 ];
 

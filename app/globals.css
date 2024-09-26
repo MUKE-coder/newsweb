@@ -97,6 +97,10 @@
   font-family: "Outfit", sans-serif;
 }
 
+.margin {
+  margin-top: 2.5rem;
+}
+
 @media (max-width: 768px) {
   .flex-container {
     display: flex;

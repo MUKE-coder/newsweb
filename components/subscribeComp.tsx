@@ -25,8 +25,9 @@ export function InputWithButton() {
     try {
       const res = await CreateSuscriber(data);
       if (res && res.status === 409) {
-        setDataErr("The Subscriber with this email already exists.");
+        setDataErr(" The subscriber  already exists.");
         toast.error("The Subscriber with this email already exists.");
+        reset();
       } else if (res && res.status === 201) {
         toast.success("Thank you for subscribing.");
         router.refresh();
@@ -44,10 +45,12 @@ export function InputWithButton() {
       onSubmit={handleSubmit(onSubmit)}
       className="flex w-full max-w-sm items-center space-x-2"
     >
-      <div>
+      <div className="relative">
         <TextInput register={register} errors={errors} name="email" />
         {dataErr && (
-          <span className="text-xs my-2 text-red-600">{dataErr}</span>
+          <span className="text-xs my-2 absolute top-[-100%] text-red-600">
+            {dataErr}
+          </span>
         )}
       </div>
       {loading ? (

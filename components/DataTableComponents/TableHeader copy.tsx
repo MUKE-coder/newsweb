@@ -15,16 +15,12 @@ import { ArrowBigLeft, CirclePlus, PlusCircle } from "lucide-react";
 
 type TableHeaderProps = {
   title: string;
-  href: string;
-  linkTitle?: string;
   data: any;
   model: string;
   showImport?: boolean;
 };
 export default function TableHeader({
   title,
-  href,
-  linkTitle,
   data,
   model,
   showImport = true,
@@ -162,7 +158,7 @@ export default function TableHeader({
           {title}({data.length})
         </h2>
         <div className="ml-auto flex items-center gap-2">
-          <Button
+          {/* <Button
             size="sm"
             asChild
             className="h-8 gap-1 bg-[#f53b07] hover:bg-[#f53b07]"
@@ -173,7 +169,7 @@ export default function TableHeader({
                 {linkTitle}
               </span>
             </Link>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
