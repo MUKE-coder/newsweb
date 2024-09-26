@@ -6,11 +6,6 @@ import {
   Options,
   SelectValue,
 } from "react-tailwindcss-select/dist/components/type";
-import { generateSlug } from "@/lib/generateSlug";
-// import { createBulkServices } from "@/actions/service";
-// import { createBulkVehicles } from "@/actions/vehicles";
-import toast from "react-hot-toast";
-import Link from "next/link";
 import { ArrowBigLeft, CirclePlus, PlusCircle } from "lucide-react";
 
 type TableHeaderProps = {

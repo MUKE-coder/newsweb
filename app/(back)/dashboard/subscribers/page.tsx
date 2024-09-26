@@ -14,8 +14,6 @@ export default async function page() {
       <div className="lg:p-8 md:p-8 ">
         <TableHeader
           title="Subscribers"
-          // linkTitle="Add Article"
-          // href="/dashboard/article-managment/add-article"
           data={subscribers}
           model="subscriber"
         />

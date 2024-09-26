@@ -1,21 +1,22 @@
 import Link from "next/link";
 import React from "react";
 import {
-    BookOpen,
-    ChartBar,
+  BookOpen,
+  ChartBar,
   Home,
-   Menu,
-   Package2,
+  Menu,
+  Package2,
   Search,
   Settings,
-   Users,
+  Users,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import DropDownComp from "../dropDown";
-import {Session } from "next-auth";
+import { Session } from "next-auth";
+import SearchBar from "../DataTableComponents/SearchBar";
 
 const navBtns = [
   {
@@ -63,20 +64,18 @@ export default function Header({ session }: { session: Session }) {
               <Package2 className="h-6 w-6" />
               <span className="sr-only">Acme Inc</span>
             </Link>
-            {
-            navBtns.map((nav,i)=>{
-                    return(
-                        <Link
-                        key={i}
-              href={nav.link}
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
-              {nav.icon}
-              {nav.title}
-            </Link>
-                    )
-               })
-            }
+            {navBtns.map((nav, i) => {
+              return (
+                <Link
+                  key={i}
+                  href={nav.link}
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                >
+                  {nav.icon}
+                  {nav.title}
+                </Link>
+              );
+            })}
           </nav>
         </SheetContent>
       </Sheet>
@@ -86,13 +85,14 @@ export default function Header({ session }: { session: Session }) {
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
+              disabled
               placeholder="Search products..."
               className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
             />
           </div>
         </form>
       </div>
-    <DropDownComp session={session}/>  
+      <DropDownComp session={session} />
     </header>
   );
 }
