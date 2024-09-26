@@ -245,7 +245,7 @@ export default function NewsForm({ categories, mediahouse, initialData }: any) {
             {/* Continue Button */}
             <div className="flex justify-between">
               <Link
-                href="/"
+                href="/dashboard/article-managment"
                 className="bg-[#f53b07] text-white py-2 px-4 rounded-md"
               >
                 Close
@@ -265,7 +265,7 @@ export default function NewsForm({ categories, mediahouse, initialData }: any) {
           <>
             <div className="flex justify-end">
               <Link
-                href="/"
+                href="/dashboard/article-managment"
                 className="bg-[#f53b07] text-white py-2 px-4 rounded-md"
               >
                 Close
