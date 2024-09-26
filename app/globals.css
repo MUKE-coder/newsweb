@@ -130,6 +130,9 @@
   .position {
     bottom: 1%;
   }
+  .display-none {
+    display: none;
+  }
 }
 
 .parsed-html h1 {

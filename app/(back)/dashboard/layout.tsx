@@ -7,15 +7,13 @@ import { getServerSession } from "next-auth";
 export default async function Layout({ children }: { children: ReactNode }) {
   const session: any = await getServerSession(authOptions);
   return (
-    <div className="bg-[#dae4fdb4]/10">
-      <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-        <Sidebar />
-        <div className="flex flex-col">
-          <Header session={session} />
-          <main className="flex flex-1 flex-col margin gap-4 md:p-5 p-2 lg:gap-6 lg:p-6">
-            {children}
-          </main>
-        </div>
+    <div className="bg-[#dae4fdb4]/10 min-h-screen">
+      <Sidebar />
+      <div className="md:ml-[220px] lg:ml-[280px]">
+        <Header session={session} />
+        <main className="flex flex-col mt-14 gap-4 p-2 md:p-5 lg:p-6">
+          {children}
+        </main>
       </div>
     </div>
   );
