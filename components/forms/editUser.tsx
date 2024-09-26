@@ -3,13 +3,12 @@ import Link from "next/link";
 import React, { useState } from "react";
 import TextInput from "../forminputs/textinput";
 import { useForm } from "react-hook-form";
-import PasswordInput from "../forminputs/passwordinput";
 import SubmitButton from "../forminputs/submitbtn";
-import { UploadButton, UploadDropzone } from "../uploadthing";
+import { UploadButton } from "../uploadthing";
 import Image from "next/image";
 import { SingleUserDetails, UserProps } from "@/types/types";
-import { CodeSquare, Download, X } from "lucide-react";
-import { editUserData, registerUser } from "@/actions/userActions";
+import { X } from "lucide-react";
+import { editUserData } from "@/actions/userActions";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
@@ -23,7 +22,9 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
   } = useForm<UserProps>({ defaultValues: singleUserData });
 
   const [loading, setLoading] = useState(false);
-  const [image, setImage] = useState(singleUserData.image);
+  const [image, setImage] = useState(
+    singleUserData?.image || "/images/user.avif"
+  );
   // const [imageuR, setImage] = useState(singleUserData.image);
   const [emailError, setEmailError] = useState("");
   const router = useRouter();
@@ -69,15 +70,14 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
         id
       );
       setLoading(false);
-        toast.success("profile updated successfully")
-        router.push("/")
-        router.refresh()
-      
+      toast.success("profile updated successfully");
+      router.push("/");
+      router.refresh();
     } catch (error) {
       console.log(error);
       setLoading(false);
-   
-      toast.error("Failed to update the profile")
+
+      toast.error("Failed to update the profile");
     }
   }
 
@@ -105,22 +105,22 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
         </div>
       </div>
       <form className="mt-4" onSubmit={handleSubmit(submitUser)} action="">
-      <div className="mt-4 flex flex-container2 justify-center  gap-[2rem]">
-        <UploadButton
-        endpoint="imageUploader"
-        onClientUploadComplete={(res) => {
-          // Do something with the response
-          console.log("Files: ", res);
-          toast.success("Upload Completed")
-          setImage(res[0].url)
-        }}
-        onUploadError={(error: Error) => {
-          // Do something with the error.
-          toast.error(`ERROR! ${error.message}`);
-        }}
-      />
-     <div className="w-20 h-20 relative rounded-full">
-     {image.startsWith('/images/') ? (
+        <div className="mt-4 flex flex-container2 justify-center  gap-[2rem]">
+          <UploadButton
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+              // Do something with the response
+              console.log("Files: ", res);
+              toast.success("Upload Completed");
+              setImage(res[0].url);
+            }}
+            onUploadError={(error: Error) => {
+              // Do something with the error.
+              toast.error(`ERROR! ${error.message}`);
+            }}
+          />
+          <div className="w-20 h-20 relative rounded-full">
+            {image.startsWith("/images/") ? (
               ""
             ) : (
               <button
@@ -131,18 +131,15 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
                 <X className="text-white" />
               </button>
             )}
-     <Image
-                  src={image}
-                  alt="profile"
-                  width={300}
-                  height={300}
-                  className="w-full rounded-full  object-cover mb-4"
-                />
-     </div>
+            <Image
+              src={image}
+              alt="profile"
+              width={300}
+              height={300}
+              className="w-full rounded-full  object-cover mb-4"
+            />
+          </div>
         </div>
-
-   
-
 
         <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 py- gap-3 pt-3">
           <TextInput
@@ -170,7 +167,7 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
           <span className="text-xs my-2 text-red-600">{emailError}</span>
         )}
         <div></div>
-        
+
         <div className="mt-4 flex justify-end">
           <SubmitButton
             className="w-full"
