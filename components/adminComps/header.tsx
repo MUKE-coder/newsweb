@@ -9,6 +9,7 @@ import {
   Search,
   Settings,
   Users,
+  UsersRound,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,6 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import DropDownComp from "../dropDown";
 import { Session } from "next-auth";
-
 
 const navBtns = [
   {
@@ -43,6 +43,11 @@ const navBtns = [
     icon: <Settings className="h-4 w-4" />,
     title: "Settings",
     link: "/dashboard/settings",
+  },
+  {
+    icon: <UsersRound className="h-4 w-4" />,
+    title: "Subscribers",
+    link: "/dashboard/subscribers",
   },
 ];
 export default function Header({ session }: { session: Session }) {
