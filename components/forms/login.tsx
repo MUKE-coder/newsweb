@@ -21,7 +21,6 @@ export default function LoginForm() {
   const router = useRouter();
 
   async function loginUser(data: UserProps) {
-    console.log(data);
     try {
       setLoading(true);
       console.log("Attempting to sign in with credentials:", data);

@@ -29,7 +29,7 @@ import { deleteSubscriber } from "@/actions/subscriberActions";
 type ActionColumnProps = {
   row: any;
   model: any;
-  editEndpoint: string;
+  editEndpoint?: string;
   id: string | undefined;
   // revPath: string;
 };
@@ -121,12 +121,12 @@ export default function ActionColumn({
           <Trash className="w-4 h-4  mr-2 flex-shrink-0" />
           <span>Delete</span>
         </DropdownMenuItem> */}
-        <DropdownMenuItem>
+        {/* <DropdownMenuItem>
           <Link href={editEndpoint} className="flex item gap-2">
             <Pencil className="w-4 h-4 " />
             <span>Edit</span>
           </Link>
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
       </DropdownMenuContent>
     </DropdownMenu>
   );

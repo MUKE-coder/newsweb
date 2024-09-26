@@ -5,8 +5,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import DateColumn from "@/components/DataTableColumns/DateColumn";
 import SortableColumn from "@/components/DataTableColumns/SortableColumn";
 import { ColumnDef } from "@tanstack/react-table";
-import ActionColumn from "@/components/DataTableColumns/ActionColumn";
+
 import { Subscriber } from "@prisma/client";
+import ActionColumn from "@/components/DataTableColumns/ActionColumn copy";
 export const columns: ColumnDef<Subscriber>[] = [
   {
     id: "select",
@@ -48,7 +49,7 @@ export const columns: ColumnDef<Subscriber>[] = [
         <ActionColumn
           row={row}
           model="news"
-          editEndpoint={`/dashboard/article-managment/add-article/${data.id}`}
+          // editEndpoint={`/dashboard/article-managment/add-article/${data.id}`}
           id={data.id}
         />
       );

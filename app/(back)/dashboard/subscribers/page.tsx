@@ -1,6 +1,5 @@
 import React from "react";
-import { ArticleProps, SubscriberProps } from "@/types/types";
-import { News, Subscriber } from "@prisma/client";
+import { Subscriber } from "@prisma/client";
 import { columns } from "./columns";
 import { fetchSubscribers } from "@/actions/subscriberActions";
 import TableHeader from "@/components/DataTableComponents/TableHeader copy";
