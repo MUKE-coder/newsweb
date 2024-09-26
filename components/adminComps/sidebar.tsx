@@ -3,7 +3,6 @@
 import Link from "next/link";
 import React from "react";
 import {
-  Bell,
   BookOpen,
   ChartBar,
   Home,
@@ -11,7 +10,6 @@ import {
   Users,
   UsersRound,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 
 const navBtns = [
