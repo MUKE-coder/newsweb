@@ -21,33 +21,23 @@ import { Session } from "next-auth";
 const navBtns = [
   {
     icon: <Home className="h-4 w-4" />,
-    title: "dashboard",
+    title: "Dashboard",
     link: "/dashboard",
   },
   {
     icon: <BookOpen className="h-4 w-4" />,
-    title: "Article Managment",
+    title: "All Articles",
     link: "/dashboard/article-managment",
-  },
-  {
-    icon: <Users className="h-4 w-4" />,
-    title: "User Managment",
-    link: "/dashboard/user-managment",
-  },
-  {
-    icon: <ChartBar className="h-4 w-4" />,
-    title: "Analysis",
-    link: "/dashboard/analysis",
-  },
-  {
-    icon: <Settings className="h-4 w-4" />,
-    title: "Settings",
-    link: "/dashboard/settings",
   },
   {
     icon: <UsersRound className="h-4 w-4" />,
     title: "Subscribers",
     link: "/dashboard/subscribers",
+  },
+  {
+    icon: <Settings className="h-4 w-4" />,
+    title: "Settings",
+    link: "/dashboard/settings",
   },
 ];
 export default function Header({ session }: { session: Session }) {
@@ -67,7 +57,7 @@ export default function Header({ session }: { session: Session }) {
                 href="/"
                 className="flex items-center logoFont gap-2 text-lg font-semibold md:text-base"
               >
-                <span className="text-[1.1rem]">Lubiliizi Bulletin</span>
+                <span className="text-[1.1rem]">Rubirizi Bulletin</span>
               </Link>
             </div>
             {navBtns.map((nav, i) => {

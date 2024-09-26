@@ -83,7 +83,7 @@ export default function Header() {
             href="/"
             className="flex items-center logoFont gap-2 text-lg font-semibold md:text-base"
           >
-            <span className="text-[1rem]">Lubiliizi Bulletin</span>
+            <span className="text-[1rem]">Rubirizi Bulletin</span>
           </Link>
         </div>
 

@@ -36,9 +36,16 @@ export default function DropDownComp({ session }: { session: Session }) {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           {" "}
-          <Link href={`/edit-user/${session.user.id}`}>Settings</Link>{" "}
+          <Link href="/dashboard/article-managment/add-article">
+            Create Article
+          </Link>{" "}
         </DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/dashboard">Dashboard</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/dashboard/article-managment">All Articles</Link>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/login" })}>
           Logout

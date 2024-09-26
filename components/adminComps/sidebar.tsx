@@ -6,42 +6,34 @@ import {
   BookOpen,
   ChartBar,
   Home,
+  PlusCircle,
   Settings,
   Users,
   UsersRound,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { Button } from "../ui/button";
 
 const navBtns = [
   {
     icon: <Home className="h-4 w-4" />,
-    title: "dashboard",
+    title: "Dashboard",
     link: "/dashboard",
   },
   {
     icon: <BookOpen className="h-4 w-4" />,
-    title: "Article Management",
+    title: "All Articles",
     link: "/dashboard/article-managment",
-  },
-  {
-    icon: <Users className="h-4 w-4" />,
-    title: "User Management",
-    link: "/dashboard/user-managment",
-  },
-  {
-    icon: <ChartBar className="h-4 w-4" />,
-    title: "Analysis",
-    link: "/dashboard/analysis",
-  },
-  {
-    icon: <Settings className="h-4 w-4" />,
-    title: "Settings",
-    link: "/dashboard/settings",
   },
   {
     icon: <UsersRound className="h-4 w-4" />,
     title: "Subscribers",
     link: "/dashboard/subscribers",
+  },
+  {
+    icon: <Settings className="h-4 w-4" />,
+    title: "Settings",
+    link: "/dashboard/settings",
   },
 ];
 
@@ -56,7 +48,7 @@ export default function Sidebar() {
               href="/"
               className="flex items-center logoFont gap-2 text-lg font-semibold md:text-base"
             >
-              <span className="text-[1.1rem]">Lubiliizi Bulletin</span>
+              <span className="text-[1.1rem]">Rubirizi Bulletin</span>
             </Link>
           </div>
 
@@ -67,6 +59,15 @@ export default function Sidebar() {
         </div>
         <div className="flex-1">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+            <Link
+              href="/dashboard/article-managment/add-article"
+              className="mb-8"
+            >
+              <Button className="mt-2 ">
+                <PlusCircle className="mr-2 h-4 w-4" />
+                Add New Article
+              </Button>
+            </Link>
             {navBtns.map((nav, i) => {
               const isActive = pathName === nav.link;
               return (
@@ -74,7 +75,7 @@ export default function Sidebar() {
                   key={i}
                   href={nav.link}
                   className={`flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all  ${
-                    isActive ? "bg-[#e50914] text-white" : ""
+                    isActive ? "bg-[#f53b07] text-white" : ""
                   }`}
                 >
                   {nav.icon}

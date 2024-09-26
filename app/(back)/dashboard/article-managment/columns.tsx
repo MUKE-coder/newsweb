@@ -10,45 +10,41 @@ import ActionColumn from "@/components/DataTableColumns/ActionColumn";
 import { Category, News } from "@prisma/client";
 import { ArticleProps } from "@/types/types";
 export const columns: ColumnDef<News | ArticleProps | any>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "title",
-    header: ({ column }) => <SortableColumn column={column} title="Title" />,
-  },
   // {
-  //   accessorKey: "Category.title",
-  //   header: ({ column }) => <SortableColumn column={column} title="Category" />,
+  //   id: "select",
+  //   header: ({ table }) => (
+  //     <Checkbox
+  //       checked={
+  //         table.getIsAllPageRowsSelected() ||
+  //         (table.getIsSomePageRowsSelected() && "indeterminate")
+  //       }
+  //       onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+  //       aria-label="Select all"
+  //     />
+  //   ),
+  //   cell: ({ row }) => (
+  //     <Checkbox
+  //       checked={row.getIsSelected()}
+  //       onCheckedChange={(value) => row.toggleSelected(!!value)}
+  //       aria-label="Select row"
+  //     />
+  //   ),
+  //   enableSorting: false,
+  //   enableHiding: false,
   // },
   {
     accessorKey: "thumbnail",
     header: "Article Image",
     cell: ({ row }) => <ImageColumn row={row} accessorKey="thumbnail" />,
   },
+  {
+    accessorKey: "title",
+    header: ({ column }) => <SortableColumn column={column} title="Title" />,
+  },
 
   {
     accessorKey: "createdAt",
-    header: "Creation time",
+    header: "Date published",
     cell: ({ row }) => <DateColumn row={row} accessorKey="createdAt" />,
   },
   {

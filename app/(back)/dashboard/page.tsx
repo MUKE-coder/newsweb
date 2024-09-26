@@ -24,7 +24,7 @@ export default function Dashboard() {
             readership.
           </p>
           <Link href="/dashboard/article-managment/add-article">
-            <Button className="mt-2">
+            <Button className="mt-2 bg-[#f53b07]">
               <PlusCircle className="mr-2 h-4 w-4" />
               Add New Article
             </Button>

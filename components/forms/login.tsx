@@ -56,7 +56,7 @@ export default function LoginForm() {
             href="#"
             className="flex items-center justify-center logoFont gap-2 text-lg font-semibold md:text-base"
           >
-            <span className="text-[0.8rem]">Lubiliizi Bulletin</span>
+            <span className="text-[0.8rem]">Rubirizi Bulletin</span>
           </Link>
         </div>
         <div>

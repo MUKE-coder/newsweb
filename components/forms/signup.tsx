@@ -60,7 +60,7 @@ export default function SignupForm() {
             href="#"
             className="flex items-center logoFont gap-2 text-lg font-semibold md:text-base"
           >
-            <span className="text-[0.8rem]">Lubiliizi Bulletin</span>
+            <span className="text-[0.8rem]">Rubirizi Bulletin</span>
           </Link>
         </div>
         <div>
