@@ -108,13 +108,20 @@ export default function Page() {
 
       {totalPages > 1 ? (
         <div className="flex justify-center mt-6 space-x-2">
-          {/* <Button
-            onClick={() => setCurrentPage((prev: any) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-          >
-            <ChevronsLeft />
-          </Button>
-          <span className="self-center">
+          {currentPage > 1 ? (
+            <Button
+              onClick={() =>
+                setCurrentPage((prev: any) => Math.max(prev - 1, 1))
+              }
+              disabled={currentPage === 1}
+            >
+              <ChevronsLeft />
+            </Button>
+          ) : (
+            " "
+          )}
+
+          {/* <span className="self-center">
             Page {currentPage} of {totalPages}
           </span> */}
           <Button
