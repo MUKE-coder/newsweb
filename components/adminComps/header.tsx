@@ -57,13 +57,14 @@ export default function Header({ session }: { session: Session }) {
         </SheetTrigger>
         <SheetContent side="left" className="flex flex-col">
           <nav className="grid gap-2 text-lg font-medium">
-            <Link
-              href="#"
-              className="flex items-center gap-2 text-lg font-semibold"
-            >
-              <Package2 className="h-6 w-6" />
-              <span className="sr-only">Acme Inc</span>
-            </Link>
+            <div className="text-[#f45b42]">
+              <Link
+                href="/"
+                className="flex items-center logoFont gap-2 text-lg font-semibold md:text-base"
+              >
+                <span className="text-[1.1rem]">Lubiliizi Bulletin</span>
+              </Link>
+            </div>
             {navBtns.map((nav, i) => {
               return (
                 <Link
