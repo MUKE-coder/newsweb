@@ -9,6 +9,12 @@ import { ColumnDef } from "@tanstack/react-table";
 import ActionColumn from "@/components/DataTableColumns/ActionColumn";
 import { Category, News } from "@prisma/client";
 import { ArticleProps } from "@/types/types";
+
+const trimTitle = (title: string, maxLength: number = 45) => {
+  if (title.length <= maxLength) return title;
+  return title.slice(0, maxLength) + "...";
+};
+
 export const columns: ColumnDef<News | ArticleProps | any>[] = [
   // {
   //   id: "select",
@@ -40,6 +46,10 @@ export const columns: ColumnDef<News | ArticleProps | any>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => <SortableColumn column={column} title="Title" />,
+    cell: ({ row }) => {
+      const title = row.getValue("title") as string;
+      return <span title={title}>{trimTitle(title)}</span>;
+    },
   },
 
   {
