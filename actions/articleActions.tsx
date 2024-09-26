@@ -234,3 +234,41 @@ export async function fetchArticleCats({ slug }: { slug: string }) {
     return [];
   }
 }
+
+//fetching latest articles
+
+export async function fetchLatestArticle() {
+  try {
+    const latestArticle = await db.news.findFirst({
+      orderBy: {
+        createdAt: "desc",
+      },
+      select: {
+        id: true,
+        title: true,
+        createdAt: true,
+      },
+    });
+
+    if (!latestArticle) {
+      return {
+        data: null,
+        error: "No articles found",
+        status: 404,
+      };
+    }
+
+    return {
+      data: latestArticle,
+      error: null,
+      status: 200,
+    };
+  } catch (error) {
+    console.error("Error fetching latest article:", error);
+    return {
+      data: null,
+      error: "Failed to fetch latest article",
+      status: 500,
+    };
+  }
+}

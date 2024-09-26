@@ -1,5 +1,8 @@
+import ActivityCard from "@/components/adminComps/activityCard";
 import DashboardCards from "@/components/adminComps/dashboardCards";
 import { Button } from "@/components/ui/button";
+import { PlusCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function Dashboard() {
   return (
@@ -9,18 +12,27 @@ export default function Dashboard() {
       </div>
 
       <div
-        className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
+        className="flex flex-1 py-4 bg-white items-center justify-center rounded-lg border border-dashed shadow-sm"
         x-chunk="dashboard-02-chunk-1"
       >
         <div className="flex flex-col items-center gap-1 text-center">
           <h3 className="text-2xl font-bold tracking-tight">
-            You have no products
+            Manage Your News Articles
           </h3>
           <p className="text-sm text-muted-foreground">
-            You can start selling as soon as you add a product.
+            Start publishing news articles to engage your audience and grow your
+            readership.
           </p>
-          <Button className="mt-4">Add Product</Button>
+          <Link href="/dashboard/article-managment/add-article">
+            <Button className="mt-2">
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Add New Article
+            </Button>
+          </Link>
         </div>
+      </div>
+      <div className="mt-6">
+        <ActivityCard />
       </div>
     </div>
   );

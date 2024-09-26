@@ -56,3 +56,40 @@ export async function deleteSubscriber({ id }: { id: string }) {
     console.log(error);
   }
 }
+
+//finding the latest subscriber
+export async function fetchLatestSubscriber() {
+  try {
+    const latestSubscriber = await db.subscriber.findFirst({
+      orderBy: {
+        createdAt: "desc",
+      },
+      select: {
+        id: true,
+        email: true,
+        createdAt: true,
+      },
+    });
+
+    if (!latestSubscriber) {
+      return {
+        data: null,
+        error: "No subscribers found",
+        status: 404,
+      };
+    }
+
+    return {
+      data: latestSubscriber,
+      error: null,
+      status: 200,
+    };
+  } catch (error) {
+    console.error("Error fetching latest subscriber:", error);
+    return {
+      data: null,
+      error: "Failed to fetch latest subscriber",
+      status: 500,
+    };
+  }
+}
