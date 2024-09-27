@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import {
@@ -14,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import DropDownComp from "../dropDown";
 import { Session } from "next-auth";
+import { usePathname } from "next/navigation";
 
 const navBtns = [
   {
@@ -31,13 +33,16 @@ const navBtns = [
     title: "Subscribers",
     link: "/dashboard/subscribers",
   },
-  {
-    icon: <Settings className="h-4 w-4" />,
-    title: "Settings",
-    link: "/dashboard/settings",
-  },
+  // {
+  //   icon: <Settings className="h-4 w-4" />,
+  //   title: "Settings",
+  //   link: "/dashboard/settings",
+  // },
 ];
 export default function Header({ session }: { session: Session }) {
+  const pathName = usePathname();
+  const id = session.user.id;
+  const isActive = pathName === `/dashboard/settings/edit-user/${id}`;
   return (
     <header className="flex fixed lg:w-[79%] md:w-[79%] w-full z-[5] bg-gray-200/40 backdrop-blur-md top-0 right-0 h-14 items-center gap-4 border-b  px-4 lg:h-[60px] lg:px-6">
       <Sheet>
@@ -58,17 +63,29 @@ export default function Header({ session }: { session: Session }) {
               </Link>
             </div>
             {navBtns.map((nav, i) => {
+              const isActive = pathName === nav.link;
               return (
                 <Link
                   key={i}
                   href={nav.link}
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all  ${
+                    isActive ? "bg-black text-white" : ""
+                  }`}
                 >
                   {nav.icon}
                   {nav.title}
                 </Link>
               );
             })}
+            <Link
+              href={`/dashboard/settings/edit-user/${id}`}
+              className={`flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all  ${
+                isActive ? "bg-black text-white" : ""
+              }`}
+            >
+              <Settings className="h-4 w-4" />
+              Settings
+            </Link>
           </nav>
         </SheetContent>
       </Sheet>
