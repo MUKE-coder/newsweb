@@ -35,16 +35,15 @@ export default function DropDownComp({ session }: { session: Session }) {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          {" "}
-          <Link href="/dashboard/article-managment/add-article">
-            Create Article
-          </Link>{" "}
-        </DropdownMenuItem>
-        <DropdownMenuItem>
           <Link href="/dashboard">Dashboard</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Link href="/dashboard/article-managment">All Articles</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/dashboard/article-managment/add-article">
+            Create Article
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/login" })}>

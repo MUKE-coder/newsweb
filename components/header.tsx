@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { FolderPen, Menu, Search } from "lucide-react";
+import { FolderPen, Menu, Pencil, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
@@ -149,9 +149,9 @@ export default function Header() {
         {session && (
           <Link
             href="/dashboard/article-managment/add-article"
-            className="flex gap-3 items-center"
+            className="flex gap-1 items-center"
           >
-            write <FolderPen className="w-4 h-4" />
+            write <Pencil className="w-4 h-4" />
           </Link>
         )}
 
