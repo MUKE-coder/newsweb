@@ -9,6 +9,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import ActionColumn from "@/components/DataTableColumns/ActionColumn";
 import { Category, News } from "@prisma/client";
 import { ArticleProps } from "@/types/types";
+import Link from "next/link";
 
 const trimTitle = (title: string, maxLength: number = 45) => {
   if (title.length <= maxLength) return title;
@@ -49,6 +50,22 @@ export const columns: ColumnDef<News | ArticleProps | any>[] = [
     cell: ({ row }) => {
       const title = row.getValue("title") as string;
       return <span title={title}>{trimTitle(title)}</span>;
+    },
+  },
+
+  {
+    accessorKey: "link",
+    header: "Article Link",
+    cell: ({ row }) => {
+      const data = row.original;
+      return (
+        <Link
+          href={`/detailed//${data.id}`}
+          className="text-blue-600 hover:underline"
+        >
+          View Article
+        </Link>
+      );
     },
   },
 

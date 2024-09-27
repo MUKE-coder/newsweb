@@ -1,10 +1,10 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { MoveRight } from "lucide-react";
 import LatestNews from "./cards/latestNews";
 import { News } from "@prisma/client";
-import Editor from "./adminComps/editor";
+import DetailedEditor from "./detailedEditor";
 
 type ArticleProps = {
   id: string;
@@ -50,10 +50,7 @@ export default function Details({
         )}
       </div>
       <div>
-        <Editor
-          isEditable={false}
-          initialValue={JSON.parse(articleFetched.content)}
-        />
+        <DetailedEditor articleFetched={articleFetched} />
       </div>
       <div className="mt-12">
         <div className="flex justify-between items-center mb-6">
