@@ -2,13 +2,10 @@ import Link from "next/link";
 import React from "react";
 import {
   BookOpen,
-  ChartBar,
   Home,
   Menu,
-  Package2,
   Search,
   Settings,
-  Users,
   UsersRound,
 } from "lucide-react";
 

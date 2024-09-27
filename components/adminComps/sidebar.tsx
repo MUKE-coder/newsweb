@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
+import { Session } from "next-auth";
 
 const navBtns = [
   {
@@ -30,15 +31,17 @@ const navBtns = [
     title: "Subscribers",
     link: "/dashboard/subscribers",
   },
-  {
-    icon: <Settings className="h-4 w-4" />,
-    title: "Settings",
-    link: "/dashboard/settings",
-  },
+  // {
+  //   icon: <Settings className="h-4 w-4" />,
+  //   title: "Settings",
+  //   link: "/dashboard/settings",
+  // },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ session }: { session: Session }) {
   const pathName = usePathname();
+  const id = session.user.id;
+  const isActive = pathName === `/dashboard/settings/edit-user/${id}`;
   return (
     <div className="fixed display-none top-0 left-0 h-full w-[220px] lg:w-[280px] border-r bg-muted/40 overflow-y-auto">
       <div className="flex h-full flex-col gap-2">
@@ -83,6 +86,16 @@ export default function Sidebar() {
                 </Link>
               );
             })}
+
+            <Link
+              href={`/dashboard/settings/edit-user/${id}`}
+              className={`flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all  ${
+                isActive ? "bg-[#f53b07] text-white" : ""
+              }`}
+            >
+              <Settings className="h-4 w-4" />
+              Settings
+            </Link>
           </nav>
         </div>
       </div>

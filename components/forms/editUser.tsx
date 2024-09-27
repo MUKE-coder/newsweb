@@ -36,27 +36,6 @@ export default function EditUser({ singleUserData }: SingleUserDetails) {
     data.userName = `${data.firstName} ${data.lastName}`;
     setLoading(true);
     console.log(data);
-    // try {
-    // const res = await registerUser(data)
-    // if (res && res.status === 409) {
-    //   setEmailError("Sorry, Email already exists in our database.");
-    //   toast.error("email already exists")
-    // } else if (res && res.status === 201) {
-    //   reset();
-    //   router.push("/login");
-    //   toast.success("successfully registered")
-    // }else {
-    //   alert("network problem")
-    //   toast.error("something went wrong please try again")
-    //   console.log(res.error);
-
-    // }
-    // } catch (error) {
-    //   toast.error("something went wrong please try again")
-    //   console.log(error);
-    // } finally {
-    //   setLoading(false);
-    // }
 
     try {
       const update = await editUserData(
