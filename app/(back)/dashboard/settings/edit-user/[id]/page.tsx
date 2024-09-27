@@ -1,6 +1,7 @@
 "use server";
 import { getSingleUserData, getUserData } from "@/actions/userActions";
 import EditUser from "@/components/forms/editUser";
+import SparklesText from "@/components/magicui/sparkles-text";
 import React from "react";
 
 export default async function page({
@@ -10,8 +11,13 @@ export default async function page({
 }) {
   const singleUserData = await getSingleUserData({ id });
   return (
-    <div className="max-w-screen-sm mx-auto px-4 ">
-      <EditUser singleUserData={singleUserData} />
+    <div>
+      <div>
+        <SparklesText text="Update Your Details" />
+      </div>
+      <div className="max-w-screen-sm mx-auto px-4 ">
+        <EditUser singleUserData={singleUserData} />
+      </div>
     </div>
   );
 }
