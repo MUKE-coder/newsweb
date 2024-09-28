@@ -59,6 +59,7 @@ export interface IForm {
 
 export type ArticleProps = {
   thumbnail: string;
+  banner: string;
   title: string;
   content: string;
   description: string;

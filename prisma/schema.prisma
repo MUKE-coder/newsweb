@@ -33,6 +33,7 @@ model User {
 model News {
   id               String   @id @default(auto()) @map("_id") @db.ObjectId
   thumbnail        String?
+  banner           String?
   title            String
   content          Json 
   description      String?

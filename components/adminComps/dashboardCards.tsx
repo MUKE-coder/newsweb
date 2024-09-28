@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Activity, CreditCard, Newspaper, Users } from "lucide-react";
+import { Layers, Newspaper, Users } from "lucide-react";
 import { fetchArticles } from "@/actions/articleActions";
 import { fetchSubscribers } from "@/actions/subscriberActions";
+import { getAllCats } from "@/actions/catActions";
 
 export default async function DashboardCards() {
   const articlesCreated = await fetchArticles();
@@ -10,6 +11,9 @@ export default async function DashboardCards() {
 
   const subsCreated = await fetchSubscribers();
   const countedSubscribers = subsCreated?.length;
+
+  const allCats = await getAllCats();
+  const countedCats = allCats?.length;
 
   // Calculate the number of articles created in the last 30 days
   const thirtyDaysAgo = new Date();
@@ -56,13 +60,13 @@ export default async function DashboardCards() {
 
       <Card x-chunk="dashboard-01-chunk-2">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Recent Articles</CardTitle>
-          <Newspaper className="h-4 w-4 text-muted-foreground" />
+          <CardTitle className="text-sm font-medium">Categories</CardTitle>
+          <Layers className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{recentArticles}</div>
+          <div className="text-2xl font-bold">{countedCats}</div>
           <p className="text-xs text-muted-foreground">
-            Articles in last 30 days
+            All categories till date
           </p>
         </CardContent>
       </Card>

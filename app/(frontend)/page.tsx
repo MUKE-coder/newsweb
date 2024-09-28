@@ -17,7 +17,7 @@ export default function page() {
         <div className="lg:px-16 md:px-bg-[12 px-4">
           <div className="bg-[#ffffff] px-4 py-6 text-center rounded-lg flex flex-col gap-3">
             <div className="lg:text-[1rem] md:text-[1rem] text-[0.7rem]">
-              <h3 className="logoFont">WELCOME TO LUBILIIZI BULLETIN</h3>
+              <h3 className="logoFont">WELCOME TO RUBIRIZI BULLETIN</h3>
             </div>
             <div className="flex flex-col gap-3">
               <h2 className="lg:text-[1.5rem] headlineFont md:text-[1.3rem] text-[1rem] font-bold">

@@ -11,6 +11,7 @@ export async function createArticle(data: ArticleProps) {
   try {
     const {
       thumbnail,
+      banner,
       title,
       content,
       description,
@@ -26,6 +27,7 @@ export async function createArticle(data: ArticleProps) {
     const createdArticle = await db.news.create({
       data: {
         thumbnail,
+        banner,
         title,
         content,
         description,

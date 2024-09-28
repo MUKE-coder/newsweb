@@ -5,7 +5,10 @@ import React from "react";
 import {
   BookOpen,
   ChartBar,
+  Disc2,
   Home,
+  Layers,
+  Mails,
   PlusCircle,
   Settings,
   Users,
@@ -31,11 +34,21 @@ const navBtns = [
     title: "Subscribers",
     link: "/dashboard/subscribers",
   },
-  // {
-  //   icon: <Settings className="h-4 w-4" />,
-  //   title: "Settings",
-  //   link: "/dashboard/settings",
-  // },
+  {
+    icon: <Layers className="h-4 w-4" />,
+    title: "Categories",
+    link: "/dashboard/article-managment/add-category",
+  },
+  {
+    icon: <Disc2 className="h-4 w-4" />,
+    title: "Mediahouses",
+    link: "/dashboard/article-managment/add-media",
+  },
+  {
+    icon: <Mails className="h-4 w-4" />,
+    title: "Block Emails",
+    link: "/dashboard/block-emails",
+  },
 ];
 
 export default function Sidebar({ session }: { session: Session }) {

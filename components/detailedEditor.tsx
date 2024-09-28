@@ -69,7 +69,7 @@
 import React, { useState } from "react";
 import Editor from "./adminComps/editor";
 import { useSession } from "next-auth/react";
-import { Pencil, Save, Loader2 } from "lucide-react";
+import { Pencil, Save, Loader2, SquarePen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
 import { updateData } from "@/actions/articleActions";
@@ -145,7 +145,7 @@ export default function DetailedEditor({
           ) : isEditing ? (
             <Save className="h-4 w-4" />
           ) : (
-            <Pencil className="h-4 w-4" />
+            <SquarePen className="h-4 w-4" />
           )}
         </Button>
       )}

@@ -41,6 +41,9 @@ export default function NewsForm({ categories, mediahouse, initialData }: any) {
   const [image, setImage] = useState(
     initialData?.thumbnail || "/placeholder.svg"
   );
+  const [banner, setBanner] = useState(
+    initialData?.banner || initialData?.thumbnail
+  );
 
   const [content, setContent] = useState<any>(
     initialData?.content ? JSON.parse(initialData.content) : defaultValue
@@ -118,6 +121,7 @@ export default function NewsForm({ categories, mediahouse, initialData }: any) {
     const id = initialData?.id;
     data.content = JSON.stringify(content);
     data.thumbnail = initialData ? initialData.thumbnail : image;
+    data.banner = initialData ? initialData.banner : banner;
     data.categoryId = selectedCategory?.value;
     data.mediaHouseId = selectedMedia?.value;
     data.readTime = elapsedTime;
@@ -132,6 +136,7 @@ export default function NewsForm({ categories, mediahouse, initialData }: any) {
             description: data.description,
             content: JSON.stringify(content),
             thumbnail: image,
+            banner: banner,
             categoryId: selectedCategory?.value,
             mediaHouseId: selectedMedia?.value,
             readTime: elapsedTime,
@@ -232,12 +237,20 @@ export default function NewsForm({ categories, mediahouse, initialData }: any) {
                   </div>
                 </div>
               </div>
-              <div className="lg:w-[40%] md:w-[40%] w-[100%]">
+              <div className="lg:w-[40%] md:w-[40%] w-[100%] grid grid-cols-1 gap-3">
                 <ImageInput
-                  title="Article Image"
+                  title="Article Thumbnail"
                   image={image}
                   setImage={setImage}
                   endpoint="imageUploader"
+                  description="Please the dimensions of this thumbnail should be of 800 by 600"
+                />
+                <ImageInput
+                  title="Article Banner"
+                  image={banner}
+                  setImage={setBanner}
+                  endpoint="imageUploader"
+                  description="Please the dimensions of this banner should be of 1200 by 627"
                 />
               </div>
             </div>

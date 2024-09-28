@@ -9,6 +9,7 @@ import DetailedEditor from "./detailedEditor";
 type ArticleProps = {
   id: string;
   thumbnail: string;
+  banner?: string;
   title: string;
   content: string;
   description: string;
@@ -27,7 +28,7 @@ type ArticleProps = {
 export default function Details({
   articleFetched,
 }: {
-  articleFetched: ArticleProps | News[] | any;
+  articleFetched: ArticleProps | News[] | any | null;
 }) {
   return (
     <div className="mt-5 max-w-4xl mx-auto">
@@ -43,7 +44,7 @@ export default function Details({
               className="w-full h-72 object-cover rounded-lg"
               width={800}
               height={400}
-              src={articleFetched.thumbnail}
+              src={articleFetched.banner}
               alt={articleFetched.title}
             />
           </div>

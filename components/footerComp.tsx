@@ -1,9 +1,63 @@
+import { getAllCats } from "@/actions/catActions";
 import { Dribbble, Facebook, Github, Instagram, Twitter } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+interface NewsProps {
+  id: string;
+  thumbnail?: string | null;
+  title: string;
+  content: any;
+  description?: string | null;
+  readTime?: string | null;
+  featuredOption: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+  userId: string;
+  categoryId?: string | null;
+  mediaHouseId?: string | null;
+  User: UserWithoutNews | null;
+  Category: CategoryWithoutNews | null;
+  MediaHouse: MediaHouseWithoutNews | null;
+}
 
-export default function FooterComp() {
+interface UserWithoutNews {
+  id: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  userName: string;
+  phone?: string | null;
+  email?: string | null;
+  emailVerified?: Date | null;
+  image?: string | null;
+  password: string;
+  isVerfied: boolean;
+  token?: number | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface MediaHouseWithoutNews {
+  id: string;
+  title: string;
+  image?: string | null;
+  slug: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface CategoryWithoutNews {
+  id: string;
+  title: string;
+  slug: string;
+  image?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export default async function FooterComp() {
   const currentDate = new Date().getFullYear();
+  const categories: CategoryWithoutNews[] = (await getAllCats()) || [];
+
   return (
     <footer className=" mt-[13rem] relative">
       <div className="mx-auto  max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
@@ -91,7 +145,7 @@ export default function FooterComp() {
             </ul>
           </div>
 
-          <div className=" w-[80%] flex flex-col gap-6">
+          {/* <div className=" w-[80%] flex flex-col gap-6">
             <div className="flex justify-between width-column">
               <div>
                 <p className="font-bold text-gray-900">Business</p>
@@ -509,6 +563,20 @@ export default function FooterComp() {
                 </ul>
               </div>
             </div>
+          </div> */}
+
+          <div className="flex w-[80%] flex-shrink-0 flex-wrap width-column">
+            {categories?.map((item, i) => {
+              return (
+                <Link
+                  key={i}
+                  href={`/category-page/${item.slug}`}
+                  className={`relative px-3 py-2 rounded-md transition-colors`}
+                >
+                  {item.title}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
