@@ -59,9 +59,9 @@ export default async function FooterComp() {
   const categories: CategoryWithoutNews[] = (await getAllCats()) || [];
 
   return (
-    <footer className=" mt-[13rem] relative">
+    <footer className=" mt-[9rem] relative">
       <div className="mx-auto  max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
-        <div className="flex width flex-container">
+        <div className="flex width flex-container justify-between">
           <div>
             <div className="text-[#f45b42]">
               <Link

@@ -1,6 +1,7 @@
 "use server";
 
 import { sendNewsletterEmail } from "@/components/email-templates/Newsletter";
+import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
 export type MailDataProps = {
   articleTitle: string;
@@ -40,6 +41,7 @@ export async function sendArticleToSingleMail(data: MailDataProps) {
       ),
     });
     console.log(res);
+    revalidatePath("/dashboard/send-mails");
     return {
       success: true,
       message: "Article Sent",
