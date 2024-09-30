@@ -98,7 +98,7 @@ export default function EmailArticleForm({
         const res = await sendArticleToBatchMails(data);
         console.log(res);
         setIsSending(false);
-        toast.success("Email sent successfully!");
+        toast.success("Email sent succesfully!");
         setContent(null);
       } else {
         const res = await sendArticleToSingleMail(data);
