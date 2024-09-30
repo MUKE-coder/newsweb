@@ -10,7 +10,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
 
   // console.log(session);
   if (!session) {
-    redirect("/login");
+    return redirect("/login");
   }
   return (
     <div className="bg-[#dae4fdb4]/10 min-h-screen">

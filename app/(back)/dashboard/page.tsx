@@ -1,4 +1,3 @@
-"use client";
 import ActivityCard from "@/components/adminComps/activityCard";
 import DashboardCards from "@/components/adminComps/dashboardCards";
 import { Button } from "@/components/ui/button";
