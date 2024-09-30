@@ -8,7 +8,8 @@ import { signIn } from "next-auth/react";
 import { UserProps } from "@/types/types";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { LogIn } from "lucide-react";
+import { Lock, LogIn } from "lucide-react";
+import PasswordInput from "../forminputs/passwordinput";
 
 export default function LoginForm() {
   const {
@@ -76,11 +77,13 @@ export default function LoginForm() {
           />
         </div>
         <div className="mt-4">
-          <TextInput
+          <PasswordInput
             register={register}
             errors={errors}
             label="Password"
             name="password"
+            icon={Lock}
+            placeholder="password"
           />
         </div>
         <div className="mt-4 flex">

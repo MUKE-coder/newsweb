@@ -10,6 +10,8 @@ import { UserProps } from "@/types/types";
 import { registerUser } from "@/actions/userActions";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import PasswordInput from "../forminputs/passwordinput";
+import { Lock } from "lucide-react";
 
 export default function SignupForm() {
   // console.log(singleUserData)
@@ -29,6 +31,7 @@ export default function SignupForm() {
   async function submitUser(data: UserProps) {
     data.image = image;
     data.userName = `${data.firstName} ${data.lastName}`;
+    console.log(data);
     setLoading(true);
     try {
       const res = await registerUser(data);
@@ -128,11 +131,13 @@ export default function SignupForm() {
           <span className="text-xs my-2 text-red-600">{emailError}</span>
         )}
         <div>
-          <TextInput
+          <PasswordInput
             register={register}
             errors={errors}
             label="Password"
             name="password"
+            icon={Lock}
+            placeholder="password"
           />
         </div>
 
