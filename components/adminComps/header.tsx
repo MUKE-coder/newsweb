@@ -54,7 +54,7 @@ const navBtns = [
 ];
 export default function Header({ session }: { session: Session }) {
   const pathName = usePathname();
-  const id = session.user.id;
+  const id = session?.user.id;
   const isActive = pathName === `/dashboard/settings/edit-user/${id}`;
   return (
     <header className="flex fixed lg:w-[79%] md:w-[79%] w-full z-[5] bg-gray-200/40 backdrop-blur-md top-0 right-0 h-14 items-center gap-4 border-b  px-4 lg:h-[60px] lg:px-6">

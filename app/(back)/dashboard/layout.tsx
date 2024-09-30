@@ -3,9 +3,15 @@ import Sidebar from "@/components/adminComps/sidebar";
 import React, { ReactNode } from "react";
 import { authOptions } from "@/config/auth";
 import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const session: any = await getServerSession(authOptions);
+
+  // console.log(session);
+  if (!session) {
+    redirect("/login");
+  }
   return (
     <div className="bg-[#dae4fdb4]/10 min-h-screen">
       <Sidebar session={session} />

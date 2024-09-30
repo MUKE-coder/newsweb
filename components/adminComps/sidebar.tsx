@@ -53,7 +53,7 @@ const navBtns = [
 
 export default function Sidebar({ session }: { session: Session }) {
   const pathName = usePathname();
-  const id = session.user.id;
+  const id = session?.user.id;
   const isActive = pathName === `/dashboard/settings/edit-user/${id}`;
   return (
     <div className="fixed display-none top-0 left-0 h-full w-[220px] lg:w-[280px] border-r bg-muted/40 overflow-y-auto">

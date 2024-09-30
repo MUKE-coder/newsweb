@@ -1,10 +1,18 @@
+"use client";
 import ActivityCard from "@/components/adminComps/activityCard";
 import DashboardCards from "@/components/adminComps/dashboardCards";
 import { Button } from "@/components/ui/button";
+import { authOptions } from "@/config/auth";
 import { PlusCircle } from "lucide-react";
+import { getServerSession } from "next-auth";
+import { getSession, useSession } from "next-auth/react";
 import Link from "next/link";
+import { redirect, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
+  // const router = useRouter();
+
   return (
     <div>
       <div className="mt-6 mb-12">

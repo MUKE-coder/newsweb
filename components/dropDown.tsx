@@ -24,7 +24,7 @@ export default function DropDownComp({ session }: { session: Session }) {
           <Image
             width={262}
             height={192}
-            src={session.user.image as string}
+            src={session?.user.image as string}
             alt="User Image"
             className="h-full w-full rounded-full"
           />
