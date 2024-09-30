@@ -1,8 +1,8 @@
 import { getFeaturedArticles } from "@/actions/articleActions";
 import { FormatDate } from "@/lib/formatDate";
 import Image from "next/image";
-import React, { Suspense } from "react";
-import SkeletonComp from "../skeletonComp";
+import Link from "next/link";
+import React from "react";
 
 export default async function EditorCard() {
   const editorCardData = await getFeaturedArticles("editors_pick");
@@ -11,8 +11,8 @@ export default async function EditorCard() {
     return null; // or some fallback UI
   }
   return (
-    <a
-      href={`/detailed/${cardFiltered.id}`}
+    <Link
+      href={`/detailed/${cardFiltered.slug}`}
       className="group w-[100%] col-span-2 rounded-lg relative block bg-black"
     >
       <Image
@@ -58,6 +58,6 @@ export default async function EditorCard() {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }

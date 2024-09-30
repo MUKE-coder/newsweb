@@ -8,6 +8,7 @@ interface NewsProps {
   id: string;
   thumbnail?: string | null;
   title: string;
+  slug: string;
   content: any; // Represents Json type
   description?: string | null;
   readTime?: string | null;

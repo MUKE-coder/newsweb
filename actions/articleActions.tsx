@@ -12,6 +12,7 @@ export async function createArticle(data: ArticleProps) {
     const {
       thumbnail,
       banner,
+      slug,
       title,
       content,
       description,
@@ -29,6 +30,7 @@ export async function createArticle(data: ArticleProps) {
         thumbnail,
         banner,
         title,
+        slug,
         content,
         description,
         readTime: data.readTime,

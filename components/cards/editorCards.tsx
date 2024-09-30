@@ -1,8 +1,7 @@
-import React, { Suspense } from "react";
+import React from "react";
 import CardComp from "./cardComp";
 import { getFeaturedArticles } from "@/actions/articleActions";
 import { FormatDate } from "@/lib/formatDate";
-import SkeletonComp from "../skeletonComp";
 
 export default async function EditorCards() {
   const editorCardData = await getFeaturedArticles("editors_pick");
@@ -17,7 +16,7 @@ export default async function EditorCards() {
             image={cardData.thumbnail as string}
             title={cardData.title}
             category={cardData.Category?.title as string}
-            link={`/detailed/${cardData.id}`}
+            link={`/detailed/${cardData.slug}`}
             time={FormatDate(cardData.createdAt)}
             mediahouse={cardData.MediaHouse?.title as string}
             mediahouseImage={cardData.MediaHouse?.image as string}

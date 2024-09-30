@@ -135,6 +135,7 @@ export default function NewsForm({ categories, mediahouse, initialData }: any) {
         const updatedArticle = await updateData(
           {
             title: data.title,
+            slug: data.slug,
             description: data.description,
             content: JSON.stringify(content),
             thumbnail: image,

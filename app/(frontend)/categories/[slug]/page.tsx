@@ -4,15 +4,14 @@ import { fetchArticleCats } from "@/actions/articleActions";
 import CardComp from "@/components/cards/cardComp";
 import { Button } from "@/components/ui/button";
 import { FormatDate } from "@/lib/formatDate";
-import { ChevronsLeft, ChevronsRight } from "lucide-react";
 import SparklesText from "@/components/magicui/sparkles-text";
-import { Skeleton } from "@/components/ui/skeleton";
 import { SkeletonLoader } from "@/components/loadComp";
 
 interface NewsProps {
   id: string;
   thumbnail?: string | null;
   title: string;
+  slug: string;
   content: any;
   description?: string | null;
   readTime?: string | null;
@@ -132,7 +131,7 @@ export default function ArticleCategoryPage({
               image={article.thumbnail || ""}
               title={article.title}
               category={article.Category?.title || ""}
-              link={`/detailed/${article.id}`}
+              link={`/detailed/${article.slug}`}
               time={FormatDate(article.createdAt)}
               mediahouse={article.MediaHouse?.title || ""}
               description={article.description || ""}

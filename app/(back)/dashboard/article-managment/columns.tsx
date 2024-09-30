@@ -60,7 +60,7 @@ export const columns: ColumnDef<News | ArticleProps | any>[] = [
       const data = row.original;
       return (
         <Link
-          href={`/detailed//${data.id}`}
+          href={`/detailed//${data.slug}`}
           className="text-blue-600 hover:underline"
         >
           View Article

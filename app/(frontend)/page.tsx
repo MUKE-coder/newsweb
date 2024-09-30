@@ -103,7 +103,7 @@ export default function page() {
               </h1>
               <Link
                 className="flex items-center gap-2 text-[#e00e0e] font-bold"
-                href="/category-page/business"
+                href="/categories/business"
               >
                 {" "}
                 <MoveRight className="w-4 h-5" />
@@ -123,7 +123,7 @@ export default function page() {
               </h1>
               <Link
                 className="flex items-center gap-2 text-[#e00e0e] font-bold"
-                href="/category-page/sports"
+                href="/categories/sports"
               >
                 {" "}
                 <MoveRight className="w-4 h-5" />

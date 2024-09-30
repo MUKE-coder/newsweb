@@ -12,6 +12,7 @@ interface NewsProps {
   id: string;
   thumbnail?: string | null;
   title: string;
+  slug: string;
   content: any; // Represents Json type
   description?: string | null;
   readTime?: string | null;
@@ -95,7 +96,7 @@ export default function Page() {
                 image={article.thumbnail as string}
                 title={article.title}
                 category={article.Category?.title as string}
-                link={`/detailed/${article.id}`}
+                link={`/detailed/${article.slug}`}
                 time={FormatDate(article.createdAt)}
                 mediahouse={article.MediaHouse?.title as string}
                 description={article.description as string}

@@ -1,16 +1,16 @@
 import React, { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/config/auth";
-import Header from "@/components/header";
 import FooterComp from "@/components/footerComp";
 import { InputWithButton } from "@/components/subscribeComp";
+import HeaderFront from "@/components/header";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const session = await getServerSession(authOptions);
 
   return (
     <div>
-      <Header />
+      <HeaderFront />
       {children}
       <div className="lg:px-16 md:px-12 px-4 lg:mt-[4rem] md:mt-[3rem] mt-[2rem]">
         <div className="bg-[#ffffff] px-4 py-6 gap-4 rounded-lg grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 items-center">

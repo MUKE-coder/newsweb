@@ -62,7 +62,7 @@ interface CategoryWithoutNews {
   updatedAt: Date;
 }
 
-export default function Header() {
+export default function HeaderFront() {
   const [categories, setCategories] = useState<CategoryWithoutNews[]>([]);
   const pathname = usePathname();
   const { data: session } = useSession();
@@ -76,8 +76,8 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky justify-between z-[40] top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 w-full">
-      <nav className="hidden flex-col justify-between gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+    <div className="sticky justify-between z-[40] top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 w-full">
+      <div className="hidden flex-col justify-between gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <div className="text-[#f45b42]">
           <Link
             href="/"
@@ -87,13 +87,13 @@ export default function Header() {
           </Link>
         </div>
 
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-2 items-center">
           {categories?.map((item, i) => {
-            const isActive = pathname === `/category-page/${item.slug}`;
+            const isActive = pathname === `/categories/${item.slug}`;
             return (
               <Link
                 key={i}
-                href={`/category-page/${item.slug}`}
+                href={`/categories/${item.slug}`}
                 className={`relative px-3 py-2 rounded-md transition-colors ${
                   isActive
                     ? "text-foreground text-red-500"
@@ -105,7 +105,7 @@ export default function Header() {
             );
           })}
         </div>
-      </nav>
+      </div>
 
       <Sheet>
         <SheetTrigger asChild>
@@ -117,11 +117,11 @@ export default function Header() {
         <SheetContent side="left">
           <nav className="grid gap-6 text-lg font-medium z-[70]">
             {categories?.map((item, i) => {
-              const isActive = pathname === `/category-page/${item.slug}`;
+              const isActive = pathname === `/categories/${item.slug}`;
               return (
                 <Link
                   key={i}
-                  href={`/category-page/${item.slug}`}
+                  href={`/categories/${item.slug}`}
                   className={`relative px-3 py-2 rounded-md transition-colors ${
                     isActive
                       ? "text-foreground text-red-500"
@@ -154,6 +154,6 @@ export default function Header() {
 
         {session && <DropDownComp session={session} />}
       </div>
-    </header>
+    </div>
   );
 }

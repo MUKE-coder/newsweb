@@ -4,10 +4,66 @@ import Link from "next/link";
 import React, { Suspense } from "react";
 import SkeletonComp from "../skeletonComp";
 
-export default function LeftCard({ articalLeft }: any) {
+interface NewsProps {
+  id: string;
+  thumbnail?: string | null;
+  title: string;
+  slug: string;
+  content: any; // Represents Json type
+  description?: string | null;
+  readTime?: string | null;
+  featuredOption: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+  userId: string;
+  categoryId?: string | null;
+  mediaHouseId?: string | null;
+  User: UserWithoutNews | null;
+  Category: CategoryWithoutNews | null;
+  MediaHouse: MediaHouseWithoutNews | null;
+}
+
+interface UserWithoutNews {
+  id: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  userName: string;
+  phone?: string | null;
+  email?: string | null;
+  emailVerified?: Date | null;
+  image?: string | null;
+  password: string;
+  isVerfied: boolean;
+  token?: number | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface MediaHouseWithoutNews {
+  id: string;
+  title: string;
+  image?: string | null;
+  slug: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface CategoryWithoutNews {
+  id: string;
+  title: string;
+  slug: string;
+  image?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export default function LeftCard({ articalLeft }: { articalLeft: NewsProps }) {
   return (
     <Suspense fallback={<SkeletonComp />}>
-      <Link href={`/detailed/${articalLeft.id}`} className="w-full  col-span-1">
+      <Link
+        href={`/detailed/${articalLeft.slug}`}
+        className="w-full  col-span-1"
+      >
         <div className="w-full overflow-hidden">
           <Image
             className="w-full lg:h-[12rem] md:h-[10rem] h-[10rem] rounded-[0.6rem] overflow-hidden"
@@ -25,12 +81,12 @@ export default function LeftCard({ articalLeft }: any) {
                   width={225}
                   height={225}
                   className="w-full rounded-full"
-                  src={articalLeft.MediaHouse.image}
+                  src={articalLeft.MediaHouse?.image as string}
                   alt="mediahouse"
                 />
               </div>
               <h3 className="lg:text-[1rem] subHeaderFont md:text-[1rem] text-[0.8rem]  font-bold">
-                {articalLeft.MediaHouse.title}
+                {articalLeft.MediaHouse?.title}
               </h3>
             </div>
             <div>
@@ -47,7 +103,7 @@ export default function LeftCard({ articalLeft }: any) {
           </div>
           <div className="">
             <h3 className="text-[#e00e0e] subHeaderFont lg:text-[1rem] md:text-[1rem] text-[0.7rem] font-bold">
-              {articalLeft.Category.title}
+              {articalLeft.Category?.title}
             </h3>
           </div>
         </div>
