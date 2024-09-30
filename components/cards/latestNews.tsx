@@ -10,6 +10,7 @@ interface NewsProps {
   id: string;
   thumbnail?: string | null;
   title: string;
+  slug: string;
   content: any; // Represents Json type
   description?: string | null;
   readTime?: string | null;
@@ -83,7 +84,7 @@ export default async function LatestNews() {
         {latestNews.map((news) => (
           <Link
             key={news.id}
-            href={`/detailed/${news.id}`}
+            href={`/detailed/${news.slug}`}
             className="flex-shrink-0 w-[80vw]  sm:w-[45vw] md:w-[calc(50%-1rem)] lg:w-[calc(23.6%-1.1rem)]"
           >
             <div className="w-full overflow-hidden">

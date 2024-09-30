@@ -1,12 +1,12 @@
-import { getSingleArticle } from "@/actions/articleActions";
+import { getArticleBySlug, getSingleArticle } from "@/actions/articleActions";
 import Details from "@/components/details";
 
 export default async function page({
-  params: { id },
+  params: { slug },
 }: {
-  params: { id: string };
+  params: { slug: string };
 }) {
-  const articleFetched = await getSingleArticle({ id });
+  const articleFetched = await getArticleBySlug(slug);
 
   return (
     <div>

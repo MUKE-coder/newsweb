@@ -61,6 +61,7 @@ export type ArticleProps = {
   thumbnail: string;
   banner: string;
   title: string;
+  slug: string;
   content: string;
   description: string;
   readTime: string;

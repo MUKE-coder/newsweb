@@ -18,6 +18,7 @@ import { ArticleProps } from "@/types/types";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { generateSlug } from "@/lib/generateSlug";
 
 const radioOptions = [
   {
@@ -126,6 +127,7 @@ export default function NewsForm({ categories, mediahouse, initialData }: any) {
     data.mediaHouseId = selectedMedia?.value;
     data.readTime = elapsedTime;
     data.userId = session?.user?.id;
+    data.slug = generateSlug(data.title);
     console.log(data, "form data");
     if (initialData) {
       try {

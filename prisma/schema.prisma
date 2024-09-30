@@ -35,6 +35,7 @@ model News {
   thumbnail        String?
   banner           String?
   title            String
+  slug            String @default("no-slug")
   content          Json 
   description      String?
   readTime         String?

@@ -11,7 +11,7 @@ export default async function TopCard() {
   }
   return (
     <Link
-      href={`/detailed/${newArticle.id}`}
+      href={`/detailed/${newArticle.slug}`}
       className="grid gap-4 lg:mt-[3rem] md:mt-[3rem] mt-[2rem] lg:grid-cols-2 md:grid-cols-2 grid-cols-1"
     >
       <div className="w-full overflow-hidden">

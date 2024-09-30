@@ -96,6 +96,16 @@ export async function getSingleArticle({
     console.log(error);
   }
 }
+export async function getArticleBySlug(slug: string) {
+  try {
+    const fetchArticle = await db.news.findFirst({
+      where: { slug },
+    });
+    return fetchArticle;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 //update
 export async function updateData(data: ArticleProps | any, id: string) {

@@ -138,12 +138,9 @@ export default function Header() {
 
       <div className="flex items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
         {!session && (
-          <Link
-            href="/login"
-            className="bg-black px-3 py-1 rounded-md text-white"
-          >
-            Login
-          </Link>
+          <Button asChild>
+            <Link href="/login">Login</Link>
+          </Button>
         )}
 
         {session && (

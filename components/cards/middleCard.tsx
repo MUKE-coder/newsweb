@@ -9,6 +9,7 @@ interface NewsProps {
   id: string;
   thumbnail?: string | null;
   title: string;
+  slug: string;
   content: any; // Represents Json type
   description?: string | null;
   readTime?: string | null;
@@ -63,7 +64,7 @@ export default async function MiddleCard({
 }) {
   return (
     <Link
-      href={`/detailed/${MiddleCardData.id}`}
+      href={`/detailed/${MiddleCardData.slug}`}
       className="group w-[100%] col-span-2 rounded-lg relative block bg-black"
     >
       <Image
