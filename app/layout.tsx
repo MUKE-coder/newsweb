@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     "breaking news Rubirizi",
     "news from Rubirizi",
     "Rubirizi stories",
+    "news",
+    "international news",
     "Rubirizi community news",
     "current events Rubirizi",
     "Rubirizi online news",
