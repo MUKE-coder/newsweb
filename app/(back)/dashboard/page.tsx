@@ -3,6 +3,19 @@ import DashboardCards from "@/components/adminComps/dashboardCards";
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "/dashboard",
+  description:
+    "Stay informed with the latest news, stories, and insights from Rubirizi and beyond. Rubirizi Bulletin offers in-depth coverage, timely updates, and a fresh perspective on the topics that matter most.",
+  alternates: {
+    canonical: "/dashboard",
+    languages: {
+      "en-US": "/en-US",
+    },
+  },
+};
 
 export default function Dashboard() {
   return (

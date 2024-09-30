@@ -5,7 +5,7 @@ import CardComp from "@/components/cards/cardComp";
 import { SkeletonLoader } from "@/components/loadComp";
 import { Button } from "@/components/ui/button";
 import { FormatDate } from "@/lib/formatDate";
-import { ChevronsLeft, ChevronsRight } from "lucide-react";
+
 import React, { Suspense, useEffect, useState } from "react";
 
 interface NewsProps {
@@ -59,6 +59,7 @@ interface CategoryWithoutNews {
   createdAt: Date;
   updatedAt: Date;
 }
+
 const ARTICLES_PER_PAGE = 12;
 export default function Page() {
   const [articles, setArticles] = useState<NewsProps[]>([]);

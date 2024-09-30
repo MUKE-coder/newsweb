@@ -8,6 +8,19 @@ import { News } from "@prisma/client";
 import { authOptions } from "@/config/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "/article-managment",
+  description:
+    "Stay informed with the latest news, stories, and insights from Rubirizi and beyond. Rubirizi Bulletin offers in-depth coverage, timely updates, and a fresh perspective on the topics that matter most.",
+  alternates: {
+    canonical: "/article-managment",
+    languages: {
+      "en-US": "/en-US",
+    },
+  },
+};
 
 export default async function page() {
   const session: any = await getServerSession(authOptions);

@@ -5,7 +5,19 @@ import React from "react";
 import { authOptions } from "@/config/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "/send-emails",
+  description:
+    "Stay informed with the latest news, stories, and insights from Rubirizi and beyond. Rubirizi Bulletin offers in-depth coverage, timely updates, and a fresh perspective on the topics that matter most.",
+  alternates: {
+    canonical: "/send-emails",
+    languages: {
+      "en-US": "/en-US",
+    },
+  },
+};
 export default async function page() {
   const session: any = await getServerSession(authOptions);
 

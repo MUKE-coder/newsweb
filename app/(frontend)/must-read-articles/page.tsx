@@ -58,6 +58,7 @@ interface CategoryWithoutNews {
   createdAt: Date;
   updatedAt: Date;
 }
+
 const ARTICLES_PER_PAGE = 12;
 export default function Page() {
   const [articles, setArticles] = useState<NewsProps[]>([]);
