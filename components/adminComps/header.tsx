@@ -49,7 +49,7 @@ const navBtns = [
   {
     icon: <Mails className="h-4 w-4" />,
     title: "Block Emails",
-    link: "/dashboard/block-emails",
+    link: "/dashboard/send-mails",
   },
 ];
 export default function Header({ session }: { session: Session }) {
