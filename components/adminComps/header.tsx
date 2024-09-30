@@ -48,7 +48,7 @@ const navBtns = [
   },
   {
     icon: <Mails className="h-4 w-4" />,
-    title: "Block Emails",
+    title: "Send mails",
     link: "/dashboard/send-mails",
   },
 ];

@@ -50,7 +50,10 @@ export default function EmailArticleForm({
   ];
   const articles = rawArticles.map((item) => {
     return {
-      label: item.title,
+      label:
+        item.title.length > 50
+          ? item.title.substring(0, 35) + "..."
+          : item.title,
       value: item.id,
     };
   });
@@ -65,7 +68,9 @@ export default function EmailArticleForm({
   const actualSelectedArticle = rawArticles.find(
     (article) => article.id === selectedArticle.value
   );
+
   const [content, setContent] = useState(null);
+
   // console.log(actualSelectedArticle);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const handleSubmit = async (e: React.FormEvent) => {
@@ -111,7 +116,7 @@ export default function EmailArticleForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-2xl mx-auto space-y-4 p-6 bg-white rounded-lg shadow-md"
+      className="max-w-2xl mx-auto mt-12 space-y-4 p-6 bg-white rounded-lg shadow-md"
     >
       <h2 className="text-2xl font-bold text-center mb-6">
         Email Article to Subscribers
