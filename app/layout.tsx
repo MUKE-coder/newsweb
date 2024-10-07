@@ -111,6 +111,9 @@ export const metadata: Metadata = {
     default: siteConfig.title,
     template: `%s | ${siteConfig.title}`,
   },
+  other: {
+    "google-site-verification": "Sr5RR1ysT1vii9jDI2fm5p3Rbq-UeQPPYQK_p-7U3bU",
+  },
   description: siteConfig.description,
   keywords: [
     "Rubirizi news",
@@ -132,6 +135,7 @@ export const metadata: Metadata = {
     "Rubirizi regional news",
     "Rubirizi",
     "sports",
+    "rubirizi",
   ],
   authors: [
     {
