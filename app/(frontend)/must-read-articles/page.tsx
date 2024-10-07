@@ -83,7 +83,7 @@ export default function Page() {
   };
 
   return (
-    <div className="px-4 mt-6">
+    <main className="px-4 mt-6">
       {isLoading ? (
         <SkeletonLoader />
       ) : (
@@ -131,6 +131,6 @@ export default function Page() {
       ) : (
         ""
       )}
-    </div>
+    </main>
   );
 }

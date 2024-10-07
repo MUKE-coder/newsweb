@@ -6,7 +6,7 @@ import { SkeletonLoader } from "@/components/loadComp";
 import { Button } from "@/components/ui/button";
 import { FormatDate } from "@/lib/formatDate";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface NewsProps {
   id: string;
@@ -84,7 +84,7 @@ export default function Page() {
   };
 
   return (
-    <div className="px-4 mt-6">
+    <main className="px-4 mt-6">
       {isLoading ? (
         <SkeletonLoader />
       ) : (
@@ -132,6 +132,6 @@ export default function Page() {
       ) : (
         ""
       )}
-    </div>
+    </main>
   );
 }

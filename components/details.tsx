@@ -31,8 +31,8 @@ export default function Details({
   articleFetched: ArticleProps | News[] | any | null;
 }) {
   return (
-    <div className="mt-5 max-w-4xl mx-auto">
-      <div>
+    <div className="mt-5 ">
+      <div className="max-w-4xl mx-auto">
         <div className="mb-6">
           <h1 className="text-3xl font-bold mb-4">{articleFetched.title}</h1>
           <p className="text-gray-600">{articleFetched.description}</p>
@@ -50,7 +50,7 @@ export default function Details({
           </div>
         )}
       </div>
-      <div>
+      <div className="max-w-4xl mx-auto">
         <DetailedEditor articleFetched={articleFetched} />
       </div>
       <div className="mt-12">

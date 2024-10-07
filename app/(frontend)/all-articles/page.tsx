@@ -84,62 +84,111 @@ export default function Page() {
     return articles.slice(startIndex, endIndex);
   };
 
+  // return (
+  //   <div className="px-4 mt-6">
+  //     {isLoading ? (
+  //       <SkeletonLoader />
+  //     ) : (
+  //       <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1">
+  //         {getCurrentPageArticles().map((article) => {
+  //           return (
+  //             <CardComp
+  //               key={article.id}
+  //               image={article.thumbnail as string}
+  //               title={article.title}
+  //               category={article.Category?.title as string}
+  //               link={`/detailed/${article.slug}`}
+  //               time={FormatDate(article.createdAt)}
+  //               mediahouse={article.MediaHouse?.title as string}
+  //               description={article.description as string}
+  //               mediahouseImage={article.MediaHouse?.image as string}
+  //             />
+  //           );
+  //         })}
+  //       </div>
+  //     )}
+
+  // {totalPages > 1 ? (
+  //   <div className="flex justify-center mt-6 space-x-2">
+  //     {currentPage > 1 ? (
+  //       <Button
+  //         onClick={() =>
+  //           setCurrentPage((prev: any) => Math.max(prev - 1, 1))
+  //         }
+  //         disabled={currentPage === 1}
+  //       >
+  //         <ChevronsLeft />
+  //       </Button>
+  //     ) : (
+  //       " "
+  //     )}
+  //     <Button
+  //       className=""
+  //       onClick={() =>
+  //         setCurrentPage((prev: any) => Math.min(prev + 1, totalPages))
+  //       }
+  //       disabled={currentPage === totalPages}
+  //     >
+  //         Load More
+  //     </Button>
+  //   </div>
+  // ) : (
+  //   ""
+  // )}
+  //   </div>
+  // );
+
   return (
-    <div className="px-4 mt-6">
+    <main className="px-4 mt-6">
+      {/* <h1 className="text-3xl font-bold mb-6">All Articles</h1> */}
       {isLoading ? (
         <SkeletonLoader />
       ) : (
-        <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1">
-          {getCurrentPageArticles().map((article) => {
-            return (
+        <>
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
+            {getCurrentPageArticles().map((article) => (
               <CardComp
                 key={article.id}
-                image={article.thumbnail as string}
+                image={article.thumbnail || ""}
                 title={article.title}
-                category={article.Category?.title as string}
+                category={article.Category?.title || "Uncategorized"}
                 link={`/detailed/${article.slug}`}
                 time={FormatDate(article.createdAt)}
-                mediahouse={article.MediaHouse?.title as string}
-                description={article.description as string}
-                mediahouseImage={article.MediaHouse?.image as string}
+                mediahouse={article.MediaHouse?.title || ""}
+                description={article.description || ""}
+                mediahouseImage={article.MediaHouse?.image || ""}
               />
-            );
-          })}
-        </div>
-      )}
-
-      {totalPages > 1 ? (
-        <div className="flex justify-center mt-6 space-x-2">
-          {currentPage > 1 ? (
-            <Button
-              onClick={() =>
-                setCurrentPage((prev: any) => Math.max(prev - 1, 1))
-              }
-              disabled={currentPage === 1}
-            >
-              <ChevronsLeft />
-            </Button>
+            ))}
+          </div>
+          {totalPages > 1 ? (
+            <div className="flex justify-center mt-6 space-x-2">
+              {currentPage > 1 ? (
+                <Button
+                  onClick={() =>
+                    setCurrentPage((prev: any) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                >
+                  <ChevronsLeft />
+                </Button>
+              ) : (
+                " "
+              )}
+              <Button
+                className=""
+                onClick={() =>
+                  setCurrentPage((prev: any) => Math.min(prev + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+              >
+                Load More
+              </Button>
+            </div>
           ) : (
-            " "
+            ""
           )}
-
-          {/* <span className="self-center">
-            Page {currentPage} of {totalPages}
-          </span> */}
-          <Button
-            className=""
-            onClick={() =>
-              setCurrentPage((prev: any) => Math.min(prev + 1, totalPages))
-            }
-            disabled={currentPage === totalPages}
-          >
-            {/* <ChevronsRight /> */}
-            Load More
-          </Button>
-        </div>
-      ) : (
-        ""
+        </>
       )}
-    </div>
+    </main>
   );
 }
