@@ -44,6 +44,7 @@ export default function Dashboard() {
           </Link>
         </div>
       </div>
+
       <div className="mt-6">
         <ActivityCard />
       </div>

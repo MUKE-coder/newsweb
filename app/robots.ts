@@ -5,21 +5,9 @@ export default function robots() {
   return {
     rules: {
       userAgent: "*",
-      allow: [
-        "/",
-        "/dashboard",
-        "/categories",
-        "/dashboard/article-managment",
-        "all-articles",
-        "/dashboard/subscribers",
-        "/dashboard/send-emails",
-        "/detailed",
-        "/editors-pick-articles",
-        "/must-read-articles",
-        "/dashboard/settings",
-      ],
-      disallow: [],
+      allow: "/",
+      disallow: "/private/",
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: ` ${baseUrl}/sitemap.xml`,
   };
 }
