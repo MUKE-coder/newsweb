@@ -54,7 +54,7 @@ export default function ActionColumn({
           window.location.reload();
           toast.success(`${model} Deleted Successfully`);
         }
-      } else if (model === "subscriber") {
+      } else if (model === "subscribers") {
         // setLoading(true);
         const res = await deleteSubscriber(id);
         if (res?.ok) {
