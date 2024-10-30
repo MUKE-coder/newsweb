@@ -76,7 +76,7 @@ export async function deleteArticle(id: string) {
     try {
       const deletedArticle = await db.news.delete({
         where: {
-          id: id,
+          id,
         },
       });
       revalidatePath("/dashboard/article-managment");

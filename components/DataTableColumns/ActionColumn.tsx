@@ -26,6 +26,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { deleteArticle } from "@/actions/articleActions";
 import { deleteSubscriber } from "@/actions/subscriberActions";
+import { useRouter } from "next/navigation";
 
 type ActionColumnProps = {
   row: any;
@@ -42,6 +43,7 @@ export default function ActionColumn({
 }: ActionColumnProps) {
   const isActive = row.isActive;
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   async function handleDelete() {
     try {
       if (model === "news") {
@@ -49,6 +51,7 @@ export default function ActionColumn({
         const res = await deleteArticle(id);
         if (res?.ok) {
           // setLoading(false);
+          window.location.reload();
           toast.success(`${model} Deleted Successfully`);
         }
       } else if (model === "subscriber") {
@@ -56,6 +59,7 @@ export default function ActionColumn({
         const res = await deleteSubscriber(id);
         if (res?.ok) {
           // setLoading(false);
+          window.location.reload();
           toast.success(`${model} Deleted Successfully`);
         }
       }
@@ -97,9 +101,12 @@ export default function ActionColumn({
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <Button variant={"destructive"} onClick={() => handleDelete()}>
-                Permanently Delete
-              </Button>
+              {/*  */}
+              <AlertDialogAction asChild>
+                <Button variant={"destructive"} onClick={handleDelete}>
+                  Permanently Delete
+                </Button>
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

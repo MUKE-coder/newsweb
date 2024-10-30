@@ -28,7 +28,7 @@ export default async function page() {
   if (!session) {
     return redirect("/login");
   }
-  const newsArticles: News[] | ArticleProps[] = (await fetchArticles()) || [];
+  const newsArticles = (await fetchArticles()) || [];
   return (
     <div>
       <div className="lg:p-8 md:p-8 ">
