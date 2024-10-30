@@ -41,10 +41,10 @@ import Link from "next/link";
 import { fetchArticles } from "@/actions/articleActions";
 import { Category } from "@prisma/client";
 import { CatProps } from "@/types/types";
-import DeleteArticles from "./deleteArticle";
+// import DeleteArticles from "./deleteArticle";
 
 export default async function AddArticle() {
-  const articles = await fetchArticles()
+  const articles = await fetchArticles();
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
       <Tabs defaultValue="all">
@@ -114,8 +114,9 @@ export default async function AddArticle() {
             <CardHeader>
               <CardTitle>Articles</CardTitle>
               <CardDescription>
-                Manage your Articles and in the way that you can update and delete them
-                </CardDescription>
+                Manage your Articles and in the way that you can update and
+                delete them
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
@@ -134,61 +135,61 @@ export default async function AddArticle() {
                   </TableRow>
                 </TableHeader>
 
-
-
                 <TableBody>
-
-                {
-                  articles?.map((article)=>{
-                    return(
+                  {articles?.map((article) => {
+                    return (
                       <TableRow key={article.id}>
-                      <TableCell className="hidden sm:table-cell">
-                        <Image
-                          alt="Product image"
-                          className="aspect-square rounded-md object-cover"
-                          height="64"
-                          src={article.thumbnail as string |  any}
-                          width="64"
-                        />
-                      </TableCell>
-                      <TableCell className="font-medium">
-                      {article.title}
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="outline">{article.Category?.title}</Badge>
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="outline">{article.MediaHouse?.title}</Badge>
-                      </TableCell>
-                      <TableCell>{article.readTime}</TableCell>
-                      <TableCell>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="h-4 w-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>
-                              <Link href={`/dashboard/article-managment/add-article/${article.id}`}>Edit</Link>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                            <DeleteArticles id={article.id}/>
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </TableCell>
-                    </TableRow>
-                    )
-                  })
-                }
-
+                        <TableCell className="hidden sm:table-cell">
+                          <Image
+                            alt="Product image"
+                            className="aspect-square rounded-md object-cover"
+                            height="64"
+                            src={article.thumbnail as string | any}
+                            width="64"
+                          />
+                        </TableCell>
+                        <TableCell className="font-medium">
+                          {article.title}
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant="outline">
+                            {article.Category?.title}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant="outline">
+                            {article.MediaHouse?.title}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>{article.readTime}</TableCell>
+                        <TableCell>
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button
+                                aria-haspopup="true"
+                                size="icon"
+                                variant="ghost"
+                              >
+                                <MoreHorizontal className="h-4 w-4" />
+                                <span className="sr-only">Toggle menu</span>
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                              <DropdownMenuItem>
+                                <Link
+                                  href={`/dashboard/article-managment/add-article/${article.id}`}
+                                >
+                                  Edit
+                                </Link>
+                              </DropdownMenuItem>
+                              <DropdownMenuItem></DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
                 </TableBody>
               </Table>
             </CardContent>
