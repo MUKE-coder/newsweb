@@ -85,7 +85,7 @@ export default function EmailArticleForm({
       articleSummary: actualSelectedArticle?.description ?? "",
       thumbnailUrl: actualSelectedArticle?.thumbnail ?? "",
       articleBody: content ?? "",
-      articleLink: `${baseUrl}/detailed/${actualSelectedArticle?.id}`,
+      articleLink: `${baseUrl}/detailed/${actualSelectedArticle?.slug}`,
       unsubscribeLink: "#",
       preferencesLink: "#",
     };

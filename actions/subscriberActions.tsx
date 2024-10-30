@@ -45,15 +45,17 @@ export async function fetchSubscribers() {
 }
 
 //delete a subscriber
-export async function deleteSubscriber({ id }: { id: string }) {
+export async function deleteSubscriber(id: string) {
   try {
     const deletedSub = await db.subscriber.delete({
       where: { id },
     });
+    revalidatePath("/dashboard/subscribers");
     console.log(deletedSub);
-    return deletedSub;
+    return { ok: true };
   } catch (error) {
     console.log(error);
+    return { ok: false };
   }
 }
 

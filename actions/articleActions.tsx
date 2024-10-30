@@ -71,17 +71,20 @@ export async function fetchArticles() {
 }
 
 //delete
-export async function deleteArticle({ id }: string | any) {
-  try {
-    const deletedArticle = await db.news.delete({
-      where: {
-        id: id,
-      },
-    });
-    revalidatePath("/dashboard/article-managment");
-    return deletedArticle;
-  } catch (error) {
-    console.log(error);
+export async function deleteArticle(id: string) {
+  if (id) {
+    try {
+      const deletedArticle = await db.news.delete({
+        where: {
+          id: id,
+        },
+      });
+      revalidatePath("/dashboard/article-managment");
+      return { ok: true };
+    } catch (error) {
+      console.log(error);
+      return { ok: false };
+    }
   }
 }
 

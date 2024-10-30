@@ -20,12 +20,15 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { LoaderCircle, MoreHorizontal, Pencil, Trash } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash } from "lucide-react";
+import { deleteCategory } from "@/actions/categories";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import { deleteUser } from "@/actions/users";
+import { deleteProject } from "@/actions/projects";
 import { deleteArticle } from "@/actions/articleActions";
-import { useRouter } from "next/navigation";
 import { deleteSubscriber } from "@/actions/subscriberActions";
+
 type ActionColumnProps = {
   row: any;
   model: any;
@@ -40,24 +43,28 @@ export default function ActionColumn({
   id = "",
 }: ActionColumnProps) {
   const isActive = row.isActive;
-  const router = useRouter();
-  const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   async function handleDelete() {
     try {
-      setLoading(true);
-      const deletedSubscriber = await deleteSubscriber({ id });
-      toast.success("Subscriber deleted successfully.");
-      router.push("/dashboard/subscribers");
-      router.refresh();
-      window.location.reload();
+      if (model === "news") {
+        // setLoading(true);
+        const res = await deleteArticle(id);
+        if (res?.ok) {
+          // setLoading(false);
+          toast.success(`${model} Deleted Successfully`);
+        }
+      } else if (model === "subscriber") {
+        // setLoading(true);
+        const res = await deleteSubscriber(id);
+        if (res?.ok) {
+          // setLoading(false);
+          toast.success(`${model} Deleted Successfully`);
+        }
+      }
     } catch (error) {
+      // setLoading(false);
       console.log(error);
-      toast.error("Something went wrong");
-    } finally {
-      setLoading(false);
-      setIsAlertOpen(false);
-      window.location.reload();
+      toast.error("Category Couldn't be deleted");
     }
   }
   return (
@@ -71,11 +78,8 @@ export default function ActionColumn({
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
+        <AlertDialog>
           <AlertDialogTrigger asChild>
-            {/* <DropdownMenuItem className="text-red-600 hover:text-red-700 transition-all duration-500 cursor-pointer">
-              
-            </DropdownMenuItem> */}
             <Button
               variant={"ghost"}
               size={"sm"}
@@ -94,23 +98,10 @@ export default function ActionColumn({
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel onClick={() => setIsAlertOpen(false)}>
-                Cancel
-              </AlertDialogCancel>
-              {loading ? (
-                <Button
-                  disabled
-                  variant={"destructive"}
-                  onClick={() => handleDelete()}
-                >
-                  <LoaderCircle className="animate-spin" />
-                  <span>Deleting...</span>
-                </Button>
-              ) : (
-                <Button variant={"destructive"} onClick={() => handleDelete()}>
-                  Permanently Delete
-                </Button>
-              )}
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <Button variant={"destructive"} onClick={() => handleDelete()}>
+                Permanently Delete
+              </Button>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

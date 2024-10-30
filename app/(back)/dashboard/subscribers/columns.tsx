@@ -7,7 +7,7 @@ import SortableColumn from "@/components/DataTableColumns/SortableColumn";
 import { ColumnDef } from "@tanstack/react-table";
 
 import { Subscriber } from "@prisma/client";
-import ActionColumn from "@/components/DataTableColumns/ActionColumn copy";
+import ActionColumn from "@/components/DataTableColumns/ActionColumn";
 export const columns: ColumnDef<Subscriber>[] = [
   {
     id: "select",
@@ -48,8 +48,8 @@ export const columns: ColumnDef<Subscriber>[] = [
       return (
         <ActionColumn
           row={row}
-          model="news"
-          // editEndpoint={`/dashboard/article-managment/add-article/${data.id}`}
+          model="subscribers"
+          editEndpoint={`/dashboard/article-managment/add-article/${data.id}`}
           id={data.id}
         />
       );
